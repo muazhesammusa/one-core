@@ -4,8 +4,10 @@ jQuery(document).ready(function ($) {
   let currentStep = 0;
   let cancelled = false;
 
-  const logEl = $('#bp-demo-log');
-  const barEl = $('.bp-demo-progress .bar');
+  const statusEl = $('#bp-demo-log');
+  const logEl = $('#bp-demo-log-text');
+  const progressEl = statusEl.find('.bp-demo-progress');
+  const barEl = progressEl.find('.bar');
   const modal = $('#bp-demo-modal');
   const loader = $('#bp-demo-loader');
   const finalBtns = $('#bp-demo-final-buttons');
@@ -129,6 +131,7 @@ jQuery(document).ready(function ($) {
   $('#start-demo-import').on('click', function () {
     modal.fadeIn();
     logEl.text('Ready to import...');
+    progressEl.hide();
     barEl.css('width', '0');
     loader.hide();
     finalBtns.hide();
@@ -145,6 +148,9 @@ jQuery(document).ready(function ($) {
     // keep cancel visible during import as a close button only
     cancelled = false;
     currentStep = 0;
+    progressEl.show();
+    logEl.text('');
+    barEl.css('width', '0');
     // Pick up selected steps from UI
     if (Array.isArray(window.ONE_DEMO_SELECTED_STEPS)) {
       steps = window.ONE_DEMO_SELECTED_STEPS;
@@ -159,6 +165,7 @@ jQuery(document).ready(function ($) {
     startBtn.show();
     $('#bp-cancel-import').show();
     logEl.text('');
+    progressEl.hide();
     barEl.css('width', '0');
   });
 });

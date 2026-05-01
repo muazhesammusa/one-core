@@ -237,8 +237,8 @@
       window.ONE_DEMO_SELECTED_STEPS = steps;
     }, [selected, done]);
 
-    return h('div', { className: 'p-4 border rounded bg-white mb-4' },
-      h('div', null,
+    return h('div', { className: 'p-0' },
+      h('div', { className: 'space-y-4' },
         (!BPDemoSteps.license_active ? h('div', { className: 'mb-3 p-3 rounded bg-amber-50 border border-amber-200 text-amber-900' },
           h('div', { className: 'font-medium mb-1' }, 'License not active'),
           h('div', null,
@@ -256,12 +256,12 @@
             className: 'px-3 py-1 text-sm text-red-600 bg-red-50 border border-red-200 rounded hover:bg-red-100 transition-colors'
           }, 'Reset Import Status')
         ),
-        h('div', { className: 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-3' },
+        h('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3' },
           OPTIONS.map(opt => {
             const disabled = !!opt.locked || (!BPDemoSteps.license_active && opt.key === 'pages');
             return h('div', {
               key: opt.key,
-              className: 'flex items-center justify-between gap-3 rounded-lg border border-gray-200 px-4 py-3 hover:border-blue-400 transition-colors' + (disabled ? ' opacity-60' : '')
+              className: 'flex items-center justify-between gap-3 rounded-lg border border-gray-200 px-3 py-2 hover:border-blue-400 transition-colors' + (disabled ? ' opacity-60' : '')
             },
               h('div', { className: 'flex items-center gap-2' },
                 h('div', { className: 'h-8 w-8 flex items-center justify-center rounded-md bg-gray-100 text-gray-600' }, opt.label.charAt(0)),

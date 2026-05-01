@@ -112,8 +112,10 @@ function bp_demo_import_page()
             <div id="one-demo-react-root"></div>';
 
   echo '
-            <div id="bp-demo-log">Ready to import...</div>
-            <div class="bp-demo-progress"><div class="bar"></div></div>
+            <div id="bp-demo-log">
+              <div id="bp-demo-log-text">Ready to import...</div>
+              <div class="bp-demo-progress" style="display:none;"><div class="bar"></div></div>
+            </div>
 
             <div style="margin-top:10px; display:flex; gap:8px;">
                 <button id="bp-start-import" class="button button-primary">Start Importing</button>
@@ -130,31 +132,13 @@ function bp_demo_import_page()
     </div>';
 
 
-
-  $url = get_theme_file_uri() . "/screenshot.png";
-
-  echo '<h2 style="font-size: 24px; font-weight: 600; margin: 30px 0 20px 0; color: #1d2327;">Core Demo</h2>';
-  if ('yes' !== get_option('one_theme_core_demo_imported')) {
-    echo '<div class="demo-import-warning">
-            <p>
-                <strong>Important:</strong> You must import core demo first for the core structure.Here we install essential plugins like: elementor, buddypress and bbpress. Then you will be able to import page templates. Otherwise, page templates will not import.
-                <br>
-                For details, check it out: <a href="https://tophivethemes.gitbook.io/one/3.-demo-import" target="_blank">One Demo Import Guide</a>.
-            </p>
-        </div>';
-  }
-
-  echo "<div class='wrap' style='display:flex;'>
-            <div class='demo-import-card'>
-                <div class='demo-import-card__image'>
-                  <img src='{$url}' alt='image' />
-                </div>
-                <div class='demo-import-card__action'>
-                    <h1>One Core Demo</h1>
-                    <button id='start-demo-import' class='button button-primary'>Import</button>
-                </div>
-            </div>
-         </div>";
+  echo "
+    <section class='one-core-demo-banner'>
+      <h3 class='one-core-demo-banner__title'>One Core Demo</h3>
+      <p class='one-core-demo-banner__meta'>Import core structure and essential plugins first.</p>
+      <button id='start-demo-import' class='button button-primary'>Import</button>
+    </section>
+  ";
 
   echo '<br />';
   echo '<h2 style="font-size: 24px; font-weight: 600; margin: 30px 0 20px 0; color: #1d2327;">Page templates</h2>';
@@ -162,11 +146,9 @@ function bp_demo_import_page()
   // do_action('tophive-core/activation-required');
 
   if (!$license_active) {
-    echo '<div class="demo-import-warning">
-            <p>
-              <strong>License required:</strong> Please <a href="' . esc_url(admin_url('admin.php?page=one&tab=activation')) . '" target="_blank">activate your license</a> to view and import page templates.
-            </p>
-          </div>';
+    echo '<p class="demo-import-warning">
+            <strong>License required:</strong> Please <a href="' . esc_url(admin_url('admin.php?page=one&tab=activation')) . '" target="_blank">activate your license</a> to view and import page templates.
+          </p>';
     $templates = one_core_get_template_stubs();
   } else {
     $templates = $importer->get_templates();
