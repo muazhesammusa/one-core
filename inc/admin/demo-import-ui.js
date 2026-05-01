@@ -39,6 +39,9 @@
       const d = BPDemoSteps.defaults || {};
       const state = {};
       OPTIONS.forEach(o=>{ state[o.key] = !!d[o.key]; });
+      if (!BPDemoSteps.license_active) {
+        state.pages = false;
+      }
       return state;
     });
     const [done, setDone] = useState(()=>{
@@ -73,6 +76,7 @@
     function toggle(key){
       const opt = OPTIONS.find(o=>o.key===key);
       if (opt && opt.locked) return;
+      if (!BPDemoSteps.license_active && key === 'pages') return;
       setSelected(s=>({ ...s, [key]: !s[key] }));
     }
 
@@ -218,7 +222,7 @@
         steps.push({ step: 'enable_groups_component' });
         steps.push({ step: 'import_activities' });
       }
-      if (selected.pages && !done.pages) {
+      if (BPDemoSteps.license_active && selected.pages && !done.pages) {
         steps.push({ step: 'list_templates', payload: { label: 'Importing templates list…' } });
         // placeholder; demo-import.js will expand this into per-template steps dynamically
         steps.push({ step: '__import_templates_dynamic__' });
@@ -234,13 +238,14 @@
     }, [selected, done]);
 
     return h('div', { className: 'p-4 border rounded bg-white mb-4' },
-      (!BPDemoSteps.license_active ? h('div', { className: 'mb-3 p-3 rounded bg-red-50 border border-red-200 text-red-800' },
-        h('div', { className: 'font-medium mb-1' }, 'License Required'),
-        h('div', null, 'Please ',
-          h('a', { href: BPDemoSteps.license_link, target: '_blank', className: 'underline' }, 'activate your license'),
-          ' to import demo content.'
-        )
-      ) : h('div', null,
+      h('div', null,
+        (!BPDemoSteps.license_active ? h('div', { className: 'mb-3 p-3 rounded bg-amber-50 border border-amber-200 text-amber-900' },
+          h('div', { className: 'font-medium mb-1' }, 'License not active'),
+          h('div', null,
+            'Core demo import works. Page templates import requires license. ',
+            h('a', { href: BPDemoSteps.license_link, target: '_blank', className: 'underline' }, 'Activate license')
+          )
+        ) : null),
         h('div', { className: 'flex items-center justify-between mb-4' },
           h('h3', { className: 'text-lg font-semibold' }, 'Select what to import'),
           h('button', { 
@@ -252,32 +257,35 @@
           }, 'Reset Import Status')
         ),
         h('div', { className: 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-3' },
-          OPTIONS.map(opt => h('div', {
-            key: opt.key,
-            className: 'flex items-center justify-between gap-3 rounded-lg border border-gray-200 px-4 py-3 hover:border-blue-400 transition-colors'
-          },
-            h('div', { className: 'flex items-center gap-2' },
-              h('div', { className: 'h-8 w-8 flex items-center justify-center rounded-md bg-gray-100 text-gray-600' }, opt.label.charAt(0)),
-              h('div', null,
-                h('div', { className: 'font-medium' }, opt.label),
-                done[opt.key]
-                  ? h('div', { className: 'text-xs text-green-600 flex items-center gap-1' },
-                      h('span', { className: 'inline-block h-2 w-2 bg-green-500 rounded-full' }),
-                      'Imported'
-                    )
-                  : (opt.locked
-                      ? h('div', { className: 'text-xs text-gray-500 flex items-center gap-1' },
-                          h('span', { className: 'inline-block h-2 w-2 bg-gray-400 rounded-full' }),
-                          'Required'
-                        )
-                      : h('div', { className: 'text-xs text-gray-500' }, 'Optional')
-                    )
-              )
-            ),
-            h(Toggle, { checked: !!selected[opt.key], disabled: !!opt.locked, onChange: ()=> toggle(opt.key) })
-          ))
+          OPTIONS.map(opt => {
+            const disabled = !!opt.locked || (!BPDemoSteps.license_active && opt.key === 'pages');
+            return h('div', {
+              key: opt.key,
+              className: 'flex items-center justify-between gap-3 rounded-lg border border-gray-200 px-4 py-3 hover:border-blue-400 transition-colors' + (disabled ? ' opacity-60' : '')
+            },
+              h('div', { className: 'flex items-center gap-2' },
+                h('div', { className: 'h-8 w-8 flex items-center justify-center rounded-md bg-gray-100 text-gray-600' }, opt.label.charAt(0)),
+                h('div', null,
+                  h('div', { className: 'font-medium' }, opt.label),
+                  done[opt.key]
+                    ? h('div', { className: 'text-xs text-green-600 flex items-center gap-1' },
+                        h('span', { className: 'inline-block h-2 w-2 bg-green-500 rounded-full' }),
+                        'Imported'
+                      )
+                    : (disabled
+                        ? h('div', { className: 'text-xs text-gray-500 flex items-center gap-1' },
+                            h('span', { className: 'inline-block h-2 w-2 bg-gray-400 rounded-full' }),
+                            opt.locked ? 'Required' : 'License required'
+                          )
+                        : h('div', { className: 'text-xs text-gray-500' }, 'Optional')
+                      )
+                )
+              ),
+              h(Toggle, { checked: !!selected[opt.key], disabled: disabled, onChange: ()=> toggle(opt.key) })
+            );
+          })
         )
-      ))
+      )
     );
   }
 

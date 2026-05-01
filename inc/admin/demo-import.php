@@ -8,15 +8,49 @@ if (!function_exists('is_plugin_active')) {
   require_once ABSPATH . 'wp-admin/includes/plugin.php';
 }
 
+if (!function_exists('one_core_is_license_active')) {
+  function one_core_is_license_active()
+  {
+    $theme_slug = get_option('stylesheet');
+    $license_val = get_option($theme_slug . '_tophive_license', '');
+    $product_val = get_option($theme_slug . '_tophive_product_id', '');
+    return !empty($license_val) && !empty($product_val);
+  }
+}
+
+if (!function_exists('one_core_get_template_stubs')) {
+  function one_core_get_template_stubs()
+  {
+    $img = esc_url(get_theme_file_uri() . "/screenshot.png");
+    $names = [
+      'Album Gallery',
+      'Masonry',
+      'Slider',
+      'Shop',
+      'Cart',
+      'Checkout',
+      'My account',
+    ];
+    $out = [];
+    $id = 1;
+    foreach ($names as $name) {
+      $out[] = [
+        'id' => $id++,
+        'name' => $name,
+        'type' => 'Elementor',
+        'preview_image' => $img,
+        'preview_url' => $img,
+      ];
+    }
+    return $out;
+  }
+}
 
 // 1. Enqueue JS + Modal Styles + Localize Steps
 add_action('admin_enqueue_scripts', function () {
   wp_enqueue_script('bp-demo-import', plugin_dir_url(__FILE__) . '/demo-import.js', ['jquery'], null, true);
   wp_enqueue_script('bp-demo-import-ui', plugin_dir_url(__FILE__) . '/demo-import-ui.js', ['wp-element', 'jquery'], null, true);
-  $theme_slug = get_option('stylesheet');
-  $license_val = get_option($theme_slug . '_tophive_license', '');
-  $product_val = get_option($theme_slug . '_tophive_product_id', '');
-  $license_active = !empty($license_val) && !empty($product_val);
+  $license_active = one_core_is_license_active();
   // Check if this is a fresh install - more comprehensive check
   $posts_count = wp_count_posts('post')->publish + wp_count_posts('page')->publish;
   $users_count = count_users()['total_users'];
@@ -63,10 +97,7 @@ add_action('tophive/admin/demo-content-container', 'bp_demo_import_page');
 
 function bp_demo_import_page()
 {
-  $theme_slug = get_option('stylesheet');
-  $license_val = get_option($theme_slug . '_tophive_license', '');
-  $product_val = get_option($theme_slug . '_tophive_product_id', '');
-  $license_active = !empty($license_val) && !empty($product_val);
+  $license_active = one_core_is_license_active();
 
   $home_url   = esc_url(home_url('/'));
   $admin_url  = esc_url(admin_url('admin.php?page=one&tab=importer'));
@@ -80,8 +111,7 @@ function bp_demo_import_page()
             <script src="https://cdn.tailwindcss.com"></script>
             <div id="one-demo-react-root"></div>';
 
-  if ($license_active) {
-    echo '
+  echo '
             <div id="bp-demo-log">Ready to import...</div>
             <div class="bp-demo-progress"><div class="bar"></div></div>
 
@@ -94,7 +124,6 @@ function bp_demo_import_page()
                 <a href="' . $home_url . '" class="button button-primary" target="_blank">Visit Website</a>
                 <a href="' . $admin_url . '" class="button button-secondary">Back to Demos</a>
             </div>';
-  }
 
   echo '
         </div>
@@ -132,8 +161,16 @@ function bp_demo_import_page()
 
   // do_action('tophive-core/activation-required');
 
-
-  $templates = $importer->get_templates();
+  if (!$license_active) {
+    echo '<div class="demo-import-warning">
+            <p>
+              <strong>License required:</strong> Please <a href="' . esc_url(admin_url('admin.php?page=one&tab=activation')) . '" target="_blank">activate your license</a> to view and import page templates.
+            </p>
+          </div>';
+    $templates = one_core_get_template_stubs();
+  } else {
+    $templates = $importer->get_templates();
+  }
 
   echo '<div class="template-grid">';
 
@@ -159,7 +196,7 @@ function bp_demo_import_page()
                 <div class="card-info">
                     <h3>' . $name . '</h3>
                 </div>
-                <button class="import-button" data-template-id="' . $id . '">Import</button>
+                <button class="import-button" data-template-id="' . $id . '" data-template-name="' . esc_attr(wp_strip_all_tags($name)) . '">Import</button>
             </div>
         </div>';
   }
@@ -220,6 +257,14 @@ add_action('wp_ajax_bp_demo_import_step', function () {
   $Tophovive_License_Instance = class_exists('Tophive_Licence') ? new Tophive_Licence() : null;
 
   try {
+    $license_active = one_core_is_license_active();
+    if (
+      !$license_active
+      && in_array($step, ['import_all_templates', 'list_templates', 'import_template', 'import_elementor_template'], true)
+    ) {
+      throw new Exception('License required to import page templates.');
+    }
+
     switch ($step) {
       case 'install_plugins':
         bp_demo_install_plugins($payload_slugs);
@@ -1748,4 +1793,3 @@ function bp_demo_create_media_pages() {
 
   return $created_pages;
 }
-

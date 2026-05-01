@@ -4,8 +4,6 @@ class One_Imports_Controllers
 {
   private $API_ROOT = "https://www.tophivetheme.com/wp-json/v1";
   private $API_ENDPOINT = "";
-  private $API_ENDPOINT_LICENSE_ACTIVATE = "";
-  private $API_ENDPOINT_LICENSE_CHECK = "";
   private $API_ENDPOINT_UPDATE_CHECK = "";
   private $IMPORTER = null;
 
@@ -14,13 +12,9 @@ class One_Imports_Controllers
     add_action("wp_ajax_tophive/api/templates/{resource_type}", [$this, "get_templates"]);
     add_action("wp_ajax_tophive_import_resource", [$this, "import_resource"]);
     add_action("wp_ajax_tophive_import_plugin", [$this, "import_plugin"]);
-    add_action("wp_ajax_tophive_activate_license", [$this, "activate_license"]);
-    add_action("wp_ajax_tophive_check_licence", [$this, "check_license"]);
     add_filter('site_transient_update_themes', [$this, "check_theme_update"]);
 
     $this->API_ENDPOINT = "{$this->API_ROOT}/templates/{resource_type}";
-    $this->API_ENDPOINT_LICENSE_ACTIVATE = "{$this->API_ROOT}/license/activate";
-    $this->API_ENDPOINT_LICENSE_CHECK = "{$this->API_ROOT}/license/check";
     $this->API_ENDPOINT_UPDATE_CHECK  = "{$this->API_ROOT}/product";
   }
 
@@ -72,6 +66,9 @@ class One_Imports_Controllers
 
     $license_value = $this->get_licence();
     $product_id =  $this->get_product_id();
+    if (empty($license_value) || empty($product_id)) {
+      return $transient;
+    }
     $domain = get_site_url();
     $url = "{$this->API_ENDPOINT_UPDATE_CHECK}/{$product_id}?domain={$domain}";
     
@@ -99,96 +96,6 @@ class One_Imports_Controllers
     }
 
     return $transient;
-  }
-
-  public function check_license()
-  {
-    $this->restrict_for_admin();
-    $this->verify_nonce();
-
-    if (empty($this->get_licence()) || empty($this->get_product_id())) {
-      wp_send_json("license required", 400);
-    }
-
-    $res = wp_remote_request($this->API_ENDPOINT_LICENSE_CHECK, [
-      "method" => "POST",
-      'timeout' => 60,
-      "headers" => [
-        'content-type' => 'application/json',
-				'user-agent' => 'OneCore/1.0'
-      ],
-      "body" => json_encode(['license_key' => $this->get_licence(), 'domain' => get_site_url()])
-    ]);
-
-    if (is_wp_error($res)) {
-      wp_send_json($res, 400);
-    }
-
-    if (wp_remote_retrieve_response_code($res) != 200) {
-      wp_send_json($res, wp_remote_retrieve_response_code($res));
-    } else {
-      $body = json_decode(wp_remote_retrieve_body($res), true);
-      wp_send_json(
-        [
-          "status_code" => wp_remote_retrieve_response_code($res),
-          "data" => $body
-        ],
-        200
-      );
-    }
-  }
-
-  public function activate_license()
-  {
-    $this->restrict_for_admin();
-    $this->verify_nonce();
-
-    if (!isset($_POST["options"]) || empty($_POST["options"])) {
-      wp_send_json("options is missing", 400);
-    }
-    $options = \map_deep($_POST["options"], "sanitize_text_field");
-
-    if (!isset($options["license"]) || empty($options["license"])) {
-      wp_send_json("license required", 400);
-    }
-    if (!isset($options["secret"]) || empty($options["secret"])) {
-      wp_send_json("secret required", 400);
-    }
-
-    $res = wp_remote_request($this->API_ENDPOINT_LICENSE_ACTIVATE, [
-      "method" => "POST",
-      'timeout' => 60,
-      "headers" => [
-        'content-type' => 'application/json',
-				'user-agent' => 'OneCore/1.0'
-      ],
-      "body" => json_encode([
-        'license_key' => $options["license"],
-        'domain' => get_site_url(),
-        'product_secret' => $options["secret"],
-      ])
-    ]);
-
-    if (is_wp_error($res)) {
-      wp_send_json($res, 400);
-    }
-
-    if (wp_remote_retrieve_response_code($res) != 200) {
-      wp_send_json($res, wp_remote_retrieve_response_code($res));
-    } else {
-      $body = json_decode(wp_remote_retrieve_body($res), true);
-      //save license_key 
-      update_option($this->get_licence_key(), $options["license"]);
-      update_option($this->get_product_id_key(), $body["data"]["product_id"]);
-
-      wp_send_json(
-        [
-          "status_code" => wp_remote_retrieve_response_code($res),
-          "data" => $body
-        ],
-        200
-      );
-    }
   }
 
   public function import_plugin()
@@ -236,6 +143,9 @@ class One_Imports_Controllers
     //ADD LICENSE ADD PRODUCT_ID
     $license_value = $this->get_licence();
     $product_id = $this->get_product_id();
+    if (empty($license_value) || empty($product_id)) {
+      return new WP_Error(400, "license required");
+    }
     $url .= "&product_id={$product_id}";
     $domain = get_site_url();
     $url .= "&domain={$domain}";
@@ -283,6 +193,9 @@ class One_Imports_Controllers
     //ADD LICENSE ADD PRODUCT_ID
     $license_value = $this->get_licence();
     $product_id = $this->get_product_id();
+    if (empty($license_value) || empty($product_id)) {
+      return [];
+    }
     
     $url .= "?product_id={$product_id}";
     $domain = get_site_url();
@@ -325,6 +238,10 @@ class One_Imports_Controllers
     $id = \absint($params["id"]);
     $resource_type = $params["resource_type"];
     $res = $this->_get_templates(["resource_type" => $resource_type, "id" => $id]);
+
+    if (is_wp_error($res)) {
+      return wp_send_json([$res->get_error_message(), $res], 400);
+    }
 
     if ($res["status_code"] !== 200) {
       return wp_send_json(["Fetch resource id:{$id} fail", $res], 400);

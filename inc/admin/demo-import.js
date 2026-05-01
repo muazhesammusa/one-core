@@ -170,6 +170,11 @@ jQuery(document).ready(function($) {
   let selectedTemplateId = null;
 
   $('.import-button').on('click', function () {
+    if (!BPDemoSteps.license_active) {
+      $('#bp-demo-modal').fadeIn();
+      return;
+    }
+
     selectedTemplateId = $(this).data('template-id');
 
     // Check if Elementor is installed
