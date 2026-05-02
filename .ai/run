@@ -1,0 +1,27 @@
+#!/bin/bash
+
+TASK="$1"
+
+if [ -z "$TASK" ]; then
+  echo "❌ Please provide a task"
+  echo "Example:"
+  echo './ai/run "build gallery system"'
+  exit 1
+fi
+
+PROMPT_FILE="ai/engine/run-task.md"
+
+echo "🚀 Running CloudFold AI Task..."
+echo "🧠 Task: $TASK"
+
+# replace placeholder
+TMP_FILE="ai/.tmp-task.md"
+sed "s/<<REPLACE_THIS>>/$TASK/g" $PROMPT_FILE > $TMP_FILE
+
+echo "✅ Prompt ready:"
+echo "-----------------------------------"
+cat $TMP_FILE
+echo "-----------------------------------"
+
+echo ""
+echo "👉 Copy this prompt into Codex app"

@@ -1,0 +1,46 @@
+.scrolltop {
+  position: fixed;
+  bottom: 15px;
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+  cursor: pointer;
+  z-index: 60;
+  transition: opacity .3s ease;
+  visibility: visible;
+}
+.scrolltop.hide {
+  opacity: 0;
+}
+.scrolltop.left {
+  right: 15px;
+}
+.scrolltop.left .customize-partial-edit-shortcut {
+  margin-right: 100%;
+}
+.scrolltop.left .customize-partial-edit-shortcut button {
+  right: -20px;
+}
+.scrolltop.right {
+  left: 15px;
+}
+.scrolltop.right .customize-partial-edit-shortcut {
+  margin-right: -20px;
+}
+.scrolltop i {
+  height: 35px;
+  width: 35px;
+  display: block;
+  font-size: 20px;
+  background: #333;
+  color: #fff;
+  position: relative;
+  border-radius: 3px;
+  transition: all .3s linear;
+}
+.scrolltop i:before {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -51%);
+}

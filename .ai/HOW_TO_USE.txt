@@ -1,0 +1,49 @@
+🔥 Run command
+
+- 🧩 FEATURE BUILD
+./ai/run "build gallery filter system"
+./ai/run "add masonry layout with infinite scroll"
+./ai/run "fix gallery rendering issue on mobile"
+./ai/run "add lightbox system with zoom + swipe"
+./ai/run "build drag and drop gallery builder"
+./ai/run "add bulk image uploader with progress bar"
+
+- 🎨 UI / UX
+./ai/run "improve admin UI design with better UX"
+./ai/run "make gallery responsive for all devices"
+
+- ⿻ landing page generate
+./ai/run "build landing page for homepage using frontend-design skill"
+
+- ⚡ PERFORMANCE
+./ai/run "refactor admin app for performance"
+./ai/run "optimize frontend rendering performance"
+./ai/run "reduce bundle size and lazy load components"
+
+- ♻️ REFACTOR
+./ai/run "refactor PHP core into modular classes"
+./ai/run "improve React component architecture"
+
+- 🐛 BUG FIX
+./ai/run "fix mobile layout breaking issue"
+./ai/run "fix ajax request not working in WordPress"
+
+- 🔌 WORDPRESS SPECIFIC
+./ai/run "create custom REST API endpoint for gallery"
+./ai/run "add nonce validation for ajax requests"
+./ai/run "build Gutenberg block for gallery"
+
+- 🧪 TESTING
+./ai/run "add unit tests for gallery logic"
+./ai/run "test performance bottlenecks"
+
+
+- 🧠 SMART TASK PARSER
+./ai/run "gallery + filter + ajax + performance"
+
+------------
+
+✨ PROMPTS
+
+অ্যাক্ট অ্যাজ CloudFold PRO। আমাকে গ্যালারির জন্য নতুন একটি 'Hover Overlay Card' ডিজাইন করে দাও। ডিজাইন এবং লেআউটের জন্য @context/cloudfold-context.md ফলো করো। আর অ্যানিমেশনের জন্য @rules/animations.md ফলো করবে। মনে রেখো, আমার লাইটবক্স ওপেন হওয়ার সময় যে cubic-bezier বাউন্স ইফেক্ট এবং 300ms ডিউরেশন থাকে, এই কার্ডের হোভার স্টেটেও যেন ঠিক সেই লেভেলের প্রিমিয়াম ফিল থাকে। কোনো বেসিক linear ট্রানজিশন ইউজ করবে না।
+

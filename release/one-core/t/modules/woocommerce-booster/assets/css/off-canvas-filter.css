@@ -1,0 +1,112 @@
+/*
+$gl-devices-list: (
+    desktop: "screen and (min-width: 64em)", // up 1024px
+    tablet: "screen and (max-width: 64em) and ( min-width: 35.5em )", // 568px - 1024px
+    mobile: "screen and (max-width: 35.5em)" // from to 568px to smaller
+) !default;
+*/
+/************************
+   Device Query
+*************************/
+@media screen and (max-width: 568px) {
+  .woocommerce-ordering {
+    margin-left: auto;
+  }
+}
+
+.tophive-filter-btn {
+  padding-left: 10px;
+  padding-right: 10px;
+  text-transform: uppercase;
+  align-items: center;
+}
+.tophive-filter-btn span {
+  margin-left: 10px;
+  font-size: 0.8em;
+}
+
+.tophive-active-filters {
+  margin: 1em 0 0;
+}
+.tophive-active-filters h3 {
+  display: inline-block;
+  font-size: 0.9em;
+  margin-bottom: 0px;
+  margin-right: 15px;
+  text-transform: uppercase;
+}
+.tophive-active-filters ul {
+  display: inline-block;
+  overflow: initial;
+}
+.tophive-active-filters ul li {
+  float: none;
+  display: inline-block;
+}
+
+.off-canvas-sidebar-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  z-index: 990;
+  visibility: hidden;
+  opacity: 0;
+  cursor: pointer;
+}
+.off-canvas-sidebar-overlay.active {
+  z-index: 990;
+  visibility: visible;
+  opacity: 1;
+}
+
+.off-canvas-sidebar {
+  position: fixed;
+  width: 300px;
+  display: block;
+  z-index: 990;
+  background: #fff;
+  padding: 3em 1.5em 3em;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
+  overflow: auto;
+  transition: transform 0.5s cubic-bezier(0.79, 0.14, 0.15, 0.86);
+}
+.off-canvas-sidebar.slider-from-left {
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  transform: translateX(-100%);
+}
+.off-canvas-sidebar.slider-from-left.active {
+  transform: translateX(0);
+}
+.off-canvas-sidebar.slider-from-right {
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  transform: translateX(100%);
+}
+.off-canvas-sidebar.slider-from-right.active {
+  transform: translateX(0);
+}
+.off-canvas-sidebar .off-canvas-actions {
+  position: absolute;
+  right: 1.4em;
+  top: 1em;
+}
+.off-canvas-sidebar .tophive-wc-filter-form .children {
+  padding-left: 2em;
+}
+
+.admin-bar .off-canvas-sidebar {
+  padding: 4em 1.5em 1.5em;
+}
+.admin-bar .off-canvas-sidebar .off-canvas-actions {
+  top: 2.5em;
+}
+
+/*# sourceMappingURL=off-canvas-filter.css.map */

@@ -1,0 +1,8 @@
+.wp-picker-container.wp-picker-active { width: 250px !important; }
+.wp-picker-container.wp-picker-active .wp-picker-open + .wp-picker-input-wrap label{ float: left; width: 70px !important; }
+.wp-picker-container.wp-picker-active .wp-picker-open + .wp-picker-input-wrap .wp-color-picker { width: 68px; float: left; }
+.wp-picker-container.wp-picker-active .wp-picker-holder { width: 100% !important; }
+.wp-picker-container.wp-picker-active .wp-picker-holder .iris-picker { max-width: 240px !important; }
+.wp-picker-container.wp-picker-active .iris-picker-inner .iris-square { margin-right: 6px !important; max-height: 147px !important;}
+.wp-picker-container.wp-picker-active .iris-palette-container .iris-palette { width: 17px !important; height: 17px !important; margin-bottom: 4px !important; }
+.wp-picker-container.wp-picker-active .iris-palette-container .iris-palette:nth-child(9)+ a.iris-palette {float: left; clear: left;margin-left: 0px !important;}

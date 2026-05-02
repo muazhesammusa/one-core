@@ -1,0 +1,52 @@
+[
+  {
+    "username": "floresgerald",
+    "email": "floresgerald@example.com",
+    "display_name": "Linda Ward",
+    "first_name": "Deanna",
+    "last_name": "Mejia",
+    "avatar": "https://i.pravatar.cc/300?img=10",
+    "role": "subscriber",
+    "password": "demo_pass_123"
+  },
+  {
+    "username": "johnbaker",
+    "email": "johnbaker@example.com",
+    "display_name": "Ian Gonzales",
+    "first_name": "Sara",
+    "last_name": "White",
+    "avatar": "https://i.pravatar.cc/300?img=11",
+    "role": "subscriber",
+    "password": "demo_pass_123"
+  },
+  {
+    "username": "elisaray",
+    "email": "elisaray@example.com",
+    "display_name": "Matthew Morris",
+    "first_name": "Virginia",
+    "last_name": "Bennett",
+    "avatar": "https://i.pravatar.cc/300?img=12",
+    "role": "subscriber",
+    "password": "demo_pass_123"
+  },
+  {
+    "username": "michaelreed",
+    "email": "michaelreed@example.com",
+    "display_name": "Joseph Taylor",
+    "first_name": "Kelly",
+    "last_name": "Evans",
+    "avatar": "https://i.pravatar.cc/300?img=13",
+    "role": "subscriber",
+    "password": "demo_pass_123"
+  },
+  {
+    "username": "sophiagray",
+    "email": "sophiagray@example.com",
+    "display_name": "Duane Wilson",
+    "first_name": "Nicholas",
+    "last_name": "Fuller",
+    "avatar": "https://i.pravatar.cc/300?img=14",
+    "role": "subscriber",
+    "password": "demo_pass_123"
+  }
+]

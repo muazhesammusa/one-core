@@ -1,0 +1,71 @@
+==========================================
+
+Envato Release Ignore Rules
+
+==========================================
+
+1. OS & System Files
+
+.DS_Store
+**/.DS_Store
+__MACOSX
+**/__MACOSX
+Thumbs.db
+
+2. Version Control & IDEs
+
+.git
+.gitignore
+.gitattributes
+.github
+.vscode
+.trae
+.claude
+
+3. Dependencies
+
+node_modules/
+.yarn/
+vendor/
+**/vendor/
+composer.json
+composer.lock
+
+4. Build Tools & Configuration Files
+
+package.json
+package-lock.json
+vite.config.js
+webpack.config.js
+.env
+.distignore
+
+
+6. Testing & Code Quality Tools
+
+phpunit.xml
+phpcs.xml.dist
+.phpunit.result.cache
+
+7. Documentation, Planning & Internal Files
+
+README.md
+*.md
+**/*.md
+ROADMAP.md
+tree.md
+AGENTS.md
+RELEASE_CHECKLIST.md
+anthropics/
+planning/
+prompts/
+.ai/
+/docs
+
+8. Build Outputs, Zips & Source Maps
+
+release/
+build/
+.zip
+.map
+**/*.map

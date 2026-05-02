@@ -1,0 +1,3412 @@
+# Copyright (C) 2025 Tophive
+# This file is distributed under the Envato.
+msgid ""
+msgstr ""
+"Project-Id-Version: One Core | By Tophive 1.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/one-core\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-09-03T14:44:05+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: ONE_CORE_SLUG\n"
+
+#. Plugin Name of the plugin
+#: one-core.php
+msgid "One Core | By Tophive"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: one-core.php
+msgid "https://tophivetheme.com/"
+msgstr ""
+
+#. Description of the plugin
+#: one-core.php
+msgid "One Wordpress theme core functionality"
+msgstr ""
+
+#. Author of the plugin
+#: one-core.php
+msgid "Tophive"
+msgstr ""
+
+#. Author URI of the plugin
+#: one-core.php
+msgid "https://themeforest.net/user/tophive"
+msgstr ""
+
+#: inc/admin/one-extension-export.php:21
+#: inc/admin/one-extension-export.php:22
+#: inc/admin/one-extension-export.php:37
+msgid "One Extension Export"
+msgstr ""
+
+#: inc/admin/one-extension-export.php:39
+msgid "Export"
+msgstr ""
+
+#: inc/admin/one-extension-export.php:40
+msgid "Exports up to 5 items from Tutor LMS, Directorist, WP Events, WooCommerce, and WP Job Manager into a single JSON file."
+msgstr ""
+
+#: inc/admin/one-extension-export.php:42
+msgid "Download Export (JSON)"
+msgstr ""
+
+#: inc/admin/one-extension-export.php:46
+msgid "Menu Export"
+msgstr ""
+
+#: inc/admin/one-extension-export.php:47
+msgid "Exports all menus with items and item meta (including icon/icon SVG) as JSON."
+msgstr ""
+
+#: inc/admin/one-extension-export.php:49
+msgid "Download Menus (JSON)"
+msgstr ""
+
+#: inc/admin/one-extension-export.php:52
+#: inc/admin/one-extension-export.php:57
+msgid "Install Required Plugins"
+msgstr ""
+
+#: inc/admin/one-extension-export.php:53
+msgid "Click to install and activate Tutor LMS, Directorist, WP Event Manager, and WP Job Manager."
+msgstr ""
+
+#: inc/admin/one-extension-export.php:62
+msgid "Import"
+msgstr ""
+
+#: inc/admin/one-extension-export.php:70
+msgid "Import JSON"
+msgstr ""
+
+#: inc/admin/one-extension-export.php:80
+#: inc/admin/one-extension-export.php:211
+#: inc/admin/one-extension-export.php:354
+msgid "Unauthorized"
+msgstr ""
+
+#: inc/admin/one-extension-export.php:268
+msgid "You do not have permission to install plugins."
+msgstr ""
+
+#: inc/admin/one-extension-export.php:359
+msgid "No file uploaded"
+msgstr ""
+
+#: inc/admin/one-extension-export.php:364
+msgid "Failed to read file"
+msgstr ""
+
+#: inc/admin/one-extension-export.php:369
+msgid "Invalid JSON file"
+msgstr ""
+
+#: one-core.php:188
+msgid "One Widgets"
+msgstr ""
+
+#: updater/theme-updater.php:19
+msgid "Update Fundocean"
+msgstr ""
+
+#: updater/theme-updater.php:20
+msgid "Updating..."
+msgstr ""
+
+#: updater/theme-updater.php:21
+msgid "Theme Update Failed.Please try again after few moments"
+msgstr ""
+
+#: updater/theme-updater.php:22
+msgid "Theme Updated Successfully"
+msgstr ""
+
+#: updater/theme-updater.php:102
+msgid "A new version of one is available"
+msgstr ""
+
+#: updater/theme-updater.php:103
+msgid "Update One"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivity.php:942
+msgid "Unsave"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivity.php:953
+msgid "Save"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivity.php:967
+msgid "Edit"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivity.php:981
+msgid "Delete"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:20
+msgid "One BuddyPress Activity Post Form"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:48
+#: widgets/elementor/OneElementorCourseCategory.php:315
+#: widgets/elementor/OneElementorCoursesCarousel.php:2206
+#: widgets/elementor/OneElementorCoursesGrid.php:1686
+#: widgets/elementor/OneElementorImageCarousel.php:730
+#: widgets/elementor/OneElementorTeam.php:317
+#: widgets/elementor/OneElementorTeamCarousel.php:994
+#: widgets/elementor/OneElementorTestimonialCarousel.php:703
+#: widgets/elementor/OneElementorTestimonialCarousel.php:1063
+msgid "Content"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:56
+#: widgets/elementor/OneElementorBBPressNewPost.php:125
+msgid "Select Form Type"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:59
+#: widgets/elementor/OneElementorBBPressNewPost.php:128
+#: widgets/elementor/OneElementorInstructorFormPopup.php:37
+#: widgets/elementor/OneElementorInstructorFormPopup.php:197
+msgid "Button"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:60
+#: widgets/elementor/OneElementorBBPressNewPost.php:129
+msgid "Form"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:69
+#: widgets/elementor/OneElementorBBPressNewPost.php:138
+msgid "SVG Icon"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:81
+#: widgets/elementor/OneElementorBBPressNewPost.php:150
+msgid "SVG Width"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:105
+#: widgets/elementor/OneElementorBBPressNewPost.php:174
+msgid "SVG Height"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:129
+#: widgets/elementor/OneElementorBBPressNewPost.php:198
+msgid "Button Text"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:131
+#: widgets/elementor/OneElementorBBPressNewPost.php:200
+msgid "Click Me"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:132
+#: widgets/elementor/OneElementorBBPressNewPost.php:201
+msgid "Enter button text"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:142
+#: widgets/elementor/OneElementorBBPressNewPost.php:211
+msgid "Button color "
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:156
+#: widgets/elementor/OneElementorBBPressNewPost.php:225
+#: widgets/elementor/OneElementorLoginSignup.php:315
+msgid "Button Background Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:170
+#: widgets/elementor/OneElementorBBPressNewPost.php:239
+#: widgets/elementor/OneElementorLoginSignup.php:293
+msgid "Button Padding"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:185
+#: widgets/elementor/OneElementorBBPressNewPost.php:254
+#: widgets/elementor/OneElementorLoginSignup.php:304
+msgid "Button Border Radius"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:201
+#: widgets/elementor/OneElementorBBPressNewPost.php:270
+msgid "Button Typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:346
+msgid "Photos"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:353
+msgid "Video"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:360
+msgid "Documents"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:370
+msgid "Emoji"
+msgstr ""
+
+#. translators: accessibility text
+#: widgets/elementor/OneElementorActivityPostForm.php:388
+msgid "Post in"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:391
+msgid "My Profile"
+msgstr ""
+
+#: widgets/elementor/OneElementorActivityPostForm.php:411
+msgid "Post"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:20
+msgid "Advanced Tabs"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:39
+msgid "Advanced tabs"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:48
+#: widgets/elementor/OneElementorBlogCarousel.php:53
+#: widgets/elementor/OneElementorCoursesCarousel.php:67
+#: widgets/elementor/OneElementorImageCarousel.php:569
+#: widgets/elementor/OneElementorTeamCarousel.php:70
+msgid "Layout"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:51
+msgid "Navigation Top"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:52
+msgid "Navigation Left"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:53
+msgid "Navigation Right"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:61
+msgid "Choose Icon"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:68
+msgid "Tab Title"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:70
+msgid "This is title"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:71
+#: widgets/elementor/OneElementorBBPressNewPost.php:55
+#: widgets/elementor/OneElementorLoginSignup.php:113
+#: widgets/elementor/OneElementorLoginSignup.php:122
+#: widgets/elementor/OneElementorLoginSignup.php:151
+msgid "Type your title here"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:77
+msgid "Tab title description"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:79
+#: widgets/elementor/OneElementorAdvanceSearch.php:43
+#: widgets/elementor/OneElementorAdvanceSearch.php:190
+#: widgets/elementor/OneElementorBBPressNewPost.php:61
+#: widgets/elementor/OneElementorBBPressNewPost.php:317
+#: widgets/elementor/OneElementorBlog.php:782
+#: widgets/elementor/OneElementorBlogCarousel.php:1360
+#: widgets/elementor/OneElementorCoursesCarousel.php:2430
+#: widgets/elementor/OneElementorCoursesGrid.php:806
+#: widgets/elementor/OneElementorCoursesGrid.php:1921
+#: widgets/elementor/OneElementorTeam.php:84
+#: widgets/elementor/OneElementorTeam.php:403
+#: widgets/elementor/OneElementorTeamCarousel.php:103
+#: widgets/elementor/OneElementorTeamCarousel.php:1082
+msgid "Description"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:80
+msgid "Description text goes here"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:86
+msgid "Tab Content Image"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:96
+msgid "Tab Content Text"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:104
+msgid "Add New Tab"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:109
+msgid "New Tab Title"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:119
+msgid "Tab Options"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:126
+#: widgets/elementor/OneElementorBlogCarousel.php:131
+#: widgets/elementor/OneElementorCoursesCarousel.php:224
+#: widgets/elementor/OneElementorImageCarousel.php:202
+#: widgets/elementor/OneElementorTeamCarousel.php:261
+#: widgets/elementor/OneElementorTestimonialCarousel.php:186
+msgid "Autoplay"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:128
+#: widgets/elementor/OneElementorBlogCarousel.php:133
+#: widgets/elementor/OneElementorCoursesCarousel.php:226
+#: widgets/elementor/OneElementorCoursesCarousel.php:2229
+#: widgets/elementor/OneElementorCoursesGrid.php:55
+#: widgets/elementor/OneElementorCoursesGrid.php:1709
+#: widgets/elementor/OneElementorTeamCarousel.php:263
+msgid "Yes"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:129
+#: widgets/elementor/OneElementorBlogCarousel.php:134
+#: widgets/elementor/OneElementorCoursesCarousel.php:227
+#: widgets/elementor/OneElementorCoursesCarousel.php:2230
+#: widgets/elementor/OneElementorCoursesGrid.php:56
+#: widgets/elementor/OneElementorCoursesGrid.php:1710
+#: widgets/elementor/OneElementorTeamCarousel.php:264
+msgid "No"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:137
+#: widgets/elementor/OneElementorBlogCarousel.php:142
+#: widgets/elementor/OneElementorCoursesCarousel.php:235
+#: widgets/elementor/OneElementorTeamCarousel.php:272
+msgid "Autoplay Delay"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:141
+#: widgets/elementor/OneElementorBlogCarousel.php:146
+#: widgets/elementor/OneElementorBlogCarousel.php:171
+#: widgets/elementor/OneElementorCoursesCarousel.php:239
+#: widgets/elementor/OneElementorCoursesCarousel.php:264
+#: widgets/elementor/OneElementorTeamCarousel.php:276
+#: widgets/elementor/OneElementorTeamCarousel.php:301
+msgid "300ms"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:142
+#: widgets/elementor/OneElementorBlogCarousel.php:147
+#: widgets/elementor/OneElementorBlogCarousel.php:172
+#: widgets/elementor/OneElementorCoursesCarousel.php:240
+#: widgets/elementor/OneElementorCoursesCarousel.php:265
+#: widgets/elementor/OneElementorTeamCarousel.php:277
+#: widgets/elementor/OneElementorTeamCarousel.php:302
+msgid "400ms"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:143
+#: widgets/elementor/OneElementorBlogCarousel.php:148
+#: widgets/elementor/OneElementorBlogCarousel.php:173
+#: widgets/elementor/OneElementorCoursesCarousel.php:241
+#: widgets/elementor/OneElementorCoursesCarousel.php:266
+#: widgets/elementor/OneElementorTeamCarousel.php:278
+#: widgets/elementor/OneElementorTeamCarousel.php:303
+msgid "500ms"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:144
+#: widgets/elementor/OneElementorBlogCarousel.php:149
+#: widgets/elementor/OneElementorBlogCarousel.php:174
+#: widgets/elementor/OneElementorCoursesCarousel.php:242
+#: widgets/elementor/OneElementorCoursesCarousel.php:267
+#: widgets/elementor/OneElementorTeamCarousel.php:279
+#: widgets/elementor/OneElementorTeamCarousel.php:304
+msgid "600ms"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:145
+#: widgets/elementor/OneElementorBlogCarousel.php:150
+#: widgets/elementor/OneElementorBlogCarousel.php:175
+#: widgets/elementor/OneElementorCoursesCarousel.php:243
+#: widgets/elementor/OneElementorCoursesCarousel.php:268
+#: widgets/elementor/OneElementorTeamCarousel.php:280
+#: widgets/elementor/OneElementorTeamCarousel.php:305
+msgid "700ms"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:146
+#: widgets/elementor/OneElementorBlogCarousel.php:151
+#: widgets/elementor/OneElementorBlogCarousel.php:176
+#: widgets/elementor/OneElementorCoursesCarousel.php:244
+#: widgets/elementor/OneElementorCoursesCarousel.php:269
+#: widgets/elementor/OneElementorTeamCarousel.php:281
+#: widgets/elementor/OneElementorTeamCarousel.php:306
+msgid "800ms"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:147
+#: widgets/elementor/OneElementorBlogCarousel.php:152
+#: widgets/elementor/OneElementorBlogCarousel.php:177
+#: widgets/elementor/OneElementorCoursesCarousel.php:245
+#: widgets/elementor/OneElementorCoursesCarousel.php:270
+#: widgets/elementor/OneElementorTeamCarousel.php:282
+#: widgets/elementor/OneElementorTeamCarousel.php:307
+msgid "900ms"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:148
+#: widgets/elementor/OneElementorBlogCarousel.php:153
+#: widgets/elementor/OneElementorBlogCarousel.php:178
+#: widgets/elementor/OneElementorCoursesCarousel.php:246
+#: widgets/elementor/OneElementorCoursesCarousel.php:271
+#: widgets/elementor/OneElementorTeamCarousel.php:283
+#: widgets/elementor/OneElementorTeamCarousel.php:308
+msgid "1s"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:149
+#: widgets/elementor/OneElementorBlogCarousel.php:154
+#: widgets/elementor/OneElementorBlogCarousel.php:179
+#: widgets/elementor/OneElementorCoursesCarousel.php:247
+#: widgets/elementor/OneElementorCoursesCarousel.php:272
+#: widgets/elementor/OneElementorTeamCarousel.php:284
+#: widgets/elementor/OneElementorTeamCarousel.php:309
+msgid "1.5s"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:150
+#: widgets/elementor/OneElementorBlogCarousel.php:155
+#: widgets/elementor/OneElementorBlogCarousel.php:180
+#: widgets/elementor/OneElementorCoursesCarousel.php:248
+#: widgets/elementor/OneElementorCoursesCarousel.php:273
+#: widgets/elementor/OneElementorTeamCarousel.php:285
+#: widgets/elementor/OneElementorTeamCarousel.php:310
+msgid "2s"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:151
+#: widgets/elementor/OneElementorBlogCarousel.php:156
+#: widgets/elementor/OneElementorBlogCarousel.php:181
+#: widgets/elementor/OneElementorCoursesCarousel.php:249
+#: widgets/elementor/OneElementorCoursesCarousel.php:274
+#: widgets/elementor/OneElementorTeamCarousel.php:286
+#: widgets/elementor/OneElementorTeamCarousel.php:311
+msgid "2.5s"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:152
+#: widgets/elementor/OneElementorBlogCarousel.php:157
+#: widgets/elementor/OneElementorBlogCarousel.php:182
+#: widgets/elementor/OneElementorCoursesCarousel.php:250
+#: widgets/elementor/OneElementorCoursesCarousel.php:275
+#: widgets/elementor/OneElementorTeamCarousel.php:287
+#: widgets/elementor/OneElementorTeamCarousel.php:312
+msgid "3s"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:163
+msgid "Tabs Style"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:222
+msgid "Nav Tab Style"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:287
+#: widgets/elementor/OneElementorInstructorFormPopup.php:137
+msgid "Icon Position"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:291
+#: widgets/elementor/OneElementorAdvancedTabs.php:340
+#: widgets/elementor/OneElementorAdvanceSearch.php:57
+#: widgets/elementor/OneElementorCourseCategory.php:174
+#: widgets/elementor/OneElementorCoursesCarousel.php:660
+#: widgets/elementor/OneElementorCoursesCarousel.php:2819
+#: widgets/elementor/OneElementorCoursesGrid.php:275
+#: widgets/elementor/OneElementorCoursesGrid.php:1243
+#: widgets/elementor/OneElementorImageCarousel.php:593
+#: widgets/elementor/OneElementorInstructorFormPopup.php:93
+#: widgets/elementor/OneElementorTeam.php:145
+#: widgets/elementor/OneElementorTeamCarousel.php:234
+#: widgets/elementor/OneElementorTestimonialCarousel.php:566
+msgid "Left"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:295
+#: widgets/elementor/OneElementorAdvancedTabs.php:348
+#: widgets/elementor/OneElementorAdvanceSearch.php:65
+#: widgets/elementor/OneElementorCourseCategory.php:182
+#: widgets/elementor/OneElementorCoursesCarousel.php:668
+#: widgets/elementor/OneElementorCoursesCarousel.php:2827
+#: widgets/elementor/OneElementorCoursesGrid.php:283
+#: widgets/elementor/OneElementorCoursesGrid.php:1242
+#: widgets/elementor/OneElementorImageCarousel.php:601
+#: widgets/elementor/OneElementorInstructorFormPopup.php:101
+#: widgets/elementor/OneElementorTeam.php:153
+#: widgets/elementor/OneElementorTeamCarousel.php:242
+#: widgets/elementor/OneElementorTestimonialCarousel.php:574
+msgid "Right"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:336
+msgid "Text Alignment"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:344
+#: widgets/elementor/OneElementorAdvanceSearch.php:61
+#: widgets/elementor/OneElementorBlogCarousel.php:243
+#: widgets/elementor/OneElementorCourseCategory.php:178
+#: widgets/elementor/OneElementorCoursesCarousel.php:664
+#: widgets/elementor/OneElementorCoursesCarousel.php:1517
+#: widgets/elementor/OneElementorCoursesCarousel.php:2823
+#: widgets/elementor/OneElementorCoursesGrid.php:279
+#: widgets/elementor/OneElementorCoursesGrid.php:1241
+#: widgets/elementor/OneElementorCoursesGrid.php:1256
+#: widgets/elementor/OneElementorImageCarousel.php:597
+#: widgets/elementor/OneElementorInstructorFormPopup.php:97
+#: widgets/elementor/OneElementorTeam.php:149
+#: widgets/elementor/OneElementorTeamCarousel.php:238
+#: widgets/elementor/OneElementorTeamCarousel.php:374
+#: widgets/elementor/OneElementorTestimonialCarousel.php:570
+msgid "Center"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:372
+#: widgets/elementor/OneElementorBlog.php:308
+#: widgets/elementor/OneElementorBlogCarousel.php:257
+#: widgets/elementor/OneElementorBlogCarousel.php:486
+#: widgets/elementor/OneElementorBlogCarousel.php:885
+#: widgets/elementor/OneElementorCourseCategory.php:123
+#: widgets/elementor/OneElementorCoursesCarousel.php:1531
+#: widgets/elementor/OneElementorCoursesCarousel.php:1760
+#: widgets/elementor/OneElementorCoursesGrid.php:1271
+#: widgets/elementor/OneElementorInstructorFormPopup.php:224
+#: widgets/elementor/OneElementorSearch.php:106
+#: widgets/elementor/OneElementorTeamCarousel.php:388
+#: widgets/elementor/OneElementorTeamCarousel.php:617
+msgid "Normal"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:446
+#: widgets/elementor/OneElementorBlogCarousel.php:592
+#: widgets/elementor/OneElementorCoursesCarousel.php:1866
+#: widgets/elementor/OneElementorTeamCarousel.php:723
+msgid "Active"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvancedTabs.php:506
+msgid "Tab Content"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceFilter.php:11
+msgid "Advanced Course Filter"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceFilter.php:34
+msgid "Advanced Filter"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceFilter.php:41
+msgid "Show Filter Count"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceFilter.php:43
+#: widgets/elementor/OneElementorAdvanceFilter.php:54
+#: widgets/elementor/OneElementorAdvanceFilter.php:65
+#: widgets/elementor/OneElementorAdvanceFilter.php:76
+#: widgets/elementor/OneElementorAdvanceFilter.php:87
+#: widgets/elementor/OneElementorAdvanceFilter.php:98
+#: widgets/elementor/OneElementorAdvanceFilter.php:109
+#: widgets/elementor/OneElementorBlog.php:100
+#: widgets/elementor/OneElementorBlog.php:160
+#: widgets/elementor/OneElementorBlog.php:171
+#: widgets/elementor/OneElementorBlog.php:182
+#: widgets/elementor/OneElementorBlog.php:193
+#: widgets/elementor/OneElementorBlog.php:204
+#: widgets/elementor/OneElementorBlog.php:234
+#: widgets/elementor/OneElementorBlog.php:625
+#: widgets/elementor/OneElementorBlog.php:944
+#: widgets/elementor/OneElementorBlog.php:955
+#: widgets/elementor/OneElementorBlogCarousel.php:113
+#: widgets/elementor/OneElementorBlogCarousel.php:229
+#: widgets/elementor/OneElementorBlogCarousel.php:473
+#: widgets/elementor/OneElementorBlogCarousel.php:737
+#: widgets/elementor/OneElementorBlogCarousel.php:748
+#: widgets/elementor/OneElementorBlogCarousel.php:759
+#: widgets/elementor/OneElementorBlogCarousel.php:770
+#: widgets/elementor/OneElementorBlogCarousel.php:781
+#: widgets/elementor/OneElementorBlogCarousel.php:811
+#: widgets/elementor/OneElementorBlogCarousel.php:1203
+#: widgets/elementor/OneElementorBlogCarousel.php:1521
+#: widgets/elementor/OneElementorBlogCarousel.php:1532
+#: widgets/elementor/OneElementorCourseCategory.php:32
+#: widgets/elementor/OneElementorCourseCategory.php:78
+#: widgets/elementor/OneElementorCourseCategory.php:89
+#: widgets/elementor/OneElementorCoursesCarousel.php:46
+#: widgets/elementor/OneElementorCoursesCarousel.php:119
+#: widgets/elementor/OneElementorCoursesCarousel.php:130
+#: widgets/elementor/OneElementorCoursesCarousel.php:141
+#: widgets/elementor/OneElementorCoursesCarousel.php:152
+#: widgets/elementor/OneElementorCoursesCarousel.php:163
+#: widgets/elementor/OneElementorCoursesCarousel.php:174
+#: widgets/elementor/OneElementorCoursesCarousel.php:185
+#: widgets/elementor/OneElementorCoursesCarousel.php:196
+#: widgets/elementor/OneElementorCoursesCarousel.php:207
+#: widgets/elementor/OneElementorCoursesCarousel.php:625
+#: widgets/elementor/OneElementorCoursesCarousel.php:636
+#: widgets/elementor/OneElementorCoursesCarousel.php:647
+#: widgets/elementor/OneElementorCoursesCarousel.php:1503
+#: widgets/elementor/OneElementorCoursesCarousel.php:1747
+#: widgets/elementor/OneElementorCoursesGrid.php:44
+#: widgets/elementor/OneElementorCoursesGrid.php:114
+#: widgets/elementor/OneElementorCoursesGrid.php:125
+#: widgets/elementor/OneElementorCoursesGrid.php:136
+#: widgets/elementor/OneElementorCoursesGrid.php:147
+#: widgets/elementor/OneElementorCoursesGrid.php:158
+#: widgets/elementor/OneElementorCoursesGrid.php:169
+#: widgets/elementor/OneElementorCoursesGrid.php:180
+#: widgets/elementor/OneElementorCoursesGrid.php:192
+#: widgets/elementor/OneElementorCoursesGrid.php:219
+#: widgets/elementor/OneElementorCoursesGrid.php:550
+#: widgets/elementor/OneElementorCoursesGrid.php:669
+#: widgets/elementor/OneElementorCoursesGrid.php:681
+#: widgets/elementor/OneElementorCoursesGrid.php:704
+#: widgets/elementor/OneElementorCoursesGrid.php:716
+#: widgets/elementor/OneElementorCoursesGrid.php:728
+#: widgets/elementor/OneElementorCoursesGrid.php:740
+#: widgets/elementor/OneElementorCoursesGrid.php:752
+#: widgets/elementor/OneElementorCoursesGrid.php:1895
+#: widgets/elementor/OneElementorForumTabs.php:46
+#: widgets/elementor/OneElementorForumTabs.php:57
+#: widgets/elementor/OneElementorImageCarousel.php:152
+#: widgets/elementor/OneElementorTeam.php:252
+#: widgets/elementor/OneElementorTeamCarousel.php:111
+#: widgets/elementor/OneElementorTeamCarousel.php:360
+#: widgets/elementor/OneElementorTeamCarousel.php:604
+#: widgets/elementor/OneElementorTeamCarousel.php:907
+#: widgets/elementor/OneElementorTestimonialCarousel.php:167
+msgid "Show"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceFilter.php:44
+#: widgets/elementor/OneElementorAdvanceFilter.php:55
+#: widgets/elementor/OneElementorAdvanceFilter.php:66
+#: widgets/elementor/OneElementorAdvanceFilter.php:77
+#: widgets/elementor/OneElementorAdvanceFilter.php:88
+#: widgets/elementor/OneElementorAdvanceFilter.php:99
+#: widgets/elementor/OneElementorAdvanceFilter.php:110
+#: widgets/elementor/OneElementorBlog.php:101
+#: widgets/elementor/OneElementorBlog.php:161
+#: widgets/elementor/OneElementorBlog.php:172
+#: widgets/elementor/OneElementorBlog.php:183
+#: widgets/elementor/OneElementorBlog.php:194
+#: widgets/elementor/OneElementorBlog.php:205
+#: widgets/elementor/OneElementorBlog.php:235
+#: widgets/elementor/OneElementorBlog.php:626
+#: widgets/elementor/OneElementorBlog.php:945
+#: widgets/elementor/OneElementorBlog.php:956
+#: widgets/elementor/OneElementorBlogCarousel.php:114
+#: widgets/elementor/OneElementorBlogCarousel.php:230
+#: widgets/elementor/OneElementorBlogCarousel.php:474
+#: widgets/elementor/OneElementorBlogCarousel.php:738
+#: widgets/elementor/OneElementorBlogCarousel.php:749
+#: widgets/elementor/OneElementorBlogCarousel.php:760
+#: widgets/elementor/OneElementorBlogCarousel.php:771
+#: widgets/elementor/OneElementorBlogCarousel.php:782
+#: widgets/elementor/OneElementorBlogCarousel.php:812
+#: widgets/elementor/OneElementorBlogCarousel.php:1204
+#: widgets/elementor/OneElementorBlogCarousel.php:1522
+#: widgets/elementor/OneElementorBlogCarousel.php:1533
+#: widgets/elementor/OneElementorCourseCategory.php:33
+#: widgets/elementor/OneElementorCourseCategory.php:79
+#: widgets/elementor/OneElementorCourseCategory.php:90
+#: widgets/elementor/OneElementorCoursesCarousel.php:47
+#: widgets/elementor/OneElementorCoursesCarousel.php:120
+#: widgets/elementor/OneElementorCoursesCarousel.php:131
+#: widgets/elementor/OneElementorCoursesCarousel.php:142
+#: widgets/elementor/OneElementorCoursesCarousel.php:153
+#: widgets/elementor/OneElementorCoursesCarousel.php:164
+#: widgets/elementor/OneElementorCoursesCarousel.php:175
+#: widgets/elementor/OneElementorCoursesCarousel.php:186
+#: widgets/elementor/OneElementorCoursesCarousel.php:197
+#: widgets/elementor/OneElementorCoursesCarousel.php:208
+#: widgets/elementor/OneElementorCoursesCarousel.php:626
+#: widgets/elementor/OneElementorCoursesCarousel.php:637
+#: widgets/elementor/OneElementorCoursesCarousel.php:648
+#: widgets/elementor/OneElementorCoursesCarousel.php:1504
+#: widgets/elementor/OneElementorCoursesCarousel.php:1748
+#: widgets/elementor/OneElementorCoursesGrid.php:45
+#: widgets/elementor/OneElementorCoursesGrid.php:115
+#: widgets/elementor/OneElementorCoursesGrid.php:126
+#: widgets/elementor/OneElementorCoursesGrid.php:137
+#: widgets/elementor/OneElementorCoursesGrid.php:148
+#: widgets/elementor/OneElementorCoursesGrid.php:159
+#: widgets/elementor/OneElementorCoursesGrid.php:170
+#: widgets/elementor/OneElementorCoursesGrid.php:181
+#: widgets/elementor/OneElementorCoursesGrid.php:193
+#: widgets/elementor/OneElementorCoursesGrid.php:220
+#: widgets/elementor/OneElementorCoursesGrid.php:551
+#: widgets/elementor/OneElementorCoursesGrid.php:670
+#: widgets/elementor/OneElementorCoursesGrid.php:682
+#: widgets/elementor/OneElementorCoursesGrid.php:705
+#: widgets/elementor/OneElementorCoursesGrid.php:717
+#: widgets/elementor/OneElementorCoursesGrid.php:729
+#: widgets/elementor/OneElementorCoursesGrid.php:741
+#: widgets/elementor/OneElementorCoursesGrid.php:753
+#: widgets/elementor/OneElementorCoursesGrid.php:1896
+#: widgets/elementor/OneElementorForumTabs.php:47
+#: widgets/elementor/OneElementorForumTabs.php:58
+#: widgets/elementor/OneElementorImageCarousel.php:151
+#: widgets/elementor/OneElementorTeam.php:253
+#: widgets/elementor/OneElementorTeamCarousel.php:112
+#: widgets/elementor/OneElementorTeamCarousel.php:361
+#: widgets/elementor/OneElementorTeamCarousel.php:605
+#: widgets/elementor/OneElementorTeamCarousel.php:908
+#: widgets/elementor/OneElementorTestimonialCarousel.php:166
+msgid "Hide"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceFilter.php:52
+msgid "Show Sort By Filter"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceFilter.php:63
+#: widgets/elementor/OneElementorCoursesGrid.php:217
+msgid "Show Category Filter"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceFilter.php:74
+msgid "Show Level Filter"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceFilter.php:85
+msgid "Show Skills FIlter"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceFilter.php:96
+msgid "Show Price Filter"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceFilter.php:107
+msgid "Show Rating Filter"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceFilter.php:127
+msgid "Dropdown Button Style"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceFilter.php:236
+msgid "Dropdown Select Style"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:12
+msgid "Advanced Course Search"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:27
+msgid "Fields"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:34
+#: widgets/elementor/OneElementorAdvanceSearch.php:151
+#: widgets/elementor/OneElementorBBPressNewPost.php:52
+#: widgets/elementor/OneElementorBBPressNewPost.php:313
+#: widgets/elementor/OneElementorBlog.php:724
+#: widgets/elementor/OneElementorBlogCarousel.php:1302
+#: widgets/elementor/OneElementorCoursesCarousel.php:2302
+#: widgets/elementor/OneElementorCoursesGrid.php:769
+#: widgets/elementor/OneElementorCoursesGrid.php:1775
+#: widgets/elementor/OneElementorImageCarousel.php:810
+#: widgets/elementor/OneElementorTeam.php:324
+#: widgets/elementor/OneElementorTeamCarousel.php:1001
+#: widgets/elementor/OneElementorTestimonialCarousel.php:836
+#: widgets/elementor/OneElementorTestimonialCarousel.php:1088
+msgid "Title"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:46
+msgid "Search Description"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:53
+#: widgets/elementor/OneElementorCourseCategory.php:170
+#: widgets/elementor/OneElementorCoursesCarousel.php:656
+#: widgets/elementor/OneElementorCoursesCarousel.php:2815
+#: widgets/elementor/OneElementorCoursesGrid.php:271
+#: widgets/elementor/OneElementorImageCarousel.php:587
+#: widgets/elementor/OneElementorInstructorFormPopup.php:89
+#: widgets/elementor/OneElementorTeam.php:141
+#: widgets/elementor/OneElementorTeamCarousel.php:230
+#: widgets/elementor/OneElementorTestimonialCarousel.php:560
+msgid "Alignment"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:69
+#: widgets/elementor/OneElementorInstructorFormPopup.php:105
+msgid "Justified"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:82
+msgid "Container"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:89
+#: widgets/elementor/OneElementorAdvanceSearch.php:315
+#: widgets/elementor/OneElementorAdvanceSearch.php:400
+#: widgets/elementor/OneElementorBlog.php:267
+#: widgets/elementor/OneElementorBlog.php:350
+#: widgets/elementor/OneElementorBlogCarousel.php:370
+#: widgets/elementor/OneElementorBlogCarousel.php:442
+#: widgets/elementor/OneElementorBlogCarousel.php:571
+#: widgets/elementor/OneElementorBlogCarousel.php:666
+#: widgets/elementor/OneElementorBlogCarousel.php:844
+#: widgets/elementor/OneElementorBlogCarousel.php:927
+#: widgets/elementor/OneElementorCourseCategory.php:159
+#: widgets/elementor/OneElementorCourseCategory.php:301
+#: widgets/elementor/OneElementorCoursesCarousel.php:836
+#: widgets/elementor/OneElementorCoursesCarousel.php:1644
+#: widgets/elementor/OneElementorCoursesCarousel.php:1716
+#: widgets/elementor/OneElementorCoursesCarousel.php:1845
+#: widgets/elementor/OneElementorCoursesCarousel.php:1940
+#: widgets/elementor/OneElementorCoursesCarousel.php:2274
+#: widgets/elementor/OneElementorCoursesGrid.php:442
+#: widgets/elementor/OneElementorCoursesGrid.php:620
+#: widgets/elementor/OneElementorCoursesGrid.php:966
+#: widgets/elementor/OneElementorCoursesGrid.php:1066
+#: widgets/elementor/OneElementorCoursesGrid.php:1350
+#: widgets/elementor/OneElementorCoursesGrid.php:1422
+#: widgets/elementor/OneElementorCoursesGrid.php:1747
+#: widgets/elementor/OneElementorImageCarousel.php:308
+#: widgets/elementor/OneElementorImageCarousel.php:438
+#: widgets/elementor/OneElementorImageCarousel.php:661
+#: widgets/elementor/OneElementorImageCarousel.php:963
+#: widgets/elementor/OneElementorInstructorFormPopup.php:322
+#: widgets/elementor/OneElementorLoginSignup.php:82
+#: widgets/elementor/OneElementorSearch.php:132
+#: widgets/elementor/OneElementorSearch.php:174
+#: widgets/elementor/OneElementorSearch.php:216
+#: widgets/elementor/OneElementorTeam.php:173
+#: widgets/elementor/OneElementorTeam.php:294
+#: widgets/elementor/OneElementorTeam.php:502
+#: widgets/elementor/OneElementorTeam.php:578
+#: widgets/elementor/OneElementorTeamCarousel.php:501
+#: widgets/elementor/OneElementorTeamCarousel.php:573
+#: widgets/elementor/OneElementorTeamCarousel.php:702
+#: widgets/elementor/OneElementorTeamCarousel.php:797
+#: widgets/elementor/OneElementorTeamCarousel.php:827
+#: widgets/elementor/OneElementorTeamCarousel.php:971
+#: widgets/elementor/OneElementorTeamCarousel.php:1199
+#: widgets/elementor/OneElementorTeamCarousel.php:1279
+#: widgets/elementor/OneElementorTestimonialCarousel.php:400
+#: widgets/elementor/OneElementorTestimonialCarousel.php:634
+#: widgets/elementor/OneElementorTestimonialCarousel.php:730
+#: widgets/elementor/OneElementorTestimonialCarousel.php:1018
+msgid "Border Radius"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:107
+#: widgets/elementor/OneElementorAdvanceSearch.php:266
+#: widgets/elementor/OneElementorBlog.php:924
+#: widgets/elementor/OneElementorBlogCarousel.php:1501
+#: widgets/elementor/OneElementorCourseCategory.php:140
+#: widgets/elementor/OneElementorCoursesCarousel.php:2238
+#: widgets/elementor/OneElementorCoursesCarousel.php:2413
+#: widgets/elementor/OneElementorCoursesGrid.php:639
+#: widgets/elementor/OneElementorCoursesGrid.php:837
+#: widgets/elementor/OneElementorCoursesGrid.php:993
+#: widgets/elementor/OneElementorCoursesGrid.php:1129
+#: widgets/elementor/OneElementorCoursesGrid.php:1311
+#: widgets/elementor/OneElementorCoursesGrid.php:1718
+#: widgets/elementor/OneElementorCoursesGrid.php:1904
+#: widgets/elementor/OneElementorImageCarousel.php:324
+#: widgets/elementor/OneElementorImageCarousel.php:637
+#: widgets/elementor/OneElementorInstructorFormPopup.php:342
+#: widgets/elementor/OneElementorLoginSignup.php:60
+#: widgets/elementor/OneElementorTeam.php:222
+#: widgets/elementor/OneElementorTeam.php:520
+#: widgets/elementor/OneElementorTeamCarousel.php:877
+#: widgets/elementor/OneElementorTeamCarousel.php:1217
+#: widgets/elementor/OneElementorTestimonialCarousel.php:284
+#: widgets/elementor/OneElementorTestimonialCarousel.php:610
+#: widgets/elementor/OneElementorTestimonialCarousel.php:719
+msgid "Padding"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:118
+#: widgets/elementor/OneElementorAdvanceSearch.php:177
+#: widgets/elementor/OneElementorAdvanceSearch.php:217
+#: widgets/elementor/OneElementorAdvanceSearch.php:277
+#: widgets/elementor/OneElementorAdvanceSearch.php:381
+#: widgets/elementor/OneElementorBlogCarousel.php:342
+#: widgets/elementor/OneElementorBlogCarousel.php:423
+#: widgets/elementor/OneElementorBlogCarousel.php:559
+#: widgets/elementor/OneElementorCourseCategory.php:129
+#: widgets/elementor/OneElementorCourseCategory.php:391
+#: widgets/elementor/OneElementorCourseCategory.php:430
+#: widgets/elementor/OneElementorCoursesCarousel.php:679
+#: widgets/elementor/OneElementorCoursesCarousel.php:1616
+#: widgets/elementor/OneElementorCoursesCarousel.php:1697
+#: widgets/elementor/OneElementorCoursesCarousel.php:1833
+#: widgets/elementor/OneElementorCoursesCarousel.php:2256
+#: widgets/elementor/OneElementorCoursesGrid.php:1322
+#: widgets/elementor/OneElementorCoursesGrid.php:1403
+#: widgets/elementor/OneElementorCoursesGrid.php:1736
+#: widgets/elementor/OneElementorLoginSignup.php:71
+#: widgets/elementor/OneElementorTeam.php:283
+#: widgets/elementor/OneElementorTeamCarousel.php:473
+#: widgets/elementor/OneElementorTeamCarousel.php:554
+#: widgets/elementor/OneElementorTeamCarousel.php:690
+#: widgets/elementor/OneElementorTeamCarousel.php:960
+#: widgets/elementor/OneElementorTestimonialCarousel.php:295
+msgid "Margin"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:129
+#: widgets/elementor/OneElementorAdvanceSearch.php:307
+#: widgets/elementor/OneElementorAdvanceSearch.php:369
+#: widgets/elementor/OneElementorBlog.php:596
+#: widgets/elementor/OneElementorBlogCarousel.php:1173
+#: widgets/elementor/OneElementorCoursesCarousel.php:2185
+#: widgets/elementor/OneElementorCoursesGrid.php:953
+#: widgets/elementor/OneElementorCoursesGrid.php:1021
+#: widgets/elementor/OneElementorCoursesGrid.php:1107
+#: widgets/elementor/OneElementorCoursesGrid.php:1163
+#: widgets/elementor/OneElementorCoursesGrid.php:1665
+#: widgets/elementor/OneElementorImageCarousel.php:394
+#: widgets/elementor/OneElementorTeam.php:211
+#: widgets/elementor/OneElementorTeamCarousel.php:865
+#: widgets/elementor/OneElementorTestimonialCarousel.php:711
+msgid "Background"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:142
+#: widgets/elementor/OneElementorAdvanceSearch.php:334
+#: widgets/elementor/OneElementorBlog.php:581
+#: widgets/elementor/OneElementorBlogCarousel.php:354
+#: widgets/elementor/OneElementorBlogCarousel.php:435
+#: widgets/elementor/OneElementorBlogCarousel.php:1158
+#: widgets/elementor/OneElementorCourseCategory.php:194
+#: widgets/elementor/OneElementorCourseCategory.php:209
+#: widgets/elementor/OneElementorCoursesCarousel.php:855
+#: widgets/elementor/OneElementorCoursesCarousel.php:908
+#: widgets/elementor/OneElementorCoursesCarousel.php:1628
+#: widgets/elementor/OneElementorCoursesCarousel.php:1709
+#: widgets/elementor/OneElementorCoursesCarousel.php:2170
+#: widgets/elementor/OneElementorCoursesGrid.php:462
+#: widgets/elementor/OneElementorCoursesGrid.php:519
+#: widgets/elementor/OneElementorCoursesGrid.php:652
+#: widgets/elementor/OneElementorCoursesGrid.php:1334
+#: widgets/elementor/OneElementorCoursesGrid.php:1415
+#: widgets/elementor/OneElementorCoursesGrid.php:1650
+#: widgets/elementor/OneElementorImageCarousel.php:337
+#: widgets/elementor/OneElementorLoginSignup.php:94
+#: widgets/elementor/OneElementorTeam.php:196
+#: widgets/elementor/OneElementorTeam.php:590
+#: widgets/elementor/OneElementorTeamCarousel.php:485
+#: widgets/elementor/OneElementorTeamCarousel.php:566
+#: widgets/elementor/OneElementorTeamCarousel.php:850
+#: widgets/elementor/OneElementorTeamCarousel.php:1291
+msgid "Box Shadow"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:166
+#: widgets/elementor/OneElementorBlog.php:741
+#: widgets/elementor/OneElementorBlogCarousel.php:1319
+#: widgets/elementor/OneElementorCourseCategory.php:369
+#: widgets/elementor/OneElementorCoursesCarousel.php:2319
+#: widgets/elementor/OneElementorCoursesGrid.php:787
+#: widgets/elementor/OneElementorCoursesGrid.php:1792
+#: widgets/elementor/OneElementorTeam.php:340
+#: widgets/elementor/OneElementorTeamCarousel.php:1018
+msgid "Title Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:205
+#: widgets/elementor/OneElementorAdvanceSearch.php:246
+#: widgets/elementor/OneElementorAdvanceSearch.php:357
+#: widgets/elementor/OneElementorBlog.php:798
+#: widgets/elementor/OneElementorBlog.php:862
+#: widgets/elementor/OneElementorBlogCarousel.php:276
+#: widgets/elementor/OneElementorBlogCarousel.php:410
+#: widgets/elementor/OneElementorBlogCarousel.php:493
+#: widgets/elementor/OneElementorBlogCarousel.php:617
+#: widgets/elementor/OneElementorBlogCarousel.php:1376
+#: widgets/elementor/OneElementorBlogCarousel.php:1439
+#: widgets/elementor/OneElementorCoursesCarousel.php:1550
+#: widgets/elementor/OneElementorCoursesCarousel.php:1684
+#: widgets/elementor/OneElementorCoursesCarousel.php:1767
+#: widgets/elementor/OneElementorCoursesCarousel.php:1891
+#: widgets/elementor/OneElementorCoursesCarousel.php:2446
+#: widgets/elementor/OneElementorCoursesGrid.php:897
+#: widgets/elementor/OneElementorCoursesGrid.php:940
+#: widgets/elementor/OneElementorCoursesGrid.php:1008
+#: widgets/elementor/OneElementorCoursesGrid.php:1094
+#: widgets/elementor/OneElementorCoursesGrid.php:1150
+#: widgets/elementor/OneElementorCoursesGrid.php:1937
+#: widgets/elementor/OneElementorImageCarousel.php:383
+#: widgets/elementor/OneElementorImageCarousel.php:514
+#: widgets/elementor/OneElementorStory.php:58
+#: widgets/elementor/OneElementorTeam.php:380
+#: widgets/elementor/OneElementorTeam.php:419
+#: widgets/elementor/OneElementorTeam.php:451
+#: widgets/elementor/OneElementorTeamCarousel.php:407
+#: widgets/elementor/OneElementorTeamCarousel.php:541
+#: widgets/elementor/OneElementorTeamCarousel.php:624
+#: widgets/elementor/OneElementorTeamCarousel.php:748
+#: widgets/elementor/OneElementorTeamCarousel.php:1059
+#: widgets/elementor/OneElementorTeamCarousel.php:1099
+#: widgets/elementor/OneElementorTeamCarousel.php:1143
+#: widgets/elementor/OneElementorTestimonialCarousel.php:495
+#: widgets/elementor/OneElementorTestimonialCarousel.php:873
+msgid "Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:230
+msgid "Input"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:237
+msgid "Placeholder"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:239
+msgid "Search any course..."
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:240
+msgid "Search a course..."
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:258
+#: widgets/elementor/OneElementorBlog.php:734
+#: widgets/elementor/OneElementorBlog.php:791
+#: widgets/elementor/OneElementorBlog.php:854
+#: widgets/elementor/OneElementorBlogCarousel.php:1312
+#: widgets/elementor/OneElementorBlogCarousel.php:1369
+#: widgets/elementor/OneElementorBlogCarousel.php:1432
+#: widgets/elementor/OneElementorCourseCategory.php:361
+#: widgets/elementor/OneElementorCourseCategory.php:411
+#: widgets/elementor/OneElementorCoursesCarousel.php:2312
+#: widgets/elementor/OneElementorCoursesCarousel.php:2368
+#: widgets/elementor/OneElementorCoursesCarousel.php:2439
+#: widgets/elementor/OneElementorCoursesGrid.php:909
+#: widgets/elementor/OneElementorCoursesGrid.php:931
+#: widgets/elementor/OneElementorCoursesGrid.php:1085
+#: widgets/elementor/OneElementorCoursesGrid.php:1279
+#: widgets/elementor/OneElementorCoursesGrid.php:1785
+#: widgets/elementor/OneElementorCoursesGrid.php:1841
+#: widgets/elementor/OneElementorCoursesGrid.php:1930
+#: widgets/elementor/OneElementorSearch.php:95
+#: widgets/elementor/OneElementorStory.php:71
+#: widgets/elementor/OneElementorTeam.php:333
+#: widgets/elementor/OneElementorTeam.php:373
+#: widgets/elementor/OneElementorTeam.php:412
+#: widgets/elementor/OneElementorTeamCarousel.php:1010
+#: widgets/elementor/OneElementorTeamCarousel.php:1051
+#: widgets/elementor/OneElementorTeamCarousel.php:1091
+msgid "Typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:288
+#: widgets/elementor/OneElementorBlogCarousel.php:306
+#: widgets/elementor/OneElementorBlogCarousel.php:541
+#: widgets/elementor/OneElementorBlogCarousel.php:647
+#: widgets/elementor/OneElementorCoursesCarousel.php:1580
+#: widgets/elementor/OneElementorCoursesCarousel.php:1815
+#: widgets/elementor/OneElementorCoursesCarousel.php:1921
+#: widgets/elementor/OneElementorImageCarousel.php:95
+#: widgets/elementor/OneElementorImageCarousel.php:420
+#: widgets/elementor/OneElementorSearch.php:80
+#: widgets/elementor/OneElementorTeamCarousel.php:437
+#: widgets/elementor/OneElementorTeamCarousel.php:672
+#: widgets/elementor/OneElementorTeamCarousel.php:778
+#: widgets/elementor/OneElementorTestimonialCarousel.php:382
+msgid "Height"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:342
+#: widgets/elementor/OneElementorAdvanceSearch.php:393
+#: widgets/elementor/OneElementorBlog.php:343
+#: widgets/elementor/OneElementorBlog.php:405
+#: widgets/elementor/OneElementorBlog.php:446
+#: widgets/elementor/OneElementorBlogCarousel.php:362
+#: widgets/elementor/OneElementorBlogCarousel.php:920
+#: widgets/elementor/OneElementorBlogCarousel.php:982
+#: widgets/elementor/OneElementorBlogCarousel.php:1023
+#: widgets/elementor/OneElementorCourseCategory.php:152
+#: widgets/elementor/OneElementorCourseCategory.php:217
+#: widgets/elementor/OneElementorCoursesCarousel.php:691
+#: widgets/elementor/OneElementorCoursesCarousel.php:1636
+#: widgets/elementor/OneElementorCoursesGrid.php:985
+#: widgets/elementor/OneElementorCoursesGrid.php:1035
+#: widgets/elementor/OneElementorCoursesGrid.php:1121
+#: widgets/elementor/OneElementorCoursesGrid.php:1177
+#: widgets/elementor/OneElementorCoursesGrid.php:1342
+#: widgets/elementor/OneElementorImageCarousel.php:300
+#: widgets/elementor/OneElementorImageCarousel.php:457
+#: widgets/elementor/OneElementorImageCarousel.php:673
+#: widgets/elementor/OneElementorImageCarousel.php:917
+#: widgets/elementor/OneElementorTeam.php:204
+#: widgets/elementor/OneElementorTeamCarousel.php:493
+#: widgets/elementor/OneElementorTeamCarousel.php:858
+#: widgets/elementor/OneElementorTestimonialCarousel.php:646
+msgid "Border"
+msgstr ""
+
+#: widgets/elementor/OneElementorAdvanceSearch.php:350
+msgid "Search Icon"
+msgstr ""
+
+#: widgets/elementor/OneElementorBase.php:152
+msgid "Remove From  wishlist"
+msgstr ""
+
+#: widgets/elementor/OneElementorBase.php:152
+#: widgets/elementor/OneElementorBase.php:155
+msgid "Add to wishlist"
+msgstr ""
+
+#: widgets/elementor/OneElementorBase.php:219
+msgid " lessons"
+msgstr ""
+
+#: widgets/elementor/OneElementorBase.php:376
+msgid "No Courses have been Found"
+msgstr ""
+
+#: widgets/elementor/OneElementorBase.php:516
+msgid "No Posts have been Found"
+msgstr ""
+
+#: widgets/elementor/OneElementorBase.php:685
+msgid "Nothing found for "
+msgstr ""
+
+#: widgets/elementor/OneElementorBase.php:725
+#: widgets/elementor/OneElementorBase.php:731
+#: widgets/elementor/OneElementorBase.php:737
+msgid "failed"
+msgstr ""
+
+#: widgets/elementor/OneElementorBase.php:726
+msgid "Title is empty"
+msgstr ""
+
+#: widgets/elementor/OneElementorBase.php:732
+msgid "Topic content is empty"
+msgstr ""
+
+#: widgets/elementor/OneElementorBase.php:738
+msgid "You need to select a forum"
+msgstr ""
+
+#: widgets/elementor/OneElementorBase.php:746
+msgid " started a new topic in forum "
+msgstr ""
+
+#: widgets/elementor/OneElementorBase.php:772
+msgid "success"
+msgstr ""
+
+#: widgets/elementor/OneElementorBase.php:773
+msgid "Topic Created Successfully"
+msgstr ""
+
+#: widgets/elementor/OneElementorBBPressNewPost.php:22
+msgid "BBPress Post Topic"
+msgstr ""
+
+#: widgets/elementor/OneElementorBBPressNewPost.php:45
+msgid "New Post Form"
+msgstr ""
+
+#: widgets/elementor/OneElementorBBPressNewPost.php:54
+msgid "Write New Post"
+msgstr ""
+
+#: widgets/elementor/OneElementorBBPressNewPost.php:64
+msgid "Type your description here"
+msgstr ""
+
+#: widgets/elementor/OneElementorBBPressNewPost.php:71
+msgid "Styles"
+msgstr ""
+
+#: widgets/elementor/OneElementorBBPressNewPost.php:117
+msgid "Form Type"
+msgstr ""
+
+#: widgets/elementor/OneElementorBBPressNewPost.php:314
+msgid "Provide a short and descriptive title"
+msgstr ""
+
+#: widgets/elementor/OneElementorBBPressNewPost.php:321
+msgid "Forum (required)"
+msgstr ""
+
+#: widgets/elementor/OneElementorBBPressNewPost.php:336
+msgid "Tags (optional)"
+msgstr ""
+
+#: widgets/elementor/OneElementorBBPressNewPost.php:337
+msgid "Input tags seperated by commas"
+msgstr ""
+
+#: widgets/elementor/OneElementorBBPressNewPost.php:341
+#: widgets/elementor/OneElementorBBPressNewPost.php:343
+msgid "Submit"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:11
+#: widgets/elementor/OneElementorBlog.php:34
+msgid "Blog"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:41
+#: widgets/elementor/OneElementorBlogCarousel.php:41
+msgid "Order Posts by"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:45
+#: widgets/elementor/OneElementorBlogCarousel.php:45
+msgid "Recently Published"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:46
+#: widgets/elementor/OneElementorBlogCarousel.php:46
+msgid "Popular"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:53
+#: widgets/elementor/OneElementorBlogCarousel.php:65
+#: widgets/elementor/OneElementorCourseCategory.php:41
+#: widgets/elementor/OneElementorCoursesCarousel.php:79
+#: widgets/elementor/OneElementorCoursesGrid.php:76
+#: widgets/elementor/OneElementorTeamCarousel.php:120
+msgid "Select Columns"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:56
+#: widgets/elementor/OneElementorBlogCarousel.php:68
+#: widgets/elementor/OneElementorCourseCategory.php:44
+#: widgets/elementor/OneElementorCoursesCarousel.php:82
+#: widgets/elementor/OneElementorCoursesGrid.php:79
+#: widgets/elementor/OneElementorTeamCarousel.php:124
+msgid "1 Column"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:57
+#: widgets/elementor/OneElementorBlogCarousel.php:69
+#: widgets/elementor/OneElementorCourseCategory.php:45
+#: widgets/elementor/OneElementorCoursesCarousel.php:83
+#: widgets/elementor/OneElementorCoursesGrid.php:80
+#: widgets/elementor/OneElementorTeamCarousel.php:125
+msgid "2 Columns"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:58
+#: widgets/elementor/OneElementorBlogCarousel.php:70
+#: widgets/elementor/OneElementorCourseCategory.php:46
+#: widgets/elementor/OneElementorCoursesCarousel.php:84
+#: widgets/elementor/OneElementorCoursesGrid.php:81
+#: widgets/elementor/OneElementorTeamCarousel.php:126
+msgid "3 Columns"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:59
+#: widgets/elementor/OneElementorBlogCarousel.php:71
+#: widgets/elementor/OneElementorCourseCategory.php:47
+#: widgets/elementor/OneElementorCoursesCarousel.php:85
+#: widgets/elementor/OneElementorCoursesGrid.php:82
+#: widgets/elementor/OneElementorTeamCarousel.php:127
+msgid "4 Columns"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:60
+#: widgets/elementor/OneElementorBlogCarousel.php:73
+#: widgets/elementor/OneElementorCourseCategory.php:48
+#: widgets/elementor/OneElementorCoursesCarousel.php:87
+#: widgets/elementor/OneElementorCoursesGrid.php:84
+#: widgets/elementor/OneElementorTeamCarousel.php:129
+msgid "6 Columns"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:68
+#: widgets/elementor/OneElementorBlogCarousel.php:81
+#: widgets/onewidgets/OneCopyrightWidget.php:98
+#: widgets/onewidgets/OneCopyrightWidget.php:131
+#: widgets/onewidgets/OneCopyrightWidget.php:144
+#: widgets/onewidgets/OneRecentPostsWidget.php:173
+#: widgets/onewidgets/OneRecentPostsWidget.php:206
+#: widgets/onewidgets/OneRecentPostsWidget.php:219
+msgid "Post Count"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:70
+#: widgets/elementor/OneElementorBlogCarousel.php:83
+#: widgets/elementor/OneElementorCourseCategory.php:58
+#: widgets/elementor/OneElementorCoursesCarousel.php:99
+#: widgets/elementor/OneElementorCoursesGrid.php:94
+msgid "-1 For showing all"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:77
+#: widgets/elementor/OneElementorBlogCarousel.php:90
+msgid "Post Offset"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:79
+#: widgets/elementor/OneElementorBlogCarousel.php:92
+msgid "This number of posts will be excluded from first"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:86
+#: widgets/elementor/OneElementorBlogCarousel.php:99
+#: widgets/elementor/OneElementorCourseCategory.php:65
+#: widgets/elementor/OneElementorCoursesCarousel.php:106
+#: widgets/elementor/OneElementorCoursesGrid.php:101
+msgid "Word Count for description"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:98
+#: widgets/elementor/OneElementorBlogCarousel.php:111
+#: widgets/elementor/OneElementorCourseCategory.php:76
+#: widgets/elementor/OneElementorCoursesCarousel.php:139
+#: widgets/elementor/OneElementorCoursesGrid.php:123
+msgid "Show Description"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:119
+#: widgets/elementor/OneElementorBlogCarousel.php:696
+msgid "Blog Category"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:127
+#: widgets/elementor/OneElementorBlogCarousel.php:704
+#: widgets/elementor/OneElementorCoursesCarousel.php:359
+#: widgets/elementor/OneElementorCoursesGrid.php:260
+msgid "Select Categories"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:139
+#: widgets/elementor/OneElementorBlog.php:835
+#: widgets/elementor/OneElementorBlogCarousel.php:716
+#: widgets/elementor/OneElementorBlogCarousel.php:1413
+msgid "Meta Data"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:146
+#: widgets/elementor/OneElementorBlogCarousel.php:723
+msgid "Select Meta Data Position"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:150
+#: widgets/elementor/OneElementorBlogCarousel.php:727
+msgid "Before Title"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:151
+#: widgets/elementor/OneElementorBlogCarousel.php:728
+msgid "After Title"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:158
+#: widgets/elementor/OneElementorBlogCarousel.php:735
+msgid "Show category"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:169
+#: widgets/elementor/OneElementorBlogCarousel.php:746
+msgid "Show comments"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:180
+#: widgets/elementor/OneElementorBlog.php:953
+#: widgets/elementor/OneElementorBlogCarousel.php:757
+#: widgets/elementor/OneElementorBlogCarousel.php:1530
+msgid "Show author"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:191
+#: widgets/elementor/OneElementorBlog.php:942
+#: widgets/elementor/OneElementorBlogCarousel.php:768
+#: widgets/elementor/OneElementorBlogCarousel.php:1519
+msgid "Show views"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:202
+#: widgets/elementor/OneElementorBlogCarousel.php:779
+msgid "Show date"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:218
+#: widgets/elementor/OneElementorBlogCarousel.php:213
+#: widgets/elementor/OneElementorBlogCarousel.php:464
+#: widgets/elementor/OneElementorBlogCarousel.php:795
+#: widgets/elementor/OneElementorCoursesCarousel.php:1487
+#: widgets/elementor/OneElementorCoursesCarousel.php:1738
+#: widgets/elementor/OneElementorCoursesGrid.php:1191
+#: widgets/elementor/OneElementorImageCarousel.php:347
+#: widgets/elementor/OneElementorTeamCarousel.php:344
+#: widgets/elementor/OneElementorTeamCarousel.php:595
+#: widgets/elementor/OneElementorTestimonialCarousel.php:312
+msgid "Navigation"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:225
+#: widgets/elementor/OneElementorBlogCarousel.php:220
+#: widgets/elementor/OneElementorBlogCarousel.php:802
+#: widgets/elementor/OneElementorCoursesCarousel.php:1494
+#: widgets/elementor/OneElementorCoursesGrid.php:1204
+#: widgets/elementor/OneElementorCoursesGrid.php:1211
+#: widgets/elementor/OneElementorTeamCarousel.php:351
+#: widgets/elementor/OneElementorTestimonialCarousel.php:321
+msgid "Arrow"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:232
+#: widgets/elementor/OneElementorBlogCarousel.php:809
+msgid "Show Arrow"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:243
+#: widgets/elementor/OneElementorBlogCarousel.php:820
+msgid "Arrow Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:255
+#: widgets/elementor/OneElementorBlogCarousel.php:832
+msgid "Arrow Background"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:285
+#: widgets/elementor/OneElementorBlogCarousel.php:239
+#: widgets/elementor/OneElementorBlogCarousel.php:862
+#: widgets/elementor/OneElementorCoursesCarousel.php:1513
+#: widgets/elementor/OneElementorCoursesGrid.php:1252
+#: widgets/elementor/OneElementorTeamCarousel.php:370
+msgid "Select arrow position"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:289
+#: widgets/elementor/OneElementorBlogCarousel.php:866
+#: widgets/elementor/OneElementorImageCarousel.php:67
+#: widgets/elementor/OneElementorImageCarousel.php:82
+#: widgets/elementor/OneElementorImageCarousel.php:558
+#: widgets/elementor/OneElementorInstructorFormPopup.php:48
+msgid "Default"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:290
+#: widgets/elementor/OneElementorBlogCarousel.php:867
+msgid "Top right"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:291
+#: widgets/elementor/OneElementorBlogCarousel.php:868
+msgid "Top left"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:292
+#: widgets/elementor/OneElementorBlogCarousel.php:869
+msgid "Top center"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:294
+#: widgets/elementor/OneElementorBlogCarousel.php:871
+msgid "bottom right"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:295
+#: widgets/elementor/OneElementorBlogCarousel.php:872
+msgid "bottom left"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:296
+#: widgets/elementor/OneElementorBlogCarousel.php:873
+msgid "bottom center"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:316
+#: widgets/elementor/OneElementorBlog.php:378
+#: widgets/elementor/OneElementorBlog.php:421
+#: widgets/elementor/OneElementorBlogCarousel.php:264
+#: widgets/elementor/OneElementorBlogCarousel.php:398
+#: widgets/elementor/OneElementorBlogCarousel.php:893
+#: widgets/elementor/OneElementorBlogCarousel.php:955
+#: widgets/elementor/OneElementorBlogCarousel.php:998
+#: widgets/elementor/OneElementorCourseCategory.php:289
+#: widgets/elementor/OneElementorCoursesCarousel.php:732
+#: widgets/elementor/OneElementorCoursesCarousel.php:1538
+#: widgets/elementor/OneElementorCoursesCarousel.php:1672
+#: widgets/elementor/OneElementorCoursesGrid.php:331
+#: widgets/elementor/OneElementorCoursesGrid.php:607
+#: widgets/elementor/OneElementorCoursesGrid.php:1287
+#: widgets/elementor/OneElementorCoursesGrid.php:1378
+#: widgets/elementor/OneElementorImageCarousel.php:288
+#: widgets/elementor/OneElementorImageCarousel.php:625
+#: widgets/elementor/OneElementorInstructorFormPopup.php:243
+#: widgets/elementor/OneElementorInstructorFormPopup.php:276
+#: widgets/elementor/OneElementorSearch.php:109
+#: widgets/elementor/OneElementorSearch.php:151
+#: widgets/elementor/OneElementorSearch.php:193
+#: widgets/elementor/OneElementorTeamCarousel.php:395
+#: widgets/elementor/OneElementorTeamCarousel.php:529
+#: widgets/elementor/OneElementorTestimonialCarousel.php:598
+msgid "Background Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:329
+#: widgets/elementor/OneElementorBlog.php:391
+#: widgets/elementor/OneElementorBlog.php:433
+#: widgets/elementor/OneElementorBlogCarousel.php:906
+#: widgets/elementor/OneElementorBlogCarousel.php:968
+#: widgets/elementor/OneElementorBlogCarousel.php:1010
+#: widgets/elementor/OneElementorSearch.php:289
+msgid "Icon Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:371
+#: widgets/elementor/OneElementorBlogCarousel.php:391
+#: widgets/elementor/OneElementorBlogCarousel.php:948
+#: widgets/elementor/OneElementorCourseCategory.php:202
+#: widgets/elementor/OneElementorCoursesCarousel.php:1665
+#: widgets/elementor/OneElementorCoursesGrid.php:1141
+#: widgets/elementor/OneElementorCoursesGrid.php:1371
+#: widgets/elementor/OneElementorInstructorFormPopup.php:257
+#: widgets/elementor/OneElementorSearch.php:148
+#: widgets/elementor/OneElementorTeamCarousel.php:522
+msgid "Hover"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:414
+#: widgets/elementor/OneElementorBlogCarousel.php:991
+msgid "Inactive"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:471
+#: widgets/elementor/OneElementorBlogCarousel.php:1048
+#: widgets/elementor/OneElementorCoursesCarousel.php:1976
+#: widgets/elementor/OneElementorCoursesGrid.php:1456
+msgid "Box Style"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:479
+#: widgets/elementor/OneElementorBlogCarousel.php:1056
+#: widgets/elementor/OneElementorCoursesCarousel.php:1984
+#: widgets/elementor/OneElementorCoursesGrid.php:1464
+msgid "Box Border"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:492
+#: widgets/elementor/OneElementorBlogCarousel.php:1069
+msgid "Select Blog Layout"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:496
+#: widgets/elementor/OneElementorBlogCarousel.php:1073
+#: widgets/elementor/OneElementorCourseCategory.php:111
+#: widgets/elementor/OneElementorCoursesCarousel.php:2001
+#: widgets/elementor/OneElementorCoursesGrid.php:1481
+msgid "Image Top"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:497
+#: widgets/elementor/OneElementorBlogCarousel.php:1074
+#: widgets/elementor/OneElementorCourseCategory.php:112
+#: widgets/elementor/OneElementorCoursesCarousel.php:2002
+#: widgets/elementor/OneElementorCoursesGrid.php:1482
+#: widgets/elementor/OneElementorImageCarousel.php:576
+msgid "Image Left"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:498
+#: widgets/elementor/OneElementorBlogCarousel.php:1075
+#: widgets/elementor/OneElementorCourseCategory.php:113
+#: widgets/elementor/OneElementorCoursesCarousel.php:2003
+#: widgets/elementor/OneElementorCoursesGrid.php:1483
+#: widgets/elementor/OneElementorImageCarousel.php:577
+#: widgets/onewidgets/OneCopyrightWidget.php:151
+#: widgets/onewidgets/OneRecentPostsWidget.php:226
+msgid "Image Right"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:506
+#: widgets/elementor/OneElementorBlogCarousel.php:1083
+#: widgets/elementor/OneElementorCoursesCarousel.php:2083
+#: widgets/elementor/OneElementorCoursesGrid.php:1563
+msgid "Box margin"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:525
+#: widgets/elementor/OneElementorBlogCarousel.php:1102
+#: widgets/elementor/OneElementorCoursesCarousel.php:2102
+#: widgets/elementor/OneElementorCoursesGrid.php:1582
+msgid "Box Padding"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:536
+#: widgets/elementor/OneElementorBlogCarousel.php:1113
+#: widgets/elementor/OneElementorCourseCategory.php:322
+#: widgets/elementor/OneElementorCoursesCarousel.php:2113
+#: widgets/elementor/OneElementorCoursesGrid.php:1593
+msgid "Content Padding"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:554
+#: widgets/elementor/OneElementorBlogCarousel.php:1131
+#: widgets/elementor/OneElementorCoursesCarousel.php:2143
+#: widgets/elementor/OneElementorCoursesGrid.php:1623
+msgid "Box Border Radius"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:589
+#: widgets/elementor/OneElementorBlogCarousel.php:1166
+#: widgets/elementor/OneElementorCoursesCarousel.php:2178
+#: widgets/elementor/OneElementorCoursesGrid.php:1658
+msgid "Box Shadow on hover"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:615
+#: widgets/elementor/OneElementorBlogCarousel.php:1193
+msgid "Thumbnail"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:623
+#: widgets/elementor/OneElementorBlogCarousel.php:1201
+msgid "Show thumbnail"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:634
+#: widgets/elementor/OneElementorBlogCarousel.php:1212
+#: widgets/elementor/OneElementorCourseCategory.php:253
+#: widgets/elementor/OneElementorCoursesCarousel.php:2010
+#: widgets/elementor/OneElementorCoursesGrid.php:1490
+msgid "Thumbnail Width"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:666
+#: widgets/elementor/OneElementorBlogCarousel.php:1244
+#: widgets/elementor/OneElementorCourseCategory.php:235
+#: widgets/elementor/OneElementorCoursesCarousel.php:2038
+#: widgets/elementor/OneElementorCoursesGrid.php:1518
+msgid "Thumbnail Height"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:688
+#: widgets/elementor/OneElementorBlogCarousel.php:1266
+#: widgets/elementor/OneElementorCoursesCarousel.php:2131
+#: widgets/elementor/OneElementorCoursesGrid.php:1611
+#: widgets/elementor/OneElementorMemberCount.php:70
+msgid "Image Border Radius"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:716
+#: widgets/elementor/OneElementorBlogCarousel.php:1294
+msgid "Content style"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:753
+#: widgets/elementor/OneElementorBlogCarousel.php:1331
+#: widgets/elementor/OneElementorCourseCategory.php:380
+#: widgets/elementor/OneElementorCoursesCarousel.php:2330
+#: widgets/elementor/OneElementorCoursesGrid.php:1803
+msgid "Title Hover Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:764
+#: widgets/elementor/OneElementorBlogCarousel.php:1342
+#: widgets/elementor/OneElementorCoursesCarousel.php:2341
+#: widgets/elementor/OneElementorCoursesGrid.php:1814
+msgid "Title Margin"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:809
+#: widgets/elementor/OneElementorBlogCarousel.php:1387
+#: widgets/elementor/OneElementorCoursesCarousel.php:2458
+#: widgets/elementor/OneElementorCoursesGrid.php:1949
+msgid "Description Margin"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:842
+#: widgets/elementor/OneElementorBlogCarousel.php:1420
+#: widgets/elementor/OneElementorCoursesGrid.php:875
+#: widgets/elementor/OneElementorTeam.php:352
+#: widgets/elementor/OneElementorTeam.php:391
+#: widgets/elementor/OneElementorTeam.php:430
+#: widgets/elementor/OneElementorTeam.php:538
+#: widgets/elementor/OneElementorTeamCarousel.php:1030
+#: widgets/elementor/OneElementorTeamCarousel.php:1070
+#: widgets/elementor/OneElementorTeamCarousel.php:1110
+#: widgets/elementor/OneElementorTeamCarousel.php:1235
+#: widgets/elementor/OneElementorTestimonialCarousel.php:346
+#: widgets/elementor/OneElementorTestimonialCarousel.php:787
+msgid "Spacing"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:874
+#: widgets/elementor/OneElementorBlogCarousel.php:1451
+msgid "Space between items"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:902
+#: widgets/elementor/OneElementorBlogCarousel.php:1479
+msgid "Select Date Format"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:906
+#: widgets/elementor/OneElementorBlogCarousel.php:1483
+msgid "i.e: January 11,2020"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:907
+#: widgets/elementor/OneElementorBlogCarousel.php:1484
+msgid "i.e: Wed Jan 9"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:908
+#: widgets/elementor/OneElementorBlogCarousel.php:1485
+msgid "i.e: 15th Jan 2020"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:909
+#: widgets/elementor/OneElementorBlogCarousel.php:1486
+msgid "i.e: January 2020"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:917
+#: widgets/elementor/OneElementorBlogCarousel.php:1494
+#: widgets/elementor/OneElementorCoursesCarousel.php:2658
+#: widgets/elementor/OneElementorCoursesCarousel.php:2665
+#: widgets/elementor/OneElementorCoursesGrid.php:2149
+#: widgets/elementor/OneElementorCoursesGrid.php:2156
+msgid "Footer"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:964
+#: widgets/elementor/OneElementorBlogCarousel.php:1541
+#: widgets/onewidgets/OneCopyrightWidget.php:47
+#: widgets/onewidgets/OneRecentPostsWidget.php:24
+#: widgets/onewidgets/OneRecentPostsWidget.php:36
+#: widgets/onewidgets/OneRecentPostsWidget.php:57
+#: widgets/onewidgets/OneRecentPostsWidget.php:115
+msgid "Read more"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:972
+#: widgets/elementor/OneElementorBlogCarousel.php:1549
+msgid "Read more text"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:981
+#: widgets/elementor/OneElementorBlogCarousel.php:1558
+msgid "Read More Typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:988
+#: widgets/elementor/OneElementorBlogCarousel.php:1565
+msgid "Readmore Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:1000
+msgid "Readmore Color hover"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:1012
+#: widgets/elementor/OneElementorBlogCarousel.php:1577
+#: widgets/elementor/OneElementorCoursesCarousel.php:2701
+#: widgets/elementor/OneElementorCoursesGrid.php:2192
+msgid "Author"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:1021
+#: widgets/elementor/OneElementorBlogCarousel.php:1586
+#: widgets/elementor/OneElementorCoursesCarousel.php:2711
+#: widgets/elementor/OneElementorCoursesGrid.php:2202
+msgid "Author Typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:1028
+#: widgets/elementor/OneElementorBlogCarousel.php:1593
+#: widgets/elementor/OneElementorCoursesCarousel.php:2718
+#: widgets/elementor/OneElementorCoursesGrid.php:2209
+msgid "Author Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:1040
+#: widgets/elementor/OneElementorBlogCarousel.php:1605
+msgid "View Count"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:1049
+#: widgets/elementor/OneElementorBlogCarousel.php:1614
+msgid "View Typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:1056
+#: widgets/elementor/OneElementorBlogCarousel.php:1621
+msgid "View Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlog.php:1219
+#: widgets/elementor/OneElementorBlogCarousel.php:1813
+#: widgets/elementor/OneElementorCoursesCarousel.php:3080
+#: widgets/elementor/OneElementorCoursesGrid.php:2522
+msgid "All"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:11
+#: widgets/elementor/OneElementorBlogCarousel.php:34
+msgid "Blog Carousel"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:56
+#: widgets/elementor/OneElementorCoursesCarousel.php:70
+#: widgets/elementor/OneElementorTeamCarousel.php:73
+msgid "Full Width"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:57
+#: widgets/elementor/OneElementorCoursesCarousel.php:71
+#: widgets/elementor/OneElementorTeamCarousel.php:74
+msgid "Fixed Width"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:72
+#: widgets/elementor/OneElementorCoursesCarousel.php:86
+#: widgets/elementor/OneElementorCoursesGrid.php:83
+#: widgets/elementor/OneElementorTeamCarousel.php:128
+msgid "5 Columns"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:124
+#: widgets/elementor/OneElementorCoursesCarousel.php:217
+#: widgets/elementor/OneElementorTeamCarousel.php:254
+msgid "Carousel Options"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:165
+#: widgets/elementor/OneElementorCoursesCarousel.php:258
+#: widgets/elementor/OneElementorTeamCarousel.php:295
+msgid "Play Speed"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:169
+#: widgets/elementor/OneElementorCoursesCarousel.php:262
+#: widgets/elementor/OneElementorTeamCarousel.php:299
+msgid "100ms"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:170
+#: widgets/elementor/OneElementorCoursesCarousel.php:263
+#: widgets/elementor/OneElementorTeamCarousel.php:300
+msgid "200ms"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:189
+msgid "Posts Per Slide"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:193
+#: widgets/elementor/OneElementorCoursesCarousel.php:286
+#: widgets/elementor/OneElementorTeamCarousel.php:323
+msgid "1"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:194
+#: widgets/elementor/OneElementorCoursesCarousel.php:287
+#: widgets/elementor/OneElementorTeamCarousel.php:324
+msgid "2"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:195
+#: widgets/elementor/OneElementorCoursesCarousel.php:288
+#: widgets/elementor/OneElementorTeamCarousel.php:325
+msgid "3"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:196
+#: widgets/elementor/OneElementorCoursesCarousel.php:289
+#: widgets/elementor/OneElementorTeamCarousel.php:326
+msgid "4"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:197
+#: widgets/elementor/OneElementorCoursesCarousel.php:290
+#: widgets/elementor/OneElementorTeamCarousel.php:327
+msgid "5"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:198
+#: widgets/elementor/OneElementorCoursesCarousel.php:291
+#: widgets/elementor/OneElementorTeamCarousel.php:328
+msgid "6"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:199
+#: widgets/elementor/OneElementorCoursesCarousel.php:292
+#: widgets/elementor/OneElementorTeamCarousel.php:329
+msgid "7"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:200
+#: widgets/elementor/OneElementorCoursesCarousel.php:293
+#: widgets/elementor/OneElementorTeamCarousel.php:330
+msgid "8"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:201
+#: widgets/elementor/OneElementorCoursesCarousel.php:294
+#: widgets/elementor/OneElementorTeamCarousel.php:331
+msgid "9"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:202
+#: widgets/elementor/OneElementorCoursesCarousel.php:295
+#: widgets/elementor/OneElementorTeamCarousel.php:332
+msgid "10"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:227
+#: widgets/elementor/OneElementorCoursesCarousel.php:1501
+#: widgets/elementor/OneElementorTeamCarousel.php:358
+msgid "Hide Arrow"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:244
+#: widgets/elementor/OneElementorCoursesCarousel.php:1518
+#: widgets/elementor/OneElementorCoursesGrid.php:1257
+#: widgets/elementor/OneElementorTeamCarousel.php:375
+msgid "Top Right"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:245
+#: widgets/elementor/OneElementorCoursesCarousel.php:1519
+#: widgets/elementor/OneElementorCoursesGrid.php:1258
+#: widgets/elementor/OneElementorTeamCarousel.php:376
+msgid "Top Left"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:288
+#: widgets/elementor/OneElementorBlogCarousel.php:523
+#: widgets/elementor/OneElementorBlogCarousel.php:629
+#: widgets/elementor/OneElementorCoursesCarousel.php:1562
+#: widgets/elementor/OneElementorCoursesCarousel.php:1797
+#: widgets/elementor/OneElementorCoursesCarousel.php:1903
+#: widgets/elementor/OneElementorCoursesCarousel.php:2610
+#: widgets/elementor/OneElementorCoursesGrid.php:242
+#: widgets/elementor/OneElementorCoursesGrid.php:559
+#: widgets/elementor/OneElementorCoursesGrid.php:2101
+#: widgets/elementor/OneElementorImageCarousel.php:116
+#: widgets/elementor/OneElementorImageCarousel.php:402
+#: widgets/elementor/OneElementorSearch.php:68
+#: widgets/elementor/OneElementorTeamCarousel.php:419
+#: widgets/elementor/OneElementorTeamCarousel.php:654
+#: widgets/elementor/OneElementorTeamCarousel.php:760
+#: widgets/elementor/OneElementorTestimonialCarousel.php:364
+#: widgets/elementor/OneElementorTestimonialCarousel.php:912
+msgid "Width"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:324
+#: widgets/elementor/OneElementorCoursesCarousel.php:1598
+#: widgets/elementor/OneElementorTeamCarousel.php:455
+msgid "Arrow Size"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:471
+#: widgets/elementor/OneElementorCoursesCarousel.php:1745
+#: widgets/elementor/OneElementorTeamCarousel.php:602
+msgid "Hide Dot Navigation"
+msgstr ""
+
+#: widgets/elementor/OneElementorBlogCarousel.php:505
+#: widgets/elementor/OneElementorBlogCarousel.php:599
+#: widgets/elementor/OneElementorCoursesCarousel.php:1779
+#: widgets/elementor/OneElementorCoursesCarousel.php:1873
+#: widgets/elementor/OneElementorTeamCarousel.php:636
+#: widgets/elementor/OneElementorTeamCarousel.php:730
+msgid "Opacity"
+msgstr ""
+
+#: widgets/elementor/OneElementorCourseCategory.php:10
+msgid "LP Course Category"
+msgstr ""
+
+#: widgets/elementor/OneElementorCourseCategory.php:22
+#: widgets/elementor/OneElementorCoursesCarousel.php:310
+msgid "Course Category"
+msgstr ""
+
+#: widgets/elementor/OneElementorCourseCategory.php:30
+#: widgets/elementor/OneElementorCoursesCarousel.php:44
+#: widgets/elementor/OneElementorCoursesGrid.php:42
+msgid "Show Image"
+msgstr ""
+
+#: widgets/elementor/OneElementorCourseCategory.php:56
+msgid "Category Count"
+msgstr ""
+
+#: widgets/elementor/OneElementorCourseCategory.php:87
+msgid "Show Course Count"
+msgstr ""
+
+#: widgets/elementor/OneElementorCourseCategory.php:100
+msgid "Category Box"
+msgstr ""
+
+#: widgets/elementor/OneElementorCourseCategory.php:107
+#: widgets/elementor/OneElementorCoursesCarousel.php:1997
+#: widgets/elementor/OneElementorCoursesGrid.php:1477
+msgid "Select Layout"
+msgstr ""
+
+#: widgets/elementor/OneElementorCourseCategory.php:228
+#: widgets/elementor/OneElementorImageCarousel.php:841
+#: widgets/elementor/OneElementorImageCarousel.php:1008
+#: widgets/elementor/OneElementorTeam.php:243
+#: widgets/elementor/OneElementorTeamCarousel.php:898
+#: widgets/elementor/OneElementorTestimonialCarousel.php:904
+#: widgets/elementor/OneElementorTestimonialCarousel.php:1071
+msgid "Image"
+msgstr ""
+
+#: widgets/elementor/OneElementorCourseCategory.php:271
+msgid "Icon/Image size"
+msgstr ""
+
+#: widgets/elementor/OneElementorCourseCategory.php:334
+msgid "Content Border"
+msgstr ""
+
+#: widgets/elementor/OneElementorCourseCategory.php:341
+msgid "Content Border Radius"
+msgstr ""
+
+#: widgets/elementor/OneElementorCourseCategory.php:352
+msgid "Category Title"
+msgstr ""
+
+#: widgets/elementor/OneElementorCourseCategory.php:402
+msgid "Course Counts"
+msgstr ""
+
+#: widgets/elementor/OneElementorCourseCategory.php:419
+msgid "Course Count Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorCourseCategory.php:475
+msgid " Courses"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:10
+msgid "LP Course Carousel"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:36
+msgid "Course Carousel"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:55
+#: widgets/elementor/OneElementorCoursesGrid.php:64
+msgid "Order by"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:58
+#: widgets/elementor/OneElementorCoursesGrid.php:67
+msgid "Ascending"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:59
+#: widgets/elementor/OneElementorCoursesGrid.php:68
+msgid "Descending"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:88
+#: widgets/elementor/OneElementorTeamCarousel.php:130
+msgid "7 Columns"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:89
+#: widgets/elementor/OneElementorTeamCarousel.php:131
+msgid "8 Columns"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:97
+#: widgets/elementor/OneElementorCoursesGrid.php:92
+msgid "Courses Count"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:117
+#: widgets/elementor/OneElementorCoursesGrid.php:112
+msgid "Show Category"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:128
+#: widgets/elementor/OneElementorCoursesGrid.php:1893
+msgid "Show tags"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:150
+#: widgets/elementor/OneElementorCoursesGrid.php:134
+msgid "Show Price"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:161
+#: widgets/elementor/OneElementorCoursesGrid.php:145
+msgid "Show Previous Pricing"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:172
+#: widgets/elementor/OneElementorCoursesGrid.php:156
+msgid "Show Author"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:183
+#: widgets/elementor/OneElementorCoursesGrid.php:167
+msgid "Show Lessons"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:194
+#: widgets/elementor/OneElementorCoursesGrid.php:178
+#: widgets/elementor/OneElementorCoursesGrid.php:679
+msgid "Show Level"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:205
+#: widgets/elementor/OneElementorCoursesGrid.php:190
+msgid "Show Rating"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:282
+#: widgets/elementor/OneElementorTeamCarousel.php:319
+msgid "Course Per Slide"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:616
+msgid "Filter Tabs"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:623
+msgid "Show Latest Filter tab"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:634
+msgid "Show Treanding Filter tab"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:645
+msgid "Show Popular Filter tab"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:717
+#: widgets/elementor/OneElementorCoursesCarousel.php:899
+#: widgets/elementor/OneElementorCoursesGrid.php:315
+#: widgets/elementor/OneElementorCoursesGrid.php:509
+msgid "Filter Border"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:744
+#: widgets/elementor/OneElementorCoursesGrid.php:344
+#: widgets/elementor/OneElementorCoursesGrid.php:1299
+#: widgets/elementor/OneElementorCoursesGrid.php:1390
+#: widgets/elementor/OneElementorImageCarousel.php:759
+#: widgets/elementor/OneElementorImageCarousel.php:789
+#: widgets/elementor/OneElementorImageCarousel.php:819
+#: widgets/elementor/OneElementorInstructorFormPopup.php:231
+#: widgets/elementor/OneElementorInstructorFormPopup.php:264
+#: widgets/elementor/OneElementorSearch.php:115
+#: widgets/elementor/OneElementorSearch.php:157
+#: widgets/elementor/OneElementorSearch.php:199
+#: widgets/elementor/OneElementorTestimonialCarousel.php:767
+#: widgets/elementor/OneElementorTestimonialCarousel.php:815
+#: widgets/elementor/OneElementorTestimonialCarousel.php:845
+msgid "Text Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:756
+#: widgets/elementor/OneElementorCoursesGrid.php:357
+msgid "Item Background"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:776
+#: widgets/elementor/OneElementorCoursesGrid.php:378
+msgid "Filter Box Margin"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:787
+#: widgets/elementor/OneElementorCoursesGrid.php:390
+msgid "Filter Items Padding"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:798
+#: widgets/elementor/OneElementorCoursesGrid.php:402
+msgid "Gap Between Items"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:818
+#: widgets/elementor/OneElementorCoursesGrid.php:423
+msgid "Text Typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:872
+#: widgets/elementor/OneElementorCoursesGrid.php:480
+msgid "Hover Text Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:885
+#: widgets/elementor/OneElementorCoursesGrid.php:494
+msgid "Text Background Color on Hover"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2060
+#: widgets/elementor/OneElementorCoursesGrid.php:1540
+msgid "Thumbnail Top Spacing"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2213
+#: widgets/elementor/OneElementorCoursesGrid.php:1693
+msgid "Catogory"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2227
+#: widgets/elementor/OneElementorCoursesGrid.php:1707
+msgid "Show Category Background"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2359
+#: widgets/elementor/OneElementorCoursesGrid.php:1832
+msgid "Course tag"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2376
+#: widgets/elementor/OneElementorCoursesCarousel.php:2875
+#: widgets/elementor/OneElementorCoursesGrid.php:1849
+#: widgets/elementor/OneElementorCoursesGrid.php:2343
+#: widgets/elementor/OneElementorTeam.php:597
+#: widgets/elementor/OneElementorTeamCarousel.php:1298
+msgid "Vertical Position"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2394
+#: widgets/elementor/OneElementorCoursesGrid.php:1871
+#: widgets/elementor/OneElementorTeam.php:620
+#: widgets/elementor/OneElementorTeamCarousel.php:1321
+msgid "Horizontal Position"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2476
+#: widgets/elementor/OneElementorCoursesGrid.php:1967
+msgid "Pricing"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2486
+#: widgets/elementor/OneElementorCoursesGrid.php:1977
+msgid "Pricing Typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2493
+#: widgets/elementor/OneElementorCoursesGrid.php:1984
+msgid "Price Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2505
+#: widgets/elementor/OneElementorCoursesGrid.php:1996
+msgid "Price Color Background"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2516
+#: widgets/elementor/OneElementorCoursesGrid.php:2007
+msgid "Pricing Border Radius"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2538
+#: widgets/elementor/OneElementorCoursesGrid.php:2029
+msgid "Price Section Padding"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2556
+#: widgets/elementor/OneElementorCoursesGrid.php:2047
+msgid "Position Top"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2583
+#: widgets/elementor/OneElementorCoursesGrid.php:2074
+msgid "Position Right"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2633
+#: widgets/elementor/OneElementorCoursesGrid.php:2124
+msgid "Previous Pricing Typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2640
+#: widgets/elementor/OneElementorCoursesGrid.php:2131
+msgid "Original Pricing Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2674
+#: widgets/elementor/OneElementorCoursesGrid.php:2165
+msgid "Footer Border"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2682
+#: widgets/elementor/OneElementorCoursesGrid.php:2173
+msgid "Footer Padding"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2735
+#: widgets/elementor/OneElementorCoursesGrid.php:2226
+msgid "Course Level"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2745
+#: widgets/elementor/OneElementorCoursesGrid.php:2236
+msgid "Course Level Typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2752
+#: widgets/elementor/OneElementorCoursesGrid.php:2243
+msgid "Course Level Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2763
+#: widgets/elementor/OneElementorCoursesGrid.php:2254
+msgid "Level Icon size"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2787
+#: widgets/elementor/OneElementorCoursesGrid.php:2278
+msgid "Lessons"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2797
+#: widgets/elementor/OneElementorCoursesGrid.php:2288
+msgid "Lessons Typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2804
+#: widgets/elementor/OneElementorCoursesGrid.php:2295
+msgid "Lessons color"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2844
+#: widgets/elementor/OneElementorCoursesGrid.php:2312
+msgid "Ratings"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2852
+#: widgets/elementor/OneElementorCoursesGrid.php:2320
+#: widgets/elementor/OneElementorImageCarousel.php:364
+#: widgets/elementor/OneElementorImageCarousel.php:493
+#: widgets/elementor/OneElementorImageCarousel.php:849
+#: widgets/elementor/OneElementorInstructorFormPopup.php:117
+#: widgets/elementor/OneElementorTestimonialCarousel.php:328
+#: widgets/elementor/OneElementorTestimonialCarousel.php:479
+msgid "Size"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2897
+#: widgets/elementor/OneElementorCoursesGrid.php:2365
+msgid "Rating Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2966
+msgid "Latest"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2969
+msgid "Most Popular"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesCarousel.php:2972
+msgid "Treanding"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:11
+msgid "LP Course Grid"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:34
+msgid "Course Grid"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:53
+msgid "Use As Advanced Filter Layout"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:210
+msgid "Course Category Filter"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:228
+msgid "Filter Position"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:232
+#: widgets/elementor/OneElementorCoursesGrid.php:577
+msgid "Top"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:233
+msgid "Left Side"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:234
+msgid "Right Side"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:541
+msgid "Hover Information"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:548
+msgid "Show Hover Info"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:667
+msgid "Show Title"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:702
+msgid "Show Number Of Chapters/lessons"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:714
+msgid "Show Course Duration"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:726
+msgid "Show Details"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:738
+msgid "Show Add To Cart"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:750
+msgid "Show Wishlist"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:778
+msgid "Title Typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:815
+msgid "Description Typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:825
+msgid "Description Word Count"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:856
+msgid "Learning Points"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:866
+msgid "Learning points typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:889
+msgid "Date"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:919
+msgid "Cart Button"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:1048
+msgid "Wishlist"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:1057
+msgid "Wishlist Icon"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:1198
+msgid "Select Navigation Type"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:1202
+msgid "Hide Navigation"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:1203
+#: widgets/elementor/OneElementorCoursesGrid.php:1219
+#: widgets/elementor/OneElementorCoursesGrid.php:1230
+msgid "Load More"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:1227
+msgid "Load More Text"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:1229
+msgid "Show More"
+msgstr ""
+
+#: widgets/elementor/OneElementorCoursesGrid.php:1237
+msgid "Load More Button position"
+msgstr ""
+
+#: widgets/elementor/OneElementorForumTabs.php:19
+msgid "BBPress Forum"
+msgstr ""
+
+#: widgets/elementor/OneElementorForumTabs.php:37
+msgid "Activity Tab"
+msgstr ""
+
+#: widgets/elementor/OneElementorForumTabs.php:44
+msgid "Show Latest Activities"
+msgstr ""
+
+#: widgets/elementor/OneElementorForumTabs.php:55
+msgid "Show Forums"
+msgstr ""
+
+#: widgets/elementor/OneElementorForumTabs.php:89
+msgid "Recent Activity"
+msgstr ""
+
+#: widgets/elementor/OneElementorForumTabs.php:90
+msgid "Forums"
+msgstr ""
+
+#: widgets/elementor/OneElementorForumTabs.php:243
+#: widgets/elementor/OneElementorForumTabs.php:308
+msgid " Topics"
+msgstr ""
+
+#: widgets/elementor/OneElementorForumTabs.php:250
+#: widgets/elementor/OneElementorForumTabs.php:315
+msgid " Replies"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:22
+msgid "Image Carousel"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:39
+#: widgets/elementor/OneElementorImageCarousel.php:51
+#: widgets/elementor/OneElementorImageCarousel.php:260
+#: widgets/elementor/OneElementorTestimonialCarousel.php:39
+#: widgets/elementor/OneElementorTestimonialCarousel.php:51
+#: widgets/elementor/OneElementorTestimonialCarousel.php:230
+msgid "Slides"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:66
+msgid "Slides Per View"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:80
+msgid "Slides to Scroll"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:81
+msgid "Set how many slides are scrolled per swipe."
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:141
+#: widgets/elementor/OneElementorTestimonialCarousel.php:156
+msgid "Additional Options"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:149
+#: widgets/elementor/OneElementorImageCarousel.php:355
+#: widgets/elementor/OneElementorTestimonialCarousel.php:164
+msgid "Arrows"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:161
+msgid "Arrow Position"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:165
+#: widgets/elementor/OneElementorImageCarousel.php:481
+msgid "Inside"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:166
+#: widgets/elementor/OneElementorImageCarousel.php:480
+msgid "Outside"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:174
+#: widgets/elementor/OneElementorImageCarousel.php:465
+#: widgets/elementor/OneElementorTestimonialCarousel.php:465
+#: widgets/elementor/OneElementorTestimonialCarousel.php:471
+msgid "Pagination"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:178
+msgid "None"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:179
+msgid "Dots"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:180
+msgid "Fraction"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:181
+msgid "Progress"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:192
+#: widgets/elementor/OneElementorTestimonialCarousel.php:176
+msgid "Transition Duration"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:213
+#: widgets/elementor/OneElementorTestimonialCarousel.php:196
+msgid "Autoplay Speed"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:226
+#: widgets/elementor/OneElementorTestimonialCarousel.php:209
+msgid "Infinite Loop"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:236
+msgid "Pause on Interaction"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:268
+msgid "Space Between items"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:476
+msgid "Position"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:529
+#: widgets/elementor/OneElementorTestimonialCarousel.php:516
+msgid "Pagination Margin Top"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:554
+msgid "Skin"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:559
+#: widgets/elementor/OneElementorImageCarousel.php:614
+#: widgets/elementor/OneElementorTestimonialCarousel.php:587
+msgid "Bubble"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:573
+msgid "Image Inline"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:574
+msgid "Image Stacked"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:575
+msgid "Image Above"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:684
+#: widgets/elementor/OneElementorImageCarousel.php:928
+#: widgets/elementor/OneElementorInstructorFormPopup.php:287
+#: widgets/elementor/OneElementorTestimonialCarousel.php:657
+msgid "Border Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:700
+#: widgets/elementor/OneElementorImageCarousel.php:943
+#: widgets/elementor/OneElementorTestimonialCarousel.php:673
+#: widgets/elementor/OneElementorTestimonialCarousel.php:998
+msgid "Border Width"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:738
+#: widgets/elementor/OneElementorImageCarousel.php:888
+msgid "Gap"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:780
+#: widgets/elementor/OneElementorTeam.php:63
+#: widgets/elementor/OneElementorTeamCarousel.php:82
+#: widgets/elementor/OneElementorTestimonialCarousel.php:806
+#: widgets/elementor/OneElementorTestimonialCarousel.php:1079
+msgid "Name"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:1019
+msgid "Caption"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:1021
+#: widgets/elementor/OneElementorTeam.php:65
+#: widgets/elementor/OneElementorTeamCarousel.php:84
+#: widgets/elementor/OneElementorTestimonialCarousel.php:1081
+#: widgets/elementor/OneElementorTestimonialCarousel.php:1116
+#: widgets/elementor/OneElementorTestimonialCarousel.php:1125
+#: widgets/elementor/OneElementorTestimonialCarousel.php:1134
+msgid "John Doe"
+msgstr ""
+
+#: widgets/elementor/OneElementorImageCarousel.php:1031
+#: widgets/elementor/OneElementorImageCarousel.php:1037
+msgid "I am image caption. Click edit button to change this text."
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:12
+msgid "Instructor Form Popup"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:25
+msgid "Extra Small"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:26
+msgid "Small"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:27
+msgid "Medium"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:28
+msgid "Large"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:29
+msgid "Extra Large"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:44
+msgid "Type"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:49
+msgid "Info"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:50
+msgid "Success"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:51
+msgid "Warning"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:52
+msgid "Danger"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:61
+msgid "Text"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:66
+#: widgets/elementor/OneElementorInstructorFormPopup.php:67
+msgid "Click here"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:74
+#: widgets/elementor/OneElementorTeam.php:115
+msgid "Link"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:79
+msgid "https://your-link.com"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:128
+msgid "Icon"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:141
+msgid "Before"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:142
+msgid "After"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:153
+msgid "Icon Spacing"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:170
+msgid "View"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:179
+msgid "Button ID"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:185
+msgid "Add your custom id WITHOUT the Pound key. e.g: my-id"
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:186
+msgid "Please make sure the ID is unique and not used elsewhere on the page this form is displayed. This field allows <code>A-z 0-9</code> & underscore chars without spaces."
+msgstr ""
+
+#: widgets/elementor/OneElementorInstructorFormPopup.php:301
+msgid "Hover Animation"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:23
+msgid "Login Signup"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:53
+#: widgets/elementor/OneElementorLoginSignup.php:190
+msgid "Signin/Signup"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:110
+msgid "Login Form title"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:112
+#: widgets/elementor/OneElementorLoginSignup.php:121
+#: widgets/elementor/OneElementorLoginSignup.php:150
+#: widgets/elementor/OneElementorTeam.php:650
+#: widgets/elementor/OneElementorTeamCarousel.php:1351
+msgid "Default title"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:119
+msgid "Recover Password Form title"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:129
+msgid "Heading typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:137
+msgid "Heading Typography Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:148
+msgid "Register title"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:158
+msgid "Meta font typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:166
+msgid "Meta Font Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:177
+msgid "Redirect page after login/signup"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:198
+msgid "Input field Border"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:205
+msgid "Input background Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:215
+msgid "Input Text Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:225
+msgid "Input Border Radius"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:237
+msgid "Remember me typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:245
+msgid "Remember Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:256
+msgid "Lost password typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:264
+msgid "Lost password Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:275
+msgid "Button typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:283
+msgid "Button Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:326
+msgid "Other text typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:334
+msgid "Other text Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:375
+msgid "Set Your New Password"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:383
+msgid "New Password"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:386
+msgid "Confirm Password"
+msgstr ""
+
+#: widgets/elementor/OneElementorLoginSignup.php:389
+msgid "Reset Password"
+msgstr ""
+
+#: widgets/elementor/OneElementorMemberCount.php:18
+msgid "Members count"
+msgstr ""
+
+#: widgets/elementor/OneElementorMemberCount.php:36
+msgid "Members Count"
+msgstr ""
+
+#: widgets/elementor/OneElementorMemberCount.php:44
+msgid "Member Image Size"
+msgstr ""
+
+#: widgets/elementor/OneElementorMemberCount.php:82
+msgid "Image Border"
+msgstr ""
+
+#: widgets/elementor/OneElementorMemberCount.php:89
+msgid "Member Image Gap"
+msgstr ""
+
+#: widgets/elementor/OneElementorMemberCount.php:115
+msgid "Image Margin"
+msgstr ""
+
+#: widgets/elementor/OneElementorMemberCount.php:127
+msgid "Count text typography"
+msgstr ""
+
+#: widgets/elementor/OneElementorMemberCount.php:134
+msgid "Count text color"
+msgstr ""
+
+#: widgets/elementor/OneElementorMemberCount.php:144
+msgid "Member Box Padding"
+msgstr ""
+
+#: widgets/elementor/OneElementorMemberCount.php:155
+msgid "Member Box Background"
+msgstr ""
+
+#: widgets/elementor/OneElementorMemberCount.php:165
+msgid "Member Box Margin"
+msgstr ""
+
+#: widgets/elementor/OneElementorMemberCount.php:176
+msgid "Member Box Radius"
+msgstr ""
+
+#: widgets/elementor/OneElementorMemberCount.php:229
+msgid "Join "
+msgstr ""
+
+#: widgets/elementor/OneElementorMemberCount.php:229
+msgid "+ users"
+msgstr ""
+
+#: widgets/elementor/OneElementorSearch.php:21
+msgid "One Search Box"
+msgstr ""
+
+#: widgets/elementor/OneElementorSearch.php:40
+msgid "Search Settings"
+msgstr ""
+
+#: widgets/elementor/OneElementorSearch.php:48
+msgid "Placeholder Text"
+msgstr ""
+
+#: widgets/elementor/OneElementorSearch.php:50
+msgid "Search..."
+msgstr ""
+
+#: widgets/elementor/OneElementorSearch.php:60
+msgid "Search Field"
+msgstr ""
+
+#: widgets/elementor/OneElementorSearch.php:121
+#: widgets/elementor/OneElementorSearch.php:163
+#: widgets/elementor/OneElementorSearch.php:205
+msgid "Placeholder Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorSearch.php:190
+msgid "Focus"
+msgstr ""
+
+#: widgets/elementor/OneElementorSearch.php:239
+msgid "Icon Button"
+msgstr ""
+
+#: widgets/elementor/OneElementorSearch.php:247
+msgid "Icon Size"
+msgstr ""
+
+#: widgets/elementor/OneElementorSearch.php:258
+msgid "Icon Position Horizontal"
+msgstr ""
+
+#: widgets/elementor/OneElementorSearch.php:271
+msgid "Icon Vertical Position"
+msgstr ""
+
+#: widgets/elementor/OneElementorStory.php:22
+msgid "One Story"
+msgstr ""
+
+#: widgets/elementor/OneElementorStory.php:50
+msgid "Style"
+msgstr ""
+
+#: widgets/elementor/OneElementorStory.php:73
+msgid "Font"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeam.php:20
+msgid "Team"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeam.php:45
+msgid "Team Content"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeam.php:53
+#: widgets/elementor/OneElementorTeamCarousel.php:60
+msgid "Choose Image"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeam.php:66
+#: widgets/elementor/OneElementorTeamCarousel.php:85
+msgid "Type your name here"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeam.php:72
+#: widgets/elementor/OneElementorTeam.php:74
+#: widgets/elementor/OneElementorTeam.php:75
+#: widgets/elementor/OneElementorTeam.php:364
+#: widgets/elementor/OneElementorTeamCarousel.php:91
+#: widgets/elementor/OneElementorTeamCarousel.php:93
+#: widgets/elementor/OneElementorTeamCarousel.php:94
+#: widgets/elementor/OneElementorTeamCarousel.php:1042
+msgid "Designation"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeam.php:81
+#: widgets/elementor/OneElementorTeamCarousel.php:100
+msgid "Desription"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeam.php:83
+#: widgets/elementor/OneElementorTeamCarousel.php:102
+msgid "John Doe Creates Beautiful websites"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeam.php:95
+msgid "Social Icons"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeam.php:124
+#: widgets/elementor/OneElementorTeamCarousel.php:212
+msgid "Add Social Profiles"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeam.php:166
+#: widgets/elementor/OneElementorTeamCarousel.php:820
+msgid "Box Styles"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeam.php:250
+#: widgets/elementor/OneElementorTeamCarousel.php:905
+msgid "Hide Image Overflow"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeam.php:261
+msgid "Image Size"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeam.php:443
+#: widgets/elementor/OneElementorTeamCarousel.php:1123
+msgid "Social Profiles"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeam.php:462
+#: widgets/elementor/OneElementorTeamCarousel.php:1154
+msgid "Hover Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeam.php:473
+#: widgets/elementor/OneElementorTeamCarousel.php:1165
+msgid "background"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeam.php:484
+#: widgets/elementor/OneElementorTeamCarousel.php:1177
+msgid "Font Size"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeam.php:556
+#: widgets/elementor/OneElementorTeamCarousel.php:1131
+#: widgets/elementor/OneElementorTeamCarousel.php:1257
+msgid "Container Background"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeam.php:567
+#: widgets/elementor/OneElementorTeamCarousel.php:1268
+msgid "Container padding"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeam.php:648
+#: widgets/elementor/OneElementorTeamCarousel.php:1349
+msgid "Additional text"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeamCarousel.php:20
+#: widgets/elementor/OneElementorTeamCarousel.php:51
+msgid "Team Carousel"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeamCarousel.php:109
+msgid "Show Socials"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeamCarousel.php:161
+msgid "Facebook Link"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeamCarousel.php:168
+msgid "Twitter Link"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeamCarousel.php:175
+msgid "Instagram Link"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeamCarousel.php:182
+msgid "LinkedIn Link"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeamCarousel.php:189
+msgid "Youtube Link"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeamCarousel.php:196
+msgid "Google Plus Link"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeamCarousel.php:203
+msgid "Vimeo Link"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeamCarousel.php:916
+msgid "Image Height"
+msgstr ""
+
+#: widgets/elementor/OneElementorTeamCarousel.php:938
+msgid "Image Width"
+msgstr ""
+
+#: widgets/elementor/OneElementorTestimonialCarousel.php:22
+msgid "Testimonial Carousel"
+msgstr ""
+
+#: widgets/elementor/OneElementorTestimonialCarousel.php:63
+msgid "Effect"
+msgstr ""
+
+#: widgets/elementor/OneElementorTestimonialCarousel.php:66
+msgid "Slide"
+msgstr ""
+
+#: widgets/elementor/OneElementorTestimonialCarousel.php:67
+msgid "Fade"
+msgstr ""
+
+#: widgets/elementor/OneElementorTestimonialCarousel.php:68
+msgid "Cube"
+msgstr ""
+
+#: widgets/elementor/OneElementorTestimonialCarousel.php:238
+msgid "Slider Height"
+msgstr ""
+
+#: widgets/elementor/OneElementorTestimonialCarousel.php:260
+msgid "Slider Spacing"
+msgstr ""
+
+#: widgets/elementor/OneElementorTestimonialCarousel.php:505
+msgid "Active Color"
+msgstr ""
+
+#: widgets/elementor/OneElementorTestimonialCarousel.php:748
+msgid "Left-Right Position"
+msgstr ""
+
+#: widgets/elementor/OneElementorTestimonialCarousel.php:865
+#: widgets/elementor/OneElementorTestimonialCarousel.php:1096
+msgid "Rating"
+msgstr ""
+
+#: widgets/elementor/OneElementorTestimonialCarousel.php:884
+msgid "Rating Spacing"
+msgstr ""
+
+#: widgets/elementor/OneElementorTestimonialCarousel.php:933
+msgid "height"
+msgstr ""
+
+#: widgets/elementor/OneElementorTestimonialCarousel.php:954
+msgid "Position(Top To Bottom)"
+msgstr ""
+
+#: widgets/elementor/OneElementorTestimonialCarousel.php:976
+msgid "Position(Side To Side)"
+msgstr ""
+
+#: widgets/elementor/OneElementorTestimonialCarousel.php:1090
+#: widgets/elementor/OneElementorTestimonialCarousel.php:1117
+#: widgets/elementor/OneElementorTestimonialCarousel.php:1126
+#: widgets/elementor/OneElementorTestimonialCarousel.php:1135
+msgid "CEO"
+msgstr ""
+
+#: widgets/elementor/OneElementorTestimonialCarousel.php:1115
+#: widgets/elementor/OneElementorTestimonialCarousel.php:1124
+#: widgets/elementor/OneElementorTestimonialCarousel.php:1133
+msgid "I am slide content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
+msgstr ""
+
+#: widgets/onewidgets/OneBPGroupMembers.php:8
+msgid "BuddyPress - One Groups members lists"
+msgstr ""
+
+#: widgets/onewidgets/OneBPGroupsInfo.php:8
+msgid "BuddyPress - One Profile descriptions"
+msgstr ""
+
+#: widgets/onewidgets/OneBPProfileInfo.php:10
+msgid "BuddyPress - One profile"
+msgstr ""
+
+#: widgets/onewidgets/OneBPProfileMedia.php:10
+msgid "BuddyPress - One Profile Media"
+msgstr ""
+
+#: widgets/onewidgets/OneBPProfileMedia.php:52
+#: widgets/onewidgets/OneBPProfileMedia.php:69
+msgid "No photos uploaded"
+msgstr ""
+
+#: widgets/onewidgets/OneCopyrightWidget.php:8
+#: widgets/onewidgets/OneRecentPostsWidget.php:8
+msgid "Fundocean Recent Posts"
+msgstr ""
+
+#: widgets/onewidgets/OneCopyrightWidget.php:88
+#: widgets/onewidgets/OneRecentPostsWidget.php:163
+msgid "Title : "
+msgstr ""
+
+#: widgets/onewidgets/OneCopyrightWidget.php:109
+#: widgets/onewidgets/OneRecentPostsWidget.php:184
+msgid "Show Date"
+msgstr ""
+
+#: widgets/onewidgets/OneCopyrightWidget.php:120
+#: widgets/onewidgets/OneRecentPostsWidget.php:195
+msgid "Show readmore"
+msgstr ""
+
+#: widgets/onewidgets/OneCopyrightWidget.php:136
+#: widgets/onewidgets/OneRecentPostsWidget.php:211
+msgid "One Column + Big First"
+msgstr ""
+
+#: widgets/onewidgets/OneCopyrightWidget.php:137
+#: widgets/onewidgets/OneRecentPostsWidget.php:212
+msgid "One Column"
+msgstr ""
+
+#: widgets/onewidgets/OneCopyrightWidget.php:138
+#: widgets/onewidgets/OneRecentPostsWidget.php:213
+msgid "Two Column"
+msgstr ""
+
+#: widgets/onewidgets/OneCopyrightWidget.php:139
+#: widgets/onewidgets/OneRecentPostsWidget.php:214
+msgid "Three Column"
+msgstr ""
+
+#: widgets/onewidgets/OneCopyrightWidget.php:149
+#: widgets/onewidgets/OneRecentPostsWidget.php:224
+msgid "Image top"
+msgstr ""
+
+#: widgets/onewidgets/OneCopyrightWidget.php:150
+#: widgets/onewidgets/OneRecentPostsWidget.php:225
+msgid "Image left"
+msgstr ""
+
+#: widgets/onewidgets/OneMailChimpWidget.php:8
+msgid "Fundocean Mailchimp Widget"
+msgstr ""
+
+#: widgets/onewidgets/OneMailChimpWidget.php:20
+msgid "Mailchimp"
+msgstr ""
+
+#: widgets/onewidgets/OneMailChimpWidget.php:32
+msgid "MailChimp Api Key"
+msgstr ""
+
+#: widgets/onewidgets/OneMailChimpWidget.php:33
+#, php-format
+msgid "How Can I get My %sApi Key?%s"
+msgstr ""
+
+#: widgets/onewidgets/OneMailChimpWidget.php:39
+msgid "MailChimp List ID"
+msgstr ""
+
+#: widgets/onewidgets/OneMailChimpWidget.php:40
+#, php-format
+msgid "How Can I get My %sList ID?%s"
+msgstr ""

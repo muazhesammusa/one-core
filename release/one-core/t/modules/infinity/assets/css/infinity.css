@@ -1,0 +1,43 @@
+@keyframes c_spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.tophive-infinity-button, .tophive-infinity-button.button {
+  position: relative;
+  border: none;
+  cursor: pointer;
+  padding: 0px 1.3em;
+  line-height: 2.5em;
+  min-height: 2.6em;
+  max-width: 100%;
+  font-weight: bolder;
+  text-transform: capitalize;
+  transition: all 0.4s ease;
+  border-radius: 1px;
+  display: inline-block;
+}
+.tophive-infinity-button.loading, .tophive-infinity-button.button.loading {
+  padding: 0px 1.3em 0px 1.3em;
+}
+.tophive-infinity-button.loading:before, .tophive-infinity-button.button.loading:before {
+  content: '';
+  box-sizing: border-box;
+  position: relative;
+  top: 50%;
+  left: 0;
+  width: 1.3em;
+  height: 1.3em;
+  display: inline-block;
+  margin-top: -6px;
+  margin-left: 0px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-top-color: #fff;
+  animation: c_spinner .6s linear infinite;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.tophive-infinity-button.loading:after, .tophive-infinity-button.button.loading:after{
+  display: none !important;
+}
