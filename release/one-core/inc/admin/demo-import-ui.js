@@ -22,7 +22,6 @@
     { key: 'buddypress', label: 'BuddyPress', locked: true },
     { key: 'menus', label: 'Menus', locked: true },
     { key: 'customizer', label: 'Customizer', locked: true },
-    { key: 'pages', label: 'Pages', locked: false },
     { key: 'events', label: 'Events', locked: false },
     { key: 'woocommerce', label: 'WooCommerce', locked: false },
     { key: 'directory', label: 'Directory', locked: false },
@@ -54,9 +53,6 @@
       const d = BPDemoSteps.defaults || {};
       const state = {};
       OPTIONS.forEach(o=>{ state[o.key] = !!d[o.key]; });
-      if (!BPDemoSteps.license_active) {
-        state.pages = false;
-      }
       return state;
     });
     const [done, setDone] = useState(()=>{
@@ -91,7 +87,6 @@
     function toggle(key){
       const opt = OPTIONS.find(o=>o.key===key);
       if (opt && opt.locked) return;
-      if (!BPDemoSteps.license_active && key === 'pages') return;
       setSelected(s=>({ ...s, [key]: !s[key] }));
     }
 
@@ -161,9 +156,6 @@
             break;
           case 'media_pages':
             steps.push({ action: 'create_media_pages' });
-            break;
-          case 'pages':
-            steps.push({ action: 'import_all_templates' });
             break;
         }
       });
@@ -250,11 +242,6 @@
         steps.push({ step: 'enable_groups_component' });
         steps.push({ step: 'import_activities' });
       }
-      if (BPDemoSteps.license_active && selected.pages && !done.pages) {
-        steps.push({ step: 'list_templates', payload: { label: 'Importing templates list…' } });
-        // placeholder; demo-import.js will expand this into per-template steps dynamically
-        steps.push({ step: '__import_templates_dynamic__' });
-      }
       if (selected.customizer && !done.customizer) steps.push({ step: 'import_customizer', payload: { label: 'Importing Customizer…' } });
       if (selected.menus && !done.menus) steps.push({ step: 'import_menus', payload: { label: 'Importing Menus…' } });
       if (selected.forums && !done.forums) steps.push({ step: 'import_forums', payload: { label: 'Importing Forums…' } });
@@ -267,13 +254,6 @@
 
     return h('div', { className: 'p-0' },
       h('div', { className: 'space-y-4' },
-        (!BPDemoSteps.license_active ? h('div', { className: 'mb-3 p-3 rounded bg-amber-50 border border-amber-200 text-amber-900' },
-          h('div', { className: 'font-medium mb-1' }, 'License not active'),
-          h('div', null,
-            'Core demo import works. Page templates import requires license. ',
-            h('a', { href: BPDemoSteps.license_link, target: '_blank', className: 'underline' }, 'Activate license')
-          )
-        ) : null),
         h('div', { className: 'flex items-center justify-between mb-4' },
           h('h3', { className: 'text-lg font-semibold' }, 'Select what to import'),
           h('button', { 
@@ -286,7 +266,7 @@
         ),
         h('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3' },
           OPTIONS.map(opt => {
-            const disabled = !!opt.locked || (!BPDemoSteps.license_active && opt.key === 'pages');
+            const disabled = !!opt.locked;
             return h('div', {
               key: opt.key,
               className: 'flex items-center justify-between gap-3 rounded-lg border border-gray-200 px-3 py-2 hover:border-blue-400 transition-colors' + (disabled ? ' opacity-60' : '')
@@ -303,7 +283,7 @@
                     : (disabled
                         ? h('div', { className: 'text-xs text-gray-500 flex items-center gap-1' },
                             h('span', { className: 'inline-block h-2 w-2 bg-gray-400 rounded-full' }),
-                            opt.locked ? 'Required' : 'License required'
+                            'Required'
                           )
                         : h('div', { className: 'text-xs text-gray-500' }, 'Optional')
                       )

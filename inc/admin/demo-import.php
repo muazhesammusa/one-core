@@ -1,56 +1,15 @@
 <?php
 if (! defined('ABSPATH')) exit;
 
-require_once __DIR__ . '/One_Imports_Controllers.php';
-
 // Include WordPress plugin functions
 if (!function_exists('is_plugin_active')) {
   require_once ABSPATH . 'wp-admin/includes/plugin.php';
-}
-
-if (!function_exists('one_core_is_license_active')) {
-  function one_core_is_license_active()
-  {
-    $theme_slug = get_option('stylesheet');
-    $license_val = get_option($theme_slug . '_tophive_license', '');
-    $product_val = get_option($theme_slug . '_tophive_product_id', '');
-    return !empty($license_val) && !empty($product_val);
-  }
-}
-
-if (!function_exists('one_core_get_template_stubs')) {
-  function one_core_get_template_stubs()
-  {
-    $img = esc_url(get_theme_file_uri() . "/screenshot.png");
-    $names = [
-      'Album Gallery',
-      'Masonry',
-      'Slider',
-      'Shop',
-      'Cart',
-      'Checkout',
-      'My account',
-    ];
-    $out = [];
-    $id = 1;
-    foreach ($names as $name) {
-      $out[] = [
-        'id' => $id++,
-        'name' => $name,
-        'type' => 'Elementor',
-        'preview_image' => $img,
-        'preview_url' => $img,
-      ];
-    }
-    return $out;
-  }
 }
 
 // 1. Enqueue JS + Modal Styles + Localize Steps
 add_action('admin_enqueue_scripts', function () {
   wp_enqueue_script('bp-demo-import', plugin_dir_url(__FILE__) . '/demo-import.js', ['jquery'], null, true);
   wp_enqueue_script('bp-demo-import-ui', plugin_dir_url(__FILE__) . '/demo-import-ui.js', ['wp-element', 'jquery'], null, true);
-  $license_active = one_core_is_license_active();
   // Check if this is a fresh install - more comprehensive check
   $posts_count = wp_count_posts('post')->publish + wp_count_posts('page')->publish;
   $users_count = count_users()['total_users'];
@@ -60,8 +19,6 @@ add_action('admin_enqueue_scripts', function () {
     'ajax_url' => admin_url('admin-ajax.php'),
     // steps will be built dynamically by UI selections
     'default_steps' => [],
-    'license_active' => $license_active,
-    'license_link' => admin_url('admin.php?page=one&tab=activation'),
     'is_fresh_install' => $is_fresh_install,
     'plugin_map' => [
       'buddypress' => 'buddypress',
@@ -85,8 +42,7 @@ add_action('admin_enqueue_scripts', function () {
       'job_manager' => !is_plugin_active('wp-job-manager/wp-job-manager.php'),
       'forums' => !is_plugin_active('bbpress/bbpress.php'),
       'pmp' => !is_plugin_active('paid-memberships-pro/paid-memberships-pro.php')
-    ],
-    'elementor_installed' => is_plugin_active('elementor/elementor.php') || file_exists(WP_PLUGIN_DIR . '/elementor/elementor.php')
+    ]
   ]);
 
   wp_enqueue_style('bp-demo-import-style', plugin_dir_url(__FILE__) . '/demo-import.css');
@@ -97,12 +53,8 @@ add_action('tophive/admin/demo-content-container', 'bp_demo_import_page');
 
 function bp_demo_import_page()
 {
-  $license_active = one_core_is_license_active();
-
   $home_url   = esc_url(home_url('/'));
   $admin_url  = esc_url(admin_url('admin.php?page=one&tab=importer'));
-  $importer = new One_Imports_Controllers();
-
 
   echo '<div id="bp-demo-modal" class="bp-demo-modal" style="display:none;">
         <div class="bp-demo-modal-content">
@@ -139,87 +91,6 @@ function bp_demo_import_page()
       <button id='start-demo-import' class='button button-primary'>Import</button>
     </section>
   ";
-
-  echo '<br />';
-  echo '<h2 style="font-size: 24px; font-weight: 600; margin: 30px 0 20px 0; color: #1d2327;">Page templates</h2>';
-
-  // do_action('tophive-core/activation-required');
-
-  if (!$license_active) {
-    echo '<p class="demo-import-warning">
-            <strong>License required:</strong> Please <a href="' . esc_url(admin_url('admin.php?page=one&tab=activation')) . '" target="_blank">activate your license</a> to view and import page templates.
-          </p>';
-    $templates = one_core_get_template_stubs();
-  } else {
-    $templates = $importer->get_templates();
-  }
-
-  echo '<div class="template-grid">';
-
-  foreach ($templates as $template) {
-    $id           = esc_attr($template['id']);
-    $name         = esc_html($template['name']);
-    $type         = esc_html($template['type'] ?? 'Elementor');
-    $preview_img  = esc_url($template['preview_image'] ?? '');
-    $preview_url  = esc_url($template['preview_url'] ?? $preview_img); // fallback
-
-    echo '
-        <div class="template-card">
-            <div class="card-image">
-                <img src="' . $preview_img . '" alt="' . $name . '">
-                <a href="' . $preview_url . '" target="_blank" class="preview-icon" title="Preview">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z"/>
-                    </svg>
-                </a>
-                <span class="tooltip">' . $preview_url . '</span>
-            </div>
-            <div class="card-footer">
-                <div class="card-info">
-                    <h3>' . $name . '</h3>
-                </div>
-                <button class="import-button" data-template-id="' . $id . '" data-template-name="' . esc_attr(wp_strip_all_tags($name)) . '">Import</button>
-            </div>
-        </div>';
-  }
-
-  echo '</div>';
-
-  echo '
-        <div id="template-import-modal" style="display:none;">
-        <div class="modal-content">
-            <h2>Import Page Template</h2>
-
-            <div class="elementor-warning" style="display:none; color: red;">
-            ⚠️ Elementor is not installed. 
-            <a href="' . esc_url(admin_url('plugin-install.php?s=elementor&tab=search&type=term')) . '" target="_blank">Install Elementor</a>
-            </div>
-
-            <div id="import-success-message" style="display:none; background: #e7fbe7; border: 1px solid #a6d8a8; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
-            <span style="color: green; font-size: 24px; margin-right: 8px;">✔</span>
-            <strong>Import successful!</strong> 
-            <br>
-            <a id="imported-page-link" href="#" target="_blank">View Imported Page</a>
-            </div>
-
-            <p><label for="import-page-selector">Select existing page:</label></p>
-            <select id="import-page-selector">
-            <option value="">-- Select Page --</option>';
-  $pages = get_pages();
-  foreach ($pages as $page) {
-    echo '<option value="' . esc_attr($page->ID) . '">' . esc_html($page->post_title) . '</option>';
-  }
-  echo '</select>
-
-            <p style="margin-top:10px;">Or create a new page:</p>
-            <input type="text" id="new-page-title" placeholder="New Page Title" />
-
-            <div style="margin-top: 20px;">
-            <button id="confirm-import-button" class="button button-primary"><span class="loader" style="display: none;"></span><span class="text">Import Now</span></button>
-            <button id="cancel-import-button" class="button">Cancel</button>
-            </div>
-        </div>
-    </div>';
 }
 
 
@@ -242,14 +113,6 @@ add_action('wp_ajax_bp_demo_import_step', function () {
   ob_start();
 
   try {
-    $license_active = one_core_is_license_active();
-    if (
-      !$license_active
-      && in_array($step, ['import_all_templates', 'list_templates', 'import_template', 'import_elementor_template'], true)
-    ) {
-      throw new Exception('License required to import page templates.');
-    }
-
     $response = null;
 
     switch ($step) {
@@ -295,85 +158,6 @@ add_action('wp_ajax_bp_demo_import_step', function () {
       case 'import_pages':
         bp_demo_import_pages();
         break;
-      case 'import_all_templates':
-        // Import all available page templates from remote API (after license activation)
-        $controller = new One_Imports_Controllers();
-        $templates = $controller->get_templates();
-        if (!is_array($templates) || empty($templates)) {
-          throw new Exception('No templates available to import.');
-        }
-
-        $imported = 0;
-        foreach ($templates as $tpl) {
-          if (empty($tpl['id']) || empty($tpl['name'])) continue;
-          $res = $controller->_get_templates([
-            'resource_type' => 'page',
-            'id' => $tpl['id']
-          ]);
-          if (!isset($res['data']['templates'][0]['json_code'])) {
-            continue;
-          }
-          $elementor_data = json_decode($res['data']['templates'][0]['json_code'], true);
-          if (!$elementor_data) continue;
-
-          // Create a new page for this template
-          $page_id = wp_insert_post([
-            'post_title' => sanitize_text_field($tpl['name']),
-            'post_type' => 'page',
-            'post_status' => 'publish',
-            'comment_status' => 'closed',
-            'ping_status' => 'closed'
-          ], true);
-          if (is_wp_error($page_id) || !$page_id) continue;
-
-          add_post_meta($page_id, '_tophive_disable_page_title', true, true);
-
-          import_post($elementor_data, 'page', $page_id);
-          $imported++;
-        }
-        $response = ['message' => 'Imported ' . intval($imported) . ' pages from templates.'];
-        break;
-      case 'list_templates':
-        $controller = new One_Imports_Controllers();
-        $templates = $controller->get_templates();
-        if (!is_array($templates) || empty($templates)) {
-          throw new Exception('No templates available to import.');
-        }
-        // Return compact list
-        $list = [];
-        foreach ($templates as $tpl) {
-          if (!empty($tpl['id']) && !empty($tpl['name'])) {
-            $list[] = [ 'id' => $tpl['id'], 'name' => $tpl['name'] ];
-          }
-        }
-        $response = ['templates' => $list];
-        break;
-      case 'import_template':
-        $template_id = isset($_POST['template_id']) ? intval($_POST['template_id']) : 0;
-        if (!$template_id) throw new Exception('Missing template id');
-        $controller = new One_Imports_Controllers();
-        $res = $controller->_get_templates([
-          'resource_type' => 'page',
-          'id' => $template_id
-        ]);
-        if (!isset($res['data']['templates'][0]['json_code'])) {
-          throw new Exception('Template data not found');
-        }
-        $elementor_data = json_decode($res['data']['templates'][0]['json_code'], true);
-        if (!$elementor_data) throw new Exception('Invalid template JSON');
-        $name = isset($_POST['template_name']) ? sanitize_text_field($_POST['template_name']) : ('Template ' . $template_id);
-        $page_id = wp_insert_post([
-          'post_title' => $name,
-          'post_type' => 'page',
-          'post_status' => 'publish',
-          'comment_status' => 'closed',
-          'ping_status' => 'closed'
-        ], true);
-        if (is_wp_error($page_id) || !$page_id) throw new Exception('Failed creating page for template');
-        add_post_meta($page_id, '_tophive_disable_page_title', true, true);
-        import_post($elementor_data, 'page', $page_id);
-        $response = ['message' => 'Template imported', 'page_id' => $page_id];
-        break;
       case 'import_users':
         bp_demo_import_users();
         break;
@@ -404,26 +188,6 @@ add_action('wp_ajax_bp_demo_import_step', function () {
 
       case 'create_media_pages':
         bp_demo_create_media_pages();
-        break;
-
-      case 'import_elementor_template':
-        $template_id = intval($_POST['template_id']);
-        $existing_page_id = isset($_POST['page_id']) ? intval($_POST['page_id']) : 0;
-        $new_title = sanitize_text_field($_POST['new_title'] ?? '');
-
-        $controller = new One_Imports_Controllers();
-        $result = bp_import_elementor_template_page($controller, $template_id, $existing_page_id, $new_title);
-
-        if (is_wp_error($result)) {
-          throw new Exception($result->get_error_message());
-        } else {
-          $page_url = get_permalink($result);
-          $response = [
-            'message' => 'Import complete',
-            'page_id' => $result,
-            'page_url' => $page_url,
-          ];
-        }
         break;
 
 
@@ -558,46 +322,6 @@ function bp_demo_import_menus()
 
   set_theme_mod("nav_menu_locations", $menu_locations);
   return true;
-}
-
-function bp_import_elementor_template_page($controller, $template_id, $existing_page_id = 0, $new_title = '')
-{
-  $res = $controller->_get_templates([
-    'resource_type' => 'page',
-    'id' => $template_id
-  ]);
-
-  if (!isset($res['data']['templates'][0]['json_code'])) {
-    return new WP_Error('template_missing', 'Template not found or invalid JSON.');
-  }
-
-  $elementor_data = json_decode($res['data']['templates'][0]['json_code'], true);
-
-  if (!$elementor_data) {
-    return new WP_Error('json_invalid', 'Invalid Elementor JSON.');
-  }
-
-  if ($existing_page_id && get_post_type($existing_page_id) === 'page') {
-    $page_id = $existing_page_id;
-  } elseif (!empty($new_title)) {
-    $page_id = wp_insert_post([
-      'post_title' => $new_title,
-      'post_type' => 'page',
-      'post_status' => 'publish',
-      'comment_status' => 'closed',
-      'ping_status'    => 'closed'
-    ]);
-
-    add_post_meta($page_id, '_tophive_disable_page_title', true, true);
-  } else {
-    return new WP_Error('missing_target', 'No page selected or created.');
-  }
-
-  // wp_send_json($elementor_data, 200);
-  // die();
-
-
-  return import_post($elementor_data, 'page', $page_id);
 }
 // Added By Lead Dev
 // Main media sideloader

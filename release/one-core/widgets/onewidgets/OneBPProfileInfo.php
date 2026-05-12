@@ -52,7 +52,12 @@ class OneBPProfileInfo extends WP_Widget
 
     //name
     $name = get_the_author_meta('display_name', $profile_id);
-    $domain = bp_core_get_user_domain($profile_id);
+    $domain = '#';
+    if (function_exists('bp_members_get_user_url')) {
+      $domain = bp_members_get_user_url($profile_id);
+    } elseif (defined('BP_VERSION') && version_compare(BP_VERSION, '12.0.0', '<') && function_exists('bp_core_get_user_domain')) {
+      $domain = bp_core_get_user_domain($profile_id);
+    }
     $html .= "<div class='widget-profile-name'>";
     $html .= "<a href='{$domain}'>{$name}</a>"; //profile link
     $html .= "</div>";
@@ -89,7 +94,7 @@ class OneBPProfileInfo extends WP_Widget
     // ❯❯❯❯ Profile Tab
 
     // Get member nav items
-    $base_link  = bp_core_get_user_domain($profile_id);
+    $base_link  = $domain;
 
     // Define tabs with slug with SVG
     $tabs = [
@@ -184,4 +189,3 @@ class OneBPProfileInfo extends WP_Widget
     return $instance;
   }
 }
-

@@ -58,14 +58,6 @@ jQuery(document).ready(function ($) {
     const entry = steps[currentStep];
     const step = typeof entry === 'string' ? entry : entry.step;
     const payload = typeof entry === 'object' ? (entry.payload || {}) : {};
-    // Dynamic expansion: if placeholder step, expand using previously fetched template list
-    if (step === '__import_templates_dynamic__' && Array.isArray(window.ONE_TPL_LIST) && window.ONE_TPL_LIST.length) {
-      const inject = window.ONE_TPL_LIST.map(t => ({ step: 'import_template', payload: { template_id: t.id, template_name: t.name, label: `Importing template -> ${t.name}` } }));
-      // replace placeholder with injected steps
-      steps.splice(currentStep, 1, ...inject);
-      runNextStep();
-      return;
-    }
 
     const baseText = (payload && payload.label) ? payload.label : `Importing ${step.replace(/_/g, ' ')}`;
     const label = baseText;
@@ -79,9 +71,6 @@ jQuery(document).ready(function ($) {
     })
     .done(function (response) {
       if (response.success) {
-        if (step === 'list_templates' && response.data && Array.isArray(response.data.templates)) {
-          window.ONE_TPL_LIST = response.data.templates;
-        }
         showMessage(label);
         // mark step as done for idempotency in UI (rough mapping by step name)
         try {
@@ -89,7 +78,6 @@ jQuery(document).ready(function ($) {
           if (step === 'import_customizer') done.customizer = true;
           if (step === 'import_menus') done.menus = true;
           if (step === 'import_forums') done.forums = true;
-          if (step === 'import_template') done.pages = true;
           if (step === 'enable_groups_component' || step === 'import_activities') done.buddypress = true;
           if (step === 'import_exported_demo') {
             const sel = JSON.parse(localStorage.getItem('one_demo_selected') || '{}');
@@ -168,91 +156,4 @@ jQuery(document).ready(function ($) {
     progressEl.hide();
     barEl.css('width', '0');
   });
-});
-
-
-// TEmPLATES IMPORT MODAL
-
-jQuery(document).ready(function($) {
-  let selectedTemplateId = null;
-
-  $('.import-button').on('click', function () {
-    if (!BPDemoSteps.license_active) {
-      $('#bp-demo-modal').fadeIn();
-      return;
-    }
-
-    selectedTemplateId = $(this).data('template-id');
-
-    // Check if Elementor is installed
-    if (!BPDemoSteps.elementor_installed) {
-      $('.elementor-warning').show();
-    } else {
-      $('.elementor-warning').hide();
-    }
-    const $btn = $('#confirm-import-button');
-    const $text = $btn.find('.text');
-    const $loader = $btn.find('.loader');
-
-    $loader.hide();
-    $text.text('Import');
-
-    $('#import-page-selector').val('');
-    $('#new-page-title').val('');
-    $('#template-import-modal').fadeIn();
-
-    $('#import-success-message').hide();
-      $('#imported-page-link').attr('href', '');
-
-    // Hide all form-related inputs and buttons (to avoid confusion)
-    $('#import-page-selector').show();
-    $('#new-page-title').show();
-    $('#confirm-import-button').show();
-    $('label[for="import-page-selector"]').show();
-    $('#import-page-selector').prev('p').show(); // hides "Select existing page:" <p>
-    $('#new-page-title').prev('p').show();       // hides "Or create a new page:" <p>
-  });
-
-  $('#cancel-import-button').on('click', function () {
-    $('#template-import-modal').fadeOut();
-  });
-
-  $('#confirm-import-button').on('click', function () {
-    const $btn = $(this);
-    const $text = $btn.find('.text');
-    const $loader = $btn.find('.loader');
-  
-    const pageId = $('#import-page-selector').val();
-    const newTitle = $('#new-page-title').val();
-  
-    // Show loader
-    $text.text('Importing...');
-    $loader.show();
-  
-    $.post(BPDemoSteps.ajax_url, {
-      action: 'bp_demo_import_step',
-      step: 'import_elementor_template',
-      template_id: selectedTemplateId,
-      page_id: pageId,
-      new_title: newTitle
-    }, function(response) {
-      // Hide loader
-      
-      if (response.success) {
-        $loader.hide();
-        $text.text('Import');
-        $('#import-success-message').show();
-        $('#imported-page-link').attr('href', response.data.page_url);
-  
-        $('#import-page-selector, #new-page-title, #confirm-import-button').hide();
-        $('label[for="import-page-selector"]').hide();
-        $('#import-page-selector').prev('p').hide();
-        $('#new-page-title').prev('p').hide();
-      } else {
-        console.log(response);
-        alert('Import failure: ' + (response.data?.message || 'Unknown error'));
-      }
-    });
-  });
-  
 });
