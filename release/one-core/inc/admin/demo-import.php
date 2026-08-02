@@ -1256,16 +1256,77 @@ function bp_demo_import_customizer()
     set_theme_mod($mod, $val);
   }
 
-  // Upload and set logo
-  $logo_url = 'https://one.tophivetheme.com/wp-content/uploads/2025/08/fav-2-1.svg';
-
   require_once ABSPATH . 'wp-admin/includes/file.php';
   require_once ABSPATH . 'wp-admin/includes/media.php';
   require_once ABSPATH . 'wp-admin/includes/image.php';
 
-  $logo_id = media_sideload_image($logo_url, 0, null, 'id');
-  if (!is_wp_error($logo_id)) {
-    set_theme_mod('custom_logo', $logo_id);
+  $maybe_allow_svg = static function () {
+    add_filter('upload_mimes', static function ($mimes) {
+      if (!is_array($mimes)) {
+        $mimes = [];
+      }
+      $mimes['svg'] = 'image/svg+xml';
+      $mimes['svgz'] = 'image/svg+xml';
+      return $mimes;
+    }, 99, 1);
+  };
+
+  $sideload_image_id = static function ($url) use ($maybe_allow_svg) {
+    if (!is_string($url) || $url === '') {
+      return 0;
+    }
+    $url = esc_url_raw($url);
+    if ($url === '') {
+      return 0;
+    }
+    $maybe_allow_svg();
+    $id = media_sideload_image($url, 0, null, 'id');
+    if (!is_wp_error($id)) {
+      return (int)$id;
+    }
+    if (function_exists('one_sideload_media_from_url')) {
+      $attachment = one_sideload_media_from_url($url);
+      if (is_array($attachment) && !empty($attachment['attachment_id'])) {
+        return (int)$attachment['attachment_id'];
+      }
+    }
+    return 0;
+  };
+
+  $current_logo_id = (int)get_theme_mod('custom_logo');
+  $has_current_logo = $current_logo_id > 0 && wp_get_attachment_url($current_logo_id);
+
+  if (!$has_current_logo) {
+    $logo_candidates = [];
+    if (isset($mods['custom_logo_url']) && is_string($mods['custom_logo_url'])) {
+      $logo_candidates[] = $mods['custom_logo_url'];
+    }
+    if (isset($mods['header_logo_retina']['url']) && is_string($mods['header_logo_retina']['url'])) {
+      $logo_candidates[] = $mods['header_logo_retina']['url'];
+    }
+    if (isset($mods['header_logo_dark']['url']) && is_string($mods['header_logo_dark']['url'])) {
+      $logo_candidates[] = $mods['header_logo_dark']['url'];
+    }
+    if (isset($mods['vertical_nav_v_nav_collapsed_logo']['url']) && is_string($mods['vertical_nav_v_nav_collapsed_logo']['url'])) {
+      $logo_candidates[] = $mods['vertical_nav_v_nav_collapsed_logo']['url'];
+    }
+    $logo_candidates[] = 'https://one.tophivetheme.com/wp-content/uploads/2025/08/fav-2-1.svg';
+
+    foreach ($logo_candidates as $logo_url) {
+      $logo_id = $sideload_image_id($logo_url);
+      if ($logo_id > 0) {
+        set_theme_mod('custom_logo', $logo_id);
+        break;
+      }
+    }
+  }
+
+  $current_site_icon = (int)get_option('site_icon');
+  if ($current_site_icon <= 0 && isset($mods['site_icon_url']) && is_string($mods['site_icon_url'])) {
+    $site_icon_id = $sideload_image_id($mods['site_icon_url']);
+    if ($site_icon_id > 0) {
+      update_option('site_icon', $site_icon_id);
+    }
   }
 
   $elem_global_data_path = plugin_dir_path(__FILE__) . '/demo-data/elementor-global.json';

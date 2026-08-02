@@ -16,6 +16,7 @@ class One_Extension_Export {
     add_action('admin_post_one_ext_import', [__CLASS__, 'handle_import']);
     add_action('admin_post_one_ext_install_plugins', [__CLASS__, 'handle_install_plugins']);
     add_action('admin_post_one_ext_export_menus', [__CLASS__, 'handle_export_menus']);
+    add_action('admin_post_one_ext_export_menus_demo', [__CLASS__, 'handle_export_menus_demo']);
     add_action('admin_post_one_ext_import_demos', [__CLASS__, 'handle_import_demos']);
   }
 
@@ -40,7 +41,6 @@ class One_Extension_Export {
     <div class="wrap">
       <h1><?php echo esc_html__('One Extension Export', 'ONE_CORE_SLUG'); ?></h1>
 
-<<<<<<< HEAD
       <?php
       // Display success/error messages
       if (isset($_GET['installed'])) {
@@ -71,30 +71,23 @@ class One_Extension_Export {
       }
       ?>
 
-      <h2 class="title"><?php echo esc_html__('Export', 'one-core'); ?></h2>
-      <p><?php echo esc_html__('Exports up to 5 items from Tutor LMS, Directorist, WP Events, WooCommerce, and WP Job Manager into a single JSON file.', 'one-core'); ?></p>
-=======
       <h2 class="title"><?php echo esc_html__('Export', 'ONE_CORE_SLUG'); ?></h2>
       <p><?php echo esc_html__('Exports up to 5 items from Tutor LMS, Directorist, WP Events, WooCommerce, and WP Job Manager into a single JSON file.', 'ONE_CORE_SLUG'); ?></p>
->>>>>>> origin/master
       <p>
         <a href="<?php echo esc_url($export_url); ?>" class="button button-primary"><?php echo esc_html__('Download Export (JSON)', 'ONE_CORE_SLUG'); ?></a>
       </p>
 
       <?php $menus_url = admin_url('admin-post.php?action=one_ext_export_menus&_wpnonce=' . wp_create_nonce('one_ext_export_menus')); ?>
+      <?php $menus_demo_url = admin_url('admin-post.php?action=one_ext_export_menus_demo&_wpnonce=' . wp_create_nonce('one_ext_export_menus_demo')); ?>
       <h2 class="title"><?php echo esc_html__('Menu Export', 'ONE_CORE_SLUG'); ?></h2>
       <p><?php echo esc_html__('Exports all menus with items and item meta (including icon/icon SVG) as JSON.', 'ONE_CORE_SLUG'); ?></p>
       <p>
         <a href="<?php echo esc_url($menus_url); ?>" class="button"><?php echo esc_html__('Download Menus (JSON)', 'ONE_CORE_SLUG'); ?></a>
+        <a href="<?php echo esc_url($menus_demo_url); ?>" class="button"><?php echo esc_html__('Download Menus (Demo JSON)', 'ONE_CORE_SLUG'); ?></a>
       </p>
 
-<<<<<<< HEAD
-      <h2 class="title"><?php echo esc_html__('Install Required Plugins', 'one-core'); ?></h2>
-      <p><?php echo esc_html__('Click to install and activate Tutor LMS, Directorist, WP Event Manager, WP Job Manager, and Elementor.', 'one-core'); ?></p>
-=======
       <h2 class="title"><?php echo esc_html__('Install Required Plugins', 'ONE_CORE_SLUG'); ?></h2>
-      <p><?php echo esc_html__('Click to install and activate Tutor LMS, Directorist, WP Event Manager, and WP Job Manager.', 'ONE_CORE_SLUG'); ?></p>
->>>>>>> origin/master
+      <p><?php echo esc_html__('Click to install and activate Tutor LMS, Directorist, WP Event Manager, WP Job Manager, and Elementor.', 'ONE_CORE_SLUG'); ?></p>
       <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
         <?php wp_nonce_field('one_ext_install_plugins', '_one_ext_install_plugins_nonce'); ?>
         <input type="hidden" name="action" value="one_ext_install_plugins" />
@@ -199,6 +192,75 @@ class One_Extension_Export {
     header('Content-Description: File Transfer');
     header('Content-Type: application/json; charset=utf-8');
     header('Content-Disposition: attachment; filename=one-menus-export-' . date('Ymd-His') . '.json');
+    header('Content-Length: ' . $length);
+    echo $json;
+    exit;
+  }
+
+  public static function handle_export_menus_demo()
+  {
+    if (!current_user_can('manage_options')) {
+      wp_die(__('Unauthorized', 'ONE_CORE_SLUG'));
+    }
+    check_admin_referer('one_ext_export_menus_demo');
+
+    $payload = [];
+
+    $menus = wp_get_nav_menus();
+    foreach ($menus as $menu) {
+      $menu_payload = [
+        'menu' => [
+          'id' => (int)$menu->term_id,
+          'name' => $menu->name,
+          'slug' => $menu->slug,
+        ],
+        'items' => [],
+      ];
+
+      $items = wp_get_nav_menu_items($menu->term_id, ['orderby' => 'menu_order', 'order' => 'ASC']);
+      if (!empty($items)) {
+        foreach ($items as $it) {
+          $icon = get_post_meta($it->ID, '_menu_item_menu-icon-text', true);
+          $svg_icon = get_post_meta($it->ID, '_menu_item_menu-icon-svg', true);
+
+          $url = (string)$it->url;
+          if ($url !== '' && $url !== '#' && $url !== '/') {
+            $site_url = rtrim(get_site_url(), '/');
+            if (strpos($url, $site_url . '/') === 0) {
+              $parsed = wp_parse_url($url);
+              $path = isset($parsed['path']) ? $parsed['path'] : '';
+              $query = isset($parsed['query']) ? ('?' . $parsed['query']) : '';
+              $fragment = isset($parsed['fragment']) ? ('#' . $parsed['fragment']) : '';
+              $url = ($path !== '' ? $path : '/') . $query . $fragment;
+            }
+          }
+
+          $menu_payload['items'][] = [
+            'id' => (int)$it->ID,
+            'title' => $it->title,
+            'url' => $url,
+            'parent' => (string)(int)$it->menu_item_parent,
+            'order' => (int)$it->menu_order,
+            'icon' => $icon !== '' ? $icon : null,
+            'svg_icon' => $svg_icon !== '' ? $svg_icon : null,
+          ];
+        }
+      }
+
+      $payload[] = $menu_payload;
+    }
+
+    $json = wp_json_encode($payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+    if (function_exists('mb_strlen')) {
+      $length = mb_strlen($json, '8bit');
+    } else {
+      $length = strlen($json);
+    }
+
+    nocache_headers();
+    header('Content-Description: File Transfer');
+    header('Content-Type: application/json; charset=utf-8');
+    header('Content-Disposition: attachment; filename=menus.json');
     header('Content-Length: ' . $length);
     echo $json;
     exit;
