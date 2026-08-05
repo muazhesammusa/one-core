@@ -25,6 +25,10 @@ $forbiddenSignatures = [
     'License_Api_Client',
     'Entitlement_Verifier',
     'pre_set_site_transient_update_themes',
+    'wp_ajax_one_license_activate',
+    'wp_ajax_one_license_refresh',
+    'wp_ajax_one_license_deactivate',
+    'one_license_admin',
 ];
 
 $iterator = new RecursiveIteratorIterator(

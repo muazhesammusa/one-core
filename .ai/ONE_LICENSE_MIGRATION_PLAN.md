@@ -7,7 +7,7 @@ The One theme is the licensing owner. One Core is an entitlement consumer only.
 - Phase 1: Legacy License and Updater Cleanup [complete]
 - Phase 1.1: Source Handoff Tooling [complete]
 - Phase 2: Theme-side License Client Foundation / no Core runtime [complete]
-- Phase 3: Activation Lifecycle UI / no Core ownership [pending]
+- Phase 3: Activation Lifecycle UI / no Core ownership [complete]
 - Phase 4: Defensive Entitlement Bridge Consumer [pending]
 - Phase 5: Native Theme Updater / no Core ownership [pending]
 - Phase 6: Remaining Core-side Legacy Assumption Cleanup [pending]
