@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "build": "node ./scripts/release.mjs",
-    "test": "php tests/legacy-license-cleanup-contract.php && php tests/license-boundary-contract.php && node tests/source-zip-contract.mjs",
+    "test": "php tests/legacy-license-cleanup-contract.php && php tests/license-boundary-contract.php && php tests/entitlement-bridge-contract.php && node tests/source-zip-contract.mjs",
     "build:zip": "node scripts/build-source-zip.mjs"
   }
 }

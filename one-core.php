@@ -335,6 +335,7 @@ spl_autoload_register(__NAMESPACE__ . '\\autoload');
 
 add_action('plugins_loaded', array(OneCore::getInstance(), 'init'));
 
+require_once('inc/class-entitlement-bridge.php');
 require_once('MailChimp.php');
 require_once('t/class-tophive-modules.php');
 require_once('inc/admin/demo-import.php');

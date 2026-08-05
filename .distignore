@@ -45,6 +45,7 @@ webpack.config.js
 
 phpunit.xml
 phpcs.xml.dist
+tests/
 .phpunit.result.cache
 
 7. Documentation, Planning & Internal Files
@@ -55,6 +56,7 @@ README.md
 ROADMAP.md
 tree.md
 AGENTS.md
+SOURCE-HANDOFF.json
 RELEASE_CHECKLIST.md
 anthropics/
 planning/

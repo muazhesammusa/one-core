@@ -103,6 +103,7 @@ function shouldExclude(relPath) {
     'dist',
     'release',
     'scripts',
+    'tests',
     '.ai',
     'node_modules',
     '.git',
@@ -117,11 +118,12 @@ function shouldExclude(relPath) {
     'AGENTS.md',
     'package.json',
     'package-lock.json',
+    'SOURCE-HANDOFF.json',
     'release.mjs',
   ]);
   if (excludedNames.has(base)) return true;
 
-  const excludedPrefixes = ['dist/', 'release/', 'scripts/', '.ai/', 'node_modules/', '.git/', '.github/', '.idea/', '.vscode/'];
+  const excludedPrefixes = ['dist/', 'release/', 'scripts/', 'tests/', '.ai/', 'node_modules/', '.git/', '.github/', '.idea/', '.vscode/'];
   if (excludedPrefixes.some((prefix) => p.startsWith(prefix))) return true;
   if (base.endsWith('.log')) return true;
   if (base.endsWith('.map')) return true;

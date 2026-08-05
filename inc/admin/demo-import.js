@@ -67,7 +67,7 @@ jQuery(document).ready(function ($) {
       url: BPDemoSteps.ajax_url,
       method: 'POST',
       dataType: 'json',
-      data: Object.assign({ action: 'bp_demo_import_step', step: step }, payload)
+      data: Object.assign({ action: 'bp_demo_import_step', step: step, _wpnonce: BPDemoSteps.nonce }, payload)
     })
     .done(function (response) {
       if (response.success) {

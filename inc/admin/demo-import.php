@@ -17,6 +17,9 @@ add_action('admin_enqueue_scripts', function () {
   
   wp_localize_script('bp-demo-import', 'BPDemoSteps', [
     'ajax_url' => admin_url('admin-ajax.php'),
+    'nonce' => wp_create_nonce('bp_demo_import_step'),
+    'license_active' => \ONECORE\EntitlementBridge::has('demo_import'),
+    'license_url' => admin_url('themes.php?page=one&tab=license'),
     // steps will be built dynamically by UI selections
     'default_steps' => [],
     'is_fresh_install' => $is_fresh_install,
@@ -53,6 +56,14 @@ add_action('tophive/admin/demo-content-container', 'bp_demo_import_page');
 
 function bp_demo_import_page()
 {
+  if (!\ONECORE\EntitlementBridge::has('demo_import')) {
+    echo '<div class="notice notice-warning inline one-core-license-required">';
+    echo '<h2>' . esc_html__('Activate One to import demo content', 'one') . '</h2>';
+    echo '<p>' . esc_html__('Demo imports are available when this website has a valid One theme license or a signed grace entitlement.', 'one') . '</p>';
+    echo '<p><a class="button button-primary" href="' . esc_url(admin_url('themes.php?page=one&tab=license')) . '">' . esc_html__('Open License', 'one') . '</a></p>';
+    echo '</div>';
+    return;
+  }
   $home_url   = esc_url(home_url('/'));
   $admin_url  = esc_url(admin_url('admin.php?page=one&tab=importer'));
 
@@ -100,8 +111,12 @@ add_action('wp_ajax_bp_demo_import_step', function () {
   if ( ! current_user_can( 'manage_options' ) ) {
     wp_send_json_error( [ 'message' => 'Unauthorized' ], 403 );
   }
-  if ( isset( $_POST['_wpnonce'] ) ) {
-    check_ajax_referer( 'bp_demo_import_step', '_wpnonce' );
+  check_ajax_referer( 'bp_demo_import_step', '_wpnonce' );
+  if (!\ONECORE\EntitlementBridge::has('demo_import')) {
+    wp_send_json_error([
+      'message' => esc_html__('A valid One theme license is required for demo imports.', 'one'),
+      'code' => 'one_license_required',
+    ], 403);
   }
   $step = sanitize_text_field($_POST['step'] ?? '');
   $payload_slugs = isset($_POST['slugs']) && is_array($_POST['slugs']) ? array_map('sanitize_text_field', $_POST['slugs']) : [];
