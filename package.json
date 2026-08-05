@@ -3,6 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "build": "node ./scripts/release.mjs"
+    "build": "node ./scripts/release.mjs",
+    "test": "php tests/legacy-license-cleanup-contract.php && node tests/source-zip-contract.mjs",
+    "build:zip": "node scripts/build-source-zip.mjs"
   }
 }

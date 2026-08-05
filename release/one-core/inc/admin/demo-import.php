@@ -177,7 +177,7 @@ add_action('wp_ajax_bp_demo_import_step', function () {
         bp_demo_import_menus();
         break;
       case 'import_customizer':
-        bp_demo_import_customizer();
+        $response = bp_demo_import_customizer();
         break;
       case 'import_blog_posts':
         bp_demo_import_blog_posts();
@@ -1260,18 +1260,89 @@ function bp_demo_import_customizer()
   require_once ABSPATH . 'wp-admin/includes/media.php';
   require_once ABSPATH . 'wp-admin/includes/image.php';
 
-  $maybe_allow_svg = static function () {
-    add_filter('upload_mimes', static function ($mimes) {
-      if (!is_array($mimes)) {
-        $mimes = [];
-      }
-      $mimes['svg'] = 'image/svg+xml';
-      $mimes['svgz'] = 'image/svg+xml';
-      return $mimes;
-    }, 99, 1);
+  $debug = [
+    'custom_logo_before' => (int)get_theme_mod('custom_logo'),
+    'custom_logo_after' => null,
+    'custom_logo_source' => null,
+    'custom_logo_url' => null,
+    'custom_logo_error' => null,
+  ];
+
+  $upload_mimes_filter = static function ($mimes) {
+    if (!is_array($mimes)) {
+      $mimes = [];
+    }
+    $mimes['svg'] = 'image/svg+xml';
+    $mimes['svgz'] = 'image/svg+xml';
+    return $mimes;
   };
 
-  $sideload_image_id = static function ($url) use ($maybe_allow_svg) {
+  $wp_check_filetype_filter = static function ($data, $file, $filename, $mimes) {
+    $ext = strtolower(pathinfo((string)$filename, PATHINFO_EXTENSION));
+    if ($ext === 'svg' || $ext === 'svgz') {
+      return [
+        'ext' => 'svg',
+        'type' => 'image/svg+xml',
+        'proper_filename' => false,
+      ];
+    }
+    return $data;
+  };
+
+  add_filter('upload_mimes', $upload_mimes_filter, 99, 1);
+  add_filter('wp_check_filetype_and_ext', $wp_check_filetype_filter, 99, 4);
+
+  $find_existing_attachment_id_from_url = static function ($url) {
+    if (!is_string($url) || $url === '') {
+      return 0;
+    }
+    $parts = wp_parse_url($url);
+    $path = isset($parts['path']) && is_string($parts['path']) ? $parts['path'] : '';
+    $basename = $path !== '' ? basename($path) : '';
+    if ($basename === '') {
+      return 0;
+    }
+
+    global $wpdb;
+    if (!$wpdb) {
+      return 0;
+    }
+
+    $like = '%' . $wpdb->esc_like($basename) . '%';
+    $id = (int)$wpdb->get_var(
+      $wpdb->prepare(
+        "SELECT p.ID
+         FROM {$wpdb->posts} p
+         INNER JOIN {$wpdb->postmeta} pm
+           ON pm.post_id = p.ID
+          AND pm.meta_key = '_wp_attached_file'
+         WHERE p.post_type = 'attachment'
+           AND pm.meta_value LIKE %s
+         ORDER BY p.ID DESC
+         LIMIT 1",
+        $like
+      )
+    );
+    if ($id > 0) {
+      return $id;
+    }
+
+    $id = (int)$wpdb->get_var(
+      $wpdb->prepare(
+        "SELECT p.ID
+         FROM {$wpdb->posts} p
+         WHERE p.post_type = 'attachment'
+           AND p.guid LIKE %s
+         ORDER BY p.ID DESC
+         LIMIT 1",
+        $like
+      )
+    );
+    return $id > 0 ? $id : 0;
+  };
+
+  $sideload_image_id = static function ($url, &$error = null) {
+    $error = null;
     if (!is_string($url) || $url === '') {
       return 0;
     }
@@ -1279,14 +1350,15 @@ function bp_demo_import_customizer()
     if ($url === '') {
       return 0;
     }
-    $maybe_allow_svg();
     $id = media_sideload_image($url, 0, null, 'id');
     if (!is_wp_error($id)) {
       return (int)$id;
     }
+    $error = $id->get_error_message();
     if (function_exists('one_sideload_media_from_url')) {
       $attachment = one_sideload_media_from_url($url);
       if (is_array($attachment) && !empty($attachment['attachment_id'])) {
+        $error = null;
         return (int)$attachment['attachment_id'];
       }
     }
@@ -1313,20 +1385,83 @@ function bp_demo_import_customizer()
     $logo_candidates[] = 'https://one.tophivetheme.com/wp-content/uploads/2025/08/fav-2-1.svg';
 
     foreach ($logo_candidates as $logo_url) {
-      $logo_id = $sideload_image_id($logo_url);
+      $logo_id = $find_existing_attachment_id_from_url($logo_url);
       if ($logo_id > 0) {
         set_theme_mod('custom_logo', $logo_id);
+        $debug['custom_logo_source'] = 'existing';
+        $debug['custom_logo_url'] = $logo_url;
         break;
+      }
+
+      $err = null;
+      $logo_id = $sideload_image_id($logo_url, $err);
+      if ($logo_id > 0) {
+        set_theme_mod('custom_logo', $logo_id);
+        $debug['custom_logo_source'] = 'sideload';
+        $debug['custom_logo_url'] = $logo_url;
+        break;
+      }
+      if (is_string($err) && $err !== '') {
+        $debug['custom_logo_error'] = $err;
+      }
+    }
+
+    $logo_after_attempt = (int)get_theme_mod('custom_logo');
+    if ($logo_after_attempt <= 0 || !wp_get_attachment_url($logo_after_attempt)) {
+      $site_name = get_bloginfo('name');
+      $label = is_string($site_name) && $site_name !== '' ? $site_name : 'ONE';
+      $label = wp_strip_all_tags($label);
+      if (function_exists('mb_substr')) {
+        $label = mb_substr($label, 0, 16);
+      } else {
+        $label = substr($label, 0, 16);
+      }
+      $label_esc = esc_html($label);
+
+      $svg = '<svg xmlns="http://www.w3.org/2000/svg" width="240" height="60" viewBox="0 0 240 60" role="img" aria-label="' . $label_esc . '"><rect width="240" height="60" rx="12" fill="#111827"/><text x="120" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="#ffffff">' . $label_esc . '</text></svg>';
+      $upload = wp_upload_bits('one-logo.svg', null, $svg);
+      if (is_array($upload) && empty($upload['error']) && !empty($upload['file'])) {
+        $attachment_id = wp_insert_attachment([
+          'post_mime_type' => 'image/svg+xml',
+          'post_title' => $label,
+          'post_content' => '',
+          'post_status' => 'inherit',
+        ], $upload['file']);
+        if (!is_wp_error($attachment_id) && $attachment_id) {
+          set_theme_mod('custom_logo', (int)$attachment_id);
+          $debug['custom_logo_source'] = 'generated';
+          $debug['custom_logo_url'] = $upload['url'] ?? null;
+          $debug['custom_logo_error'] = null;
+        }
       }
     }
   }
 
   $current_site_icon = (int)get_option('site_icon');
   if ($current_site_icon <= 0 && isset($mods['site_icon_url']) && is_string($mods['site_icon_url'])) {
-    $site_icon_id = $sideload_image_id($mods['site_icon_url']);
+    $err = null;
+    $site_icon_id = $sideload_image_id($mods['site_icon_url'], $err);
     if ($site_icon_id > 0) {
       update_option('site_icon', $site_icon_id);
     }
+  }
+
+  remove_filter('upload_mimes', $upload_mimes_filter, 99);
+  remove_filter('wp_check_filetype_and_ext', $wp_check_filetype_filter, 99);
+
+  $debug['custom_logo_after'] = (int)get_theme_mod('custom_logo');
+  if ($debug['custom_logo_after'] > 0) {
+    $fallback_logo_id = (int)$debug['custom_logo_after'];
+    $maybe_set_logo_mod = static function ($key) use ($fallback_logo_id) {
+      $current = (int)get_theme_mod($key);
+      if ($current <= 0) {
+        set_theme_mod($key, $fallback_logo_id);
+      }
+    };
+    $maybe_set_logo_mod('header_logo_sticky');
+    $maybe_set_logo_mod('header_logo_sticky_retina');
+    $maybe_set_logo_mod('header_logo_tran');
+    $maybe_set_logo_mod('header_logo_tran_retina');
   }
 
   $elem_global_data_path = plugin_dir_path(__FILE__) . '/demo-data/elementor-global.json';
@@ -1348,6 +1483,31 @@ function bp_demo_import_customizer()
   update_option('elementor_experiment-e_font_icon_svg', 'default');
   update_option('elementor_experiment-e_local_google_fonts', 'default');
   update_option('elementor_unfiltered_files_upload', true);
+
+  $logo_after = (int)$debug['custom_logo_after'];
+  $logo_url_after = $logo_after > 0 ? wp_get_attachment_url($logo_after) : '';
+
+  if ($logo_after > 0 && $logo_url_after) {
+    return [
+      'message' => 'Customizer imported. Logo set (ID ' . $logo_after . ').',
+      'logo' => [
+        'id' => $logo_after,
+        'url' => $logo_url_after,
+        'source' => $debug['custom_logo_source'],
+      ],
+    ];
+  }
+
+  return [
+    'message' => 'Customizer imported, but logo not set. Current custom_logo=' . (int)get_theme_mod('custom_logo') . '.',
+    'logo' => [
+      'id' => (int)get_theme_mod('custom_logo'),
+      'url' => $logo_url_after,
+      'source' => $debug['custom_logo_source'],
+      'attempted_url' => $debug['custom_logo_url'],
+      'error' => $debug['custom_logo_error'],
+    ],
+  ];
 }
 
 function upgrade_elementor_to_fontawesome_5()
