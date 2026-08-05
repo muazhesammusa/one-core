@@ -1,6 +1,6 @@
-# Phase 01 — Legacy License Cleanup
+# Phase 01 — Legacy License Cleanup [complete]
 
-Status: Complete
+Status: [complete]
 Date: 2026-08-06
 
 ## Removed from One Core

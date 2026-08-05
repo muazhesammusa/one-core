@@ -4,15 +4,14 @@ Last updated: 2026-08-06
 
 The One theme is the licensing owner. One Core is an entitlement consumer only.
 
-| Phase | One Core responsibility | Status |
-|---|---|---|
-| 1 | Remove custom updater and dead license-coupled controller | Complete |
-| 2 | No license client implementation | Pending theme work |
-| 3 | No activation UI implementation | Pending theme work |
-| 4 | Consume the theme entitlement bridge defensively | Pending |
-| 5 | No updater ownership | Pending theme work |
-| 6 | Remove any remaining Core-side legacy state assumptions | Pending |
-| 7 | Validate Core with licensed, unlicensed, offline, and inactive-theme-client states | Pending |
+- Phase 1: Legacy License and Updater Cleanup [complete]
+- Phase 1.1: Source Handoff Tooling [complete]
+- Phase 2: Theme-side License Client Foundation / no Core runtime [complete]
+- Phase 3: Activation Lifecycle UI / no Core ownership [pending]
+- Phase 4: Defensive Entitlement Bridge Consumer [pending]
+- Phase 5: Native Theme Updater / no Core ownership [pending]
+- Phase 6: Remaining Core-side Legacy Assumption Cleanup [pending]
+- Phase 7: Licensed and Unlicensed Compatibility QA [pending]
 
 ## Permanent boundary
 
@@ -20,8 +19,9 @@ One Core must not register theme update transients, download theme packages, sto
 
 ## Phase 1 follow-up — source handoff tooling
 
-Status: Complete
+Status: [complete]
 
 - `npm run build:zip` creates `$TMPDIR/one-source-handoff/one-core-latest.zip` from the current Core source.
 - Generated release copies, repositories, dependencies, caches, and prior ZIP files are excluded.
 - The legacy-cleanup contract ignores generated `release/` and `temp/` trees, preventing self-matches after a release build.
+- On macOS, a successful `npm run build:zip` opens the output folder in Finder.

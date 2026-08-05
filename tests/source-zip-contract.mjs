@@ -27,7 +27,7 @@ if (packageJson.scripts?.['build:zip'] !== 'node scripts/build-source-zip.mjs') 
 
 if (fs.existsSync(scriptPath) && fs.statSync(scriptPath).isFile()) {
   const source = fs.readFileSync(scriptPath, 'utf8');
-  for (const required of ['one-latest.zip', 'one-core-latest.zip', 'SOURCE-HANDOFF.json', "'release'", "'node_modules'", "'temp'", "os.tmpdir()", "'one-source-handoff'"]) {
+  for (const required of ['one-latest.zip', 'one-core-latest.zip', 'SOURCE-HANDOFF.json', "'release'", "'node_modules'", "'temp'", "os.tmpdir()", "'one-source-handoff'", "process.platform !== 'darwin'", "ONE_SOURCE_ZIP_NO_OPEN", "execFileSync('open'"]) {
     if (!source.includes(required)) {
       failures.push(`Source ZIP builder is missing required contract: ${required}`);
     }

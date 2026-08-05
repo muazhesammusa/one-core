@@ -22,4 +22,4 @@ One Core is the companion plugin for the One WordPress theme. It provides widget
 
 ## Source handoff
 
-Run `npm run build:zip` from the One Core root when a fresh source snapshot is needed. Share the `one-core-latest.zip` created inside the macOS system temp directory (`$TMPDIR/one-source-handoff/`); do not manually zip `release/`, `.git/`, or `node_modules/`.
+Run `npm run build:zip` from the One Core root when a fresh source snapshot is needed. It creates `one-core-latest.zip` inside the macOS system temp directory (`$TMPDIR/one-source-handoff/`) and opens that folder in Finder; do not manually zip `release/`, `.git/`, or `node_modules/`.

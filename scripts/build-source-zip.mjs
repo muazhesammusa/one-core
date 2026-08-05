@@ -171,6 +171,18 @@ function sha256(filePath) {
   return hash.digest('hex');
 }
 
+function revealOutputDirectory() {
+  if (process.platform !== 'darwin' || process.env.ONE_SOURCE_ZIP_NO_OPEN === '1') {
+    return;
+  }
+
+  try {
+    execFileSync('open', [outputDir], { stdio: 'ignore' });
+  } catch (error) {
+    process.stderr.write(`Warning: unable to open output folder: ${error.message}\n`);
+  }
+}
+
 const project = detectProject();
 const stagingRoot = fs.mkdtempSync(path.join(os.tmpdir(), `${project.slug}-source-`));
 const stagedProject = path.join(stagingRoot, project.slug);
@@ -221,6 +233,7 @@ try {
   process.stdout.write(`Files: ${entries.filter((entry) => !entry.endsWith('/')).length}\n`);
   process.stdout.write(`ZIP: ${zipPath}\n`);
   process.stdout.write(`SHA-256: ${checksumPath}\n`);
+  revealOutputDirectory();
 } finally {
   fs.rmSync(stagingRoot, { recursive: true, force: true });
 }
