@@ -8,8 +8,15 @@ if (!function_exists('is_plugin_active')) {
 
 // 1. Enqueue JS + Modal Styles + Localize Steps
 add_action('admin_enqueue_scripts', function () {
-  wp_enqueue_script('bp-demo-import', plugin_dir_url(__FILE__) . '/demo-import.js', ['jquery'], null, true);
-  wp_enqueue_script('bp-demo-import-ui', plugin_dir_url(__FILE__) . '/demo-import-ui.js', ['wp-element', 'jquery'], null, true);
+  $page = isset($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : '';
+  $tab = isset($_GET['tab']) ? sanitize_key(wp_unslash($_GET['tab'])) : 'dashboard';
+  if ('one' !== $page || 'importer' !== $tab) {
+    return;
+  }
+
+  $version = defined('WP_MF_CORE_VERSION') ? WP_MF_CORE_VERSION : null;
+  wp_enqueue_script('bp-demo-import', plugin_dir_url(__FILE__) . '/demo-import.js', ['jquery'], $version, true);
+  wp_enqueue_script('bp-demo-import-ui', plugin_dir_url(__FILE__) . '/demo-import-ui.js', ['wp-element', 'jquery'], $version, true);
   // Check if this is a fresh install - more comprehensive check
   $posts_count = wp_count_posts('post')->publish + wp_count_posts('page')->publish;
   $users_count = count_users()['total_users'];
@@ -48,7 +55,7 @@ add_action('admin_enqueue_scripts', function () {
     ]
   ]);
 
-  wp_enqueue_style('bp-demo-import-style', plugin_dir_url(__FILE__) . '/demo-import.css');
+  wp_enqueue_style('bp-demo-import-style', plugin_dir_url(__FILE__) . '/demo-import.css', [], $version);
 });
 
 // 2. Add Admin Page with Import Button + Modal Container
@@ -57,53 +64,53 @@ add_action('tophive/admin/demo-content-container', 'bp_demo_import_page');
 function bp_demo_import_page()
 {
   if (!\ONECORE\EntitlementBridge::has('demo_import')) {
-    echo '<div class="notice notice-warning inline one-core-license-required">';
+    echo '<section class="one-core-license-required">';
     echo '<h2>' . esc_html__('Activate One to import demo content', 'one') . '</h2>';
     echo '<p>' . esc_html__('Demo imports are available when this website has a valid One theme license or a signed grace entitlement.', 'one') . '</p>';
-    echo '<p><a class="button button-primary" href="' . esc_url(admin_url('themes.php?page=one&tab=license')) . '">' . esc_html__('Open License', 'one') . '</a></p>';
-    echo '</div>';
+    echo '<p><a class="one-admin-button one-admin-button--primary" href="' . esc_url(admin_url('themes.php?page=one&tab=license')) . '">' . esc_html__('Open License', 'one') . '</a></p>';
+    echo '</section>';
     return;
   }
-  $home_url   = esc_url(home_url('/'));
-  $admin_url  = esc_url(admin_url('admin.php?page=one&tab=importer'));
+
+  $home_url  = esc_url(home_url('/'));
+  $admin_url = esc_url(admin_url('themes.php?page=one&tab=importer'));
 
   echo '<div id="bp-demo-modal" class="bp-demo-modal" style="display:none;">
         <div class="bp-demo-modal-content">
-            <button id="bp-close-import" type="button" class="button" style="position:absolute;right:12px;top:12px;">✕</button>
-
+            <button id="bp-close-import" type="button" class="bp-demo-modal-close" aria-label="' . esc_attr__('Close importer', 'one') . '">✕</button>
             <script src="https://cdn.tailwindcss.com"></script>
-            <div id="one-demo-react-root"></div>';
-
-  echo '
+            <div class="bp-demo-modal-heading">
+              <span>' . esc_html__('Demo setup', 'one') . '</span>
+              <h2>' . esc_html__('Choose what to import', 'one') . '</h2>
+              <p>' . esc_html__('Select the content and integrations you want. Existing imported items stay protected.', 'one') . '</p>
+            </div>
+            <div id="one-demo-react-root"></div>
             <div id="bp-demo-log">
-              <div id="bp-demo-log-text">Ready to import...</div>
+              <div id="bp-demo-log-text">' . esc_html__('Ready to import…', 'one') . '</div>
               <div class="bp-demo-progress" style="display:none;"><div class="bar"></div></div>
             </div>
-
-            <div style="margin-top:10px; display:flex; gap:8px;">
-                <button id="bp-start-import" class="button button-primary">Start Importing</button>
-                <button id="bp-cancel-import" class="button">Cancel</button>
+            <div class="bp-demo-modal-actions">
+                <button id="bp-cancel-import" class="button">' . esc_html__('Cancel', 'one') . '</button>
+                <button id="bp-start-import" class="button button-primary">' . esc_html__('Start importing', 'one') . '</button>
             </div>
-
-            <div id="bp-demo-final-buttons" style="display:none; margin-top: 20px;">
-                <a href="' . $home_url . '" class="button button-primary" target="_blank">Visit Website</a>
-                <a href="' . $admin_url . '" class="button button-secondary">Back to Demos</a>
-            </div>';
-
-  echo '
+            <div id="bp-demo-final-buttons" class="bp-demo-final-actions" style="display:none;">
+                <a href="' . $admin_url . '" class="button button-secondary">' . esc_html__('Back to demos', 'one') . '</a>
+                <a href="' . $home_url . '" class="button button-primary" target="_blank" rel="noopener noreferrer">' . esc_html__('Visit website', 'one') . '</a>
+            </div>
         </div>
     </div>';
 
-
-  echo "
-    <section class='one-core-demo-banner'>
-      <h3 class='one-core-demo-banner__title'>One Core Demo</h3>
-      <p class='one-core-demo-banner__meta'>Import core structure and essential plugins first.</p>
-      <button id='start-demo-import' class='button button-primary'>Import</button>
-    </section>
-  ";
+  echo '<section class="one-core-demo-banner">
+      <div class="one-core-demo-banner__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 3v11"/><path d="m8 10 4 4 4-4"/><path d="M5 15.5V20h14v-4.5"/></svg>
+      </div>
+      <div class="one-core-demo-banner__copy">
+        <h3 class="one-core-demo-banner__title">' . esc_html__('One starter content', 'one') . '</h3>
+        <p class="one-core-demo-banner__meta">' . esc_html__('Import the core structure, menus, widgets, and only the integrations you select.', 'one') . '</p>
+      </div>
+      <button id="start-demo-import" class="button button-primary">' . esc_html__('Choose content', 'one') . '</button>
+    </section>';
 }
-
 
 
 // 3. AJAX Endpoints
