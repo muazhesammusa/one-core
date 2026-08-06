@@ -12,6 +12,7 @@ The One theme is the licensing owner. One Core is an entitlement consumer only.
 - Phase 5: Native Theme Updater / no Core ownership [complete]
 - Phase 6: Remaining Core-side Legacy Assumption Cleanup [complete]
 - Phase 7: Licensed and Unlicensed Compatibility QA [complete]
+- Phase 8: Production License Go-Live Integration / no Core ownership [complete]
 
 ## Permanent boundary
 
@@ -27,6 +28,6 @@ Status: [complete]
 - On macOS, a successful `npm run build:zip` opens the output folder in Finder.
 
 
-## Live deployment dependencies
+## Production go-live integration
 
-Implementation is complete in One Theme and One Core. Production activation and update delivery still require the licensing server to have an active `one` product profile, the correct Envato item mapping, an Ed25519 public key bundled through `ONE_LICENSE_PUBLIC_KEYS`, and theme-compatible release publishing for `one/style.css` packages.
+Phase 8 preserves the permanent boundary: One Core remains an entitlement consumer only. Release and source-handoff builders exclude generated `release/` and `temp/` trees, and One Core does not receive product keys, API transport, entitlement verification, or update ownership.

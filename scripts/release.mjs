@@ -102,6 +102,7 @@ function shouldExclude(relPath) {
   const excludedNames = new Set([
     'dist',
     'release',
+    'temp',
     'scripts',
     'tests',
     '.ai',
@@ -123,7 +124,7 @@ function shouldExclude(relPath) {
   ]);
   if (excludedNames.has(base)) return true;
 
-  const excludedPrefixes = ['dist/', 'release/', 'scripts/', 'tests/', '.ai/', 'node_modules/', '.git/', '.github/', '.idea/', '.vscode/'];
+  const excludedPrefixes = ['dist/', 'release/', 'temp/', 'scripts/', 'tests/', '.ai/', 'node_modules/', '.git/', '.github/', '.idea/', '.vscode/'];
   if (excludedPrefixes.some((prefix) => p.startsWith(prefix))) return true;
   if (base.endsWith('.log')) return true;
   if (base.endsWith('.map')) return true;

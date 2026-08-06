@@ -71,3 +71,4 @@ build/
 .zip
 .map
 **/*.map
+temp/
