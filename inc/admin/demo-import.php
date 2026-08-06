@@ -138,8 +138,8 @@ add_action('wp_ajax_bp_demo_import_step', function () {
       case 'import_users':
         bp_demo_import_users();
         break;
-      case 'enable_groups_component':
-        bp_demo_enable_groups_component_properly();
+      case 'configure_buddypress':
+        $response = bp_demo_configure_buddypress();
         break;
       case 'import_groups':
         bp_demo_import_groups();
@@ -1067,33 +1067,53 @@ function bp_demo_import_blog_posts()
 
   // echo '<div class="notice notice-success"><p>Demo blog posts (with featured images) imported successfully!</p></div>';
 }
-function bp_demo_enable_groups_component_properly()
+function bp_demo_configure_buddypress()
 {
-  // Load BuddyPress global
-  $bp = buddypress();
+  if (!function_exists('buddypress')) {
+    throw new Exception('BuddyPress is not available.');
+  }
 
-  // Load upgrade and schema functions
+  $bp = buddypress();
+  if (empty($bp->plugin_dir)) {
+    throw new Exception('BuddyPress could not be initialized.');
+  }
+
   require_once ABSPATH . 'wp-admin/includes/upgrade.php';
   require_once $bp->plugin_dir . '/bp-core/admin/bp-core-admin-schema.php';
 
-  // Clone existing components and add 'groups'
-  $submitted = get_option('bp-active-components', []);
-  if (!isset($submitted['groups'])) {
-    $submitted['groups'] = 1;
-
-    // Activate in BP
-    $bp->active_components = bp_core_admin_get_active_components_from_submitted_settings($submitted);
-
-    // Install schema and page mappings
-    bp_core_install($bp->active_components);
-    bp_core_add_page_mappings($bp->active_components);
-    bp_update_option('bp-active-components', $bp->active_components);
-
-    // Refresh permalinks
-    if (array_intersect_key($bp->active_components, bp_core_get_directory_page_ids('active'))) {
-      bp_delete_rewrite_rules();
-    }
+  $submitted = bp_get_option('bp-active-components', []);
+  if (!is_array($submitted)) {
+    $submitted = [];
   }
+
+  foreach (['groups', 'friends', 'messages'] as $component) {
+    $submitted[$component] = 1;
+  }
+
+  $active_components = bp_core_admin_get_active_components_from_submitted_settings($submitted);
+  $bp->active_components = $active_components;
+
+  bp_core_install($active_components);
+  bp_core_add_page_mappings($active_components);
+  bp_update_option('bp-active-components', $active_components);
+
+  bp_update_option('bp-enable-members-invitations', 1);
+  bp_update_option('bp-enable-membership-requests', 1);
+  bp_update_option('one_enable_user_profile_invitation', 1);
+
+  if (array_intersect_key($active_components, bp_core_get_directory_page_ids('active'))) {
+    bp_delete_rewrite_rules();
+  }
+
+  return [
+    'message' => 'BuddyPress community settings configured.',
+    'components' => ['groups', 'friends', 'messages'],
+    'options' => [
+      'bp-enable-members-invitations',
+      'bp-enable-membership-requests',
+      'one_enable_user_profile_invitation',
+    ],
+  ];
 }
 
 function bp_demo_import_groups()

@@ -85,7 +85,7 @@
       });
 
       if (selected.buddypress && !done.buddypress) {
-        steps.push({ step: 'enable_groups_component', payload: { label: 'Preparing BuddyPress…' } });
+        steps.push({ step: 'configure_buddypress', payload: { label: 'Configuring BuddyPress community…' } });
         steps.push({ step: 'import_activities', payload: { label: 'Importing BuddyPress activity…' } });
       }
 

@@ -20,6 +20,14 @@ $assertions = [
         && str_contains($importPhp, "'menus' => true")
         && str_contains($importPhp, "'buddypress' => true"),
     'bbPress remains optional and defaults off' => str_contains($importPhp, "'forums' => false"),
+    'BuddyPress setup runs before community content import' => str_contains($importPhp, "case 'configure_buddypress':")
+        && str_contains($importPhp, 'bp_demo_configure_buddypress()'),
+    'BuddyPress community components are activated' => str_contains($importPhp, "['groups', 'friends', 'messages']"),
+    'BuddyPress community options are activated' => str_contains($importPhp, "bp_update_option('bp-enable-members-invitations', 1)")
+        && str_contains($importPhp, "bp_update_option('bp-enable-membership-requests', 1)")
+        && str_contains($importPhp, "bp_update_option('one_enable_user_profile_invitation', 1)"),
+    'legacy groups-only setup step removed' => !str_contains($importPhp, "case 'enable_groups_component':")
+        && !str_contains($importPhp, 'bp_demo_enable_groups_component_properly'),
     'unsupported integrations removed from importer config' => !str_contains($importPhp, "'events' =>")
         && !str_contains($importPhp, "'woocommerce' =>")
         && !str_contains($importPhp, "'directory' =>")

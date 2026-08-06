@@ -78,7 +78,7 @@ jQuery(document).ready(function ($) {
           if (step === 'import_customizer') done.customizer = true;
           if (step === 'import_menus') done.menus = true;
           if (step === 'import_forums') done.forums = true;
-          if (step === 'enable_groups_component' || step === 'import_activities') done.buddypress = true;
+          if (step === 'configure_buddypress' || step === 'import_activities') done.buddypress = true;
           localStorage.setItem('one_demo_done', JSON.stringify(done));
         } catch(e){}
       } else {
