@@ -17,20 +17,13 @@
   ];
 
   function Toggle({ checked, disabled, onChange }) {
-    const base = 'relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200';
-    const stateClass = checked ? 'bg-blue-600' : 'bg-gray-300';
-
     return h('button', {
       type: 'button',
       disabled: !!disabled,
       onClick: () => { if (!disabled) onChange(!checked); },
-      className: `${base} ${stateClass}${disabled ? ' opacity-60 cursor-not-allowed' : ''}`,
+      className: `one-demo-toggle${checked ? ' is-active' : ''}${disabled ? ' is-disabled' : ''}`,
       'aria-pressed': checked ? 'true' : 'false',
-    },
-      h('span', {
-        className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ${checked ? 'translate-x-6' : 'translate-x-1'}`,
-      })
-    );
+    }, h('span', { className: 'one-demo-toggle__thumb' }));
   }
 
   function App() {
@@ -86,7 +79,6 @@
 
       if (selected.buddypress && !done.buddypress) {
         steps.push({ step: 'configure_buddypress', payload: { label: 'Configuring BuddyPress community…' } });
-        steps.push({ step: 'import_activities', payload: { label: 'Importing BuddyPress activity…' } });
       }
 
       if (selected.customizer && !done.customizer) {
@@ -107,51 +99,49 @@
       window.ONE_DEMO_SELECTED_STEPS = steps;
     }, [selected, done]);
 
-    return h('div', { className: 'p-0' },
-      h('div', { className: 'space-y-4' },
-        h('div', { className: 'flex items-center justify-between mb-4' },
-          h('h3', { className: 'text-lg font-semibold' }, 'Select what to import'),
-          h('button', {
-            type: 'button',
-            onClick: () => {
-              localStorage.removeItem('one_demo_done');
-              window.location.reload();
-            },
-            className: 'px-3 py-1 text-sm text-red-600 bg-red-50 border border-red-200 rounded hover:bg-red-100 transition-colors',
-          }, 'Reset Import Status')
-        ),
-        h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-3' },
-          OPTIONS.map((option) => {
-            const disabled = !!option.locked;
-            return h('div', {
-              key: option.key,
-              className: `flex items-center justify-between gap-3 rounded-lg border border-gray-200 px-3 py-2 hover:border-blue-400 transition-colors${disabled ? ' opacity-60' : ''}`,
-            },
-              h('div', { className: 'flex items-center gap-2' },
-                h('div', { className: 'h-8 w-8 flex items-center justify-center rounded-md bg-gray-100 text-gray-600' }, option.label.charAt(0)),
-                h('div', null,
-                  h('div', { className: 'font-medium' }, option.label),
-                  done[option.key]
-                    ? h('div', { className: 'text-xs text-green-600 flex items-center gap-1' },
-                        h('span', { className: 'inline-block h-2 w-2 bg-green-500 rounded-full' }),
-                        'Imported'
+    return h('div', { className: 'one-demo-selector' },
+      h('div', { className: 'one-demo-selector__header' },
+        h('h3', null, 'Select what to import'),
+        h('button', {
+          type: 'button',
+          onClick: () => {
+            localStorage.removeItem('one_demo_done');
+            window.location.reload();
+          },
+          className: 'one-demo-reset',
+        }, 'Reset Import Status')
+      ),
+      h('div', { className: 'one-demo-options' },
+        OPTIONS.map((option) => {
+          const disabled = !!option.locked;
+          return h('div', {
+            key: option.key,
+            className: `one-demo-option${disabled ? ' is-locked' : ''}`,
+          },
+            h('div', { className: 'one-demo-option__main' },
+              h('div', { className: 'one-demo-option__icon', 'aria-hidden': 'true' }, option.label.charAt(0)),
+              h('div', { className: 'one-demo-option__copy' },
+                h('strong', null, option.label),
+                done[option.key]
+                  ? h('span', { className: 'one-demo-option__meta is-done' },
+                      h('i', { 'aria-hidden': 'true' }),
+                      'Imported'
+                    )
+                  : disabled
+                    ? h('span', { className: 'one-demo-option__meta' },
+                        h('i', { 'aria-hidden': 'true' }),
+                        'Required'
                       )
-                    : disabled
-                      ? h('div', { className: 'text-xs text-gray-500 flex items-center gap-1' },
-                          h('span', { className: 'inline-block h-2 w-2 bg-gray-400 rounded-full' }),
-                          'Required'
-                        )
-                      : h('div', { className: 'text-xs text-gray-500' }, 'Optional')
-                )
-              ),
-              h(Toggle, {
-                checked: !!selected[option.key],
-                disabled,
-                onChange: () => toggle(option.key),
-              })
-            );
-          })
-        )
+                    : h('span', { className: 'one-demo-option__meta' }, 'Optional')
+              )
+            ),
+            h(Toggle, {
+              checked: !!selected[option.key],
+              disabled,
+              onChange: () => toggle(option.key),
+            })
+          );
+        })
       )
     );
   }

@@ -6,11 +6,14 @@ $root = dirname(__DIR__);
 $importPhp = file_get_contents($root . '/inc/admin/demo-import.php');
 $importCss = file_get_contents($root . '/inc/admin/demo-import.css');
 $importJs = file_get_contents($root . '/inc/admin/demo-import.js');
+$importUiJs = file_get_contents($root . '/inc/admin/demo-import-ui.js');
 $package = json_decode((string) file_get_contents($root . '/package.json'), true);
 
 $assertions = [
     'demo import source readable' => is_string($importPhp),
     'demo import stylesheet readable' => is_string($importCss),
+    'demo import runtime readable' => is_string($importJs),
+    'demo option UI readable' => is_string($importUiJs),
     'demo assets scoped to importer page' => str_contains($importPhp, "'one' !== \$page || 'importer' !== \$tab"),
     'demo card uses modern shell' => str_contains($importPhp, 'one-core-demo-banner__icon') && str_contains($importPhp, 'one-core-demo-banner__copy'),
     'demo modal has structured heading' => str_contains($importPhp, 'bp-demo-modal-heading'),
@@ -21,22 +24,39 @@ $assertions = [
         && str_contains($importPhp, "'menus' => true")
         && str_contains($importPhp, "'buddypress' => true"),
     'bbPress remains optional and defaults off' => str_contains($importPhp, "'forums' => false"),
-    'BuddyPress setup runs before community content import' => str_contains($importPhp, "case 'configure_buddypress':")
+    'BuddyPress setup is available as a dedicated step' => str_contains($importPhp, "case 'configure_buddypress':")
         && str_contains($importPhp, 'bp_demo_configure_buddypress()'),
+    'BuddyPress activation redirect is suppressed for importer AJAX' => str_contains($importPhp, "pre_transient__bp_activation_redirect")
+        && str_contains($importPhp, "remove_action('bp_admin_init', 'bp_do_activation_redirect', 1)")
+        && str_contains($importPhp, "header_remove('Location')")
+        && str_contains($importPhp, "page=bp-components"),
+    'importer assets use file modification cache versions' => str_contains($importPhp, 'filemtime($worker_path)')
+        && str_contains($importPhp, 'filemtime($ui_path)')
+        && str_contains($importPhp, 'filemtime($style_path)'),
+    'BuddyPress admin form helper is not used by AJAX' => !str_contains($importPhp, 'bp_core_admin_get_active_components_from_submitted_settings'),
     'BuddyPress community components are activated' => str_contains($importPhp, "['groups', 'friends', 'messages']"),
-    'BuddyPress AJAX setup avoids admin-screen-only helper' => !str_contains($importPhp, 'bp_core_admin_get_active_components_from_submitted_settings')
-        && str_contains($importPhp, "bp_get_option('bp-active-components', [])")
-        && str_contains($importPhp, '$active_components[$component] = 1'),
-    'demo AJAX handler returns JSON for runtime errors' => str_contains($importPhp, 'catch (Throwable $e)')
-        && str_contains($importPhp, "'one_demo_import_step_failed'")
-        && str_contains($importPhp, '], 500);'),
-    'import pipeline stops after failed step' => is_string($importJs)
-        && str_contains($importJs, 'function stopImport(message)')
-        && str_contains($importJs, 'stopImport(`Import stopped: ${msg}`)')
-        && !str_contains($importJs, 'showMessage(`AJAX error: ${error}`, true)'),
+    'BuddyPress full schema install is not run during AJAX' => !str_contains($importPhp, 'bp_core_install($active_components)')
+        && str_contains($importPhp, "'bp_core_install_friends'")
+        && str_contains($importPhp, "'bp_core_install_private_messaging'")
+        && str_contains($importPhp, 'one_demo_database_table_exists'),
+    'missing activity dataset is not scheduled' => !str_contains($importUiJs, "step: 'import_activities'")
+        && !str_contains($importPhp, "case 'import_activities':"),
+    'Customizer mods are written in one option update' => str_contains($importPhp, "update_option('theme_mods_' . get_option('stylesheet')")
+        && str_contains($importPhp, '$merged_mods')
+        && !str_contains($importPhp, 'foreach ($mods as $mod => $val)'),
+    'Custom CSS import does not echo into AJAX' => str_contains($importPhp, 'wp_update_custom_css_post')
+        && !str_contains($importPhp, 'Custom CSS post created with ID'),
     'BuddyPress community options are activated' => str_contains($importPhp, "bp_update_option('bp-enable-members-invitations', 1)")
         && str_contains($importPhp, "bp_update_option('bp-enable-membership-requests', 1)")
         && str_contains($importPhp, "bp_update_option('one_enable_user_profile_invitation', 1)"),
+    'AJAX catches PHP errors as JSON' => str_contains($importPhp, 'catch (Throwable $e)'),
+    'importer stops after server or transport failure' => str_contains($importJs, 'stopImport(responseMessage')
+        && str_contains($importJs, 'ajaxFailureMessage(xhr, status, error)')
+        && str_contains($importJs, 'stopImport(`${step}:' )
+        && !str_contains($importJs, 'setTimeout(runNextStep, 800)'),
+    'runtime Tailwind CDN dependency removed' => !str_contains($importPhp, 'cdn.tailwindcss.com')
+        && !str_contains($importUiJs, 'grid-cols-')
+        && str_contains($importCss, '.one-demo-options'),
     'legacy groups-only setup step removed' => !str_contains($importPhp, "case 'enable_groups_component':")
         && !str_contains($importPhp, 'bp_demo_enable_groups_component_properly'),
     'unsupported integrations removed from importer config' => !str_contains($importPhp, "'events' =>")

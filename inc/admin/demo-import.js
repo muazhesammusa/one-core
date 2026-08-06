@@ -26,26 +26,50 @@ jQuery(document).ready(function ($) {
   function showMessage(message, isError = false, showCheckmark = false) {
     let icon = '';
     if (showCheckmark) {
-      icon = '<span style="display: inline-block; width: 16px; height: 16px; border-radius: 50%; background: #00a32a; color: white; text-align: center; line-height: 16px; font-size: 12px; margin-right: 8px; vertical-align: -2px;">✓</span>';
-    } else {
+      icon = '<span class="one-demo-status-icon one-demo-status-icon--success">✓</span>';
+    } else if (!isError) {
       icon = '<span class="one-inline-spinner"></span>';
     }
-    logEl.html(icon + $('<div>').text(message).html());
-    logEl.css('color', isError ? 'red' : '');
+
+    logEl.html(icon + $('<span>').text(message).prop('outerHTML'));
+    logEl.toggleClass('is-error', !!isError);
   }
 
   function updateProgress() {
-    const percent = ((currentStep + 1) / steps.length) * 100;
-    barEl.css('width', percent + '%');
+    const percent = steps.length > 0 ? ((currentStep + 1) / steps.length) * 100 : 0;
+    barEl.css('width', Math.min(100, percent) + '%');
+  }
+
+  function responseMessage(response, fallback) {
+    if (response && response.data && typeof response.data.message === 'string') {
+      return response.data.message;
+    }
+    return fallback;
   }
 
   function stopImport(message) {
-    showMessage(message, true);
+    cancelled = true;
+    showMessage(`Import stopped: ${message}`, true);
     loader.hide();
     startBtn.show();
+    startBtn.prop('disabled', false);
     $('#bp-cancel-import').show();
-    finalBtns.hide();
-    cancelled = true;
+  }
+
+  function ajaxFailureMessage(xhr, status, error) {
+    if (xhr && xhr.responseJSON) {
+      return responseMessage(xhr.responseJSON, error || status || 'Request failed.');
+    }
+
+    const contentType = xhr && typeof xhr.getResponseHeader === 'function'
+      ? (xhr.getResponseHeader('content-type') || '')
+      : '';
+
+    if (contentType.indexOf('text/html') !== -1 || /^\s*</.test((xhr && xhr.responseText) || '')) {
+      return 'The server returned an HTML page instead of JSON. Reload this page and try again.';
+    }
+
+    return error || status || 'Request failed.';
   }
 
   function runNextStep() {
@@ -79,31 +103,35 @@ jQuery(document).ready(function ($) {
       data: Object.assign({ action: 'bp_demo_import_step', step: step, _wpnonce: BPDemoSteps.nonce }, payload)
     })
     .done(function (response) {
-      if (response.success) {
-        showMessage(label);
-        // mark step as done for idempotency in UI (rough mapping by step name)
-        try {
-          const done = JSON.parse(localStorage.getItem('one_demo_done') || '{}');
-          if (step === 'import_customizer') done.customizer = true;
-          if (step === 'import_menus') done.menus = true;
-          if (step === 'import_forums') done.forums = true;
-          if (step === 'configure_buddypress' || step === 'import_activities') done.buddypress = true;
-          localStorage.setItem('one_demo_done', JSON.stringify(done));
-        } catch(e){}
-      } else {
-        const msg = response.data?.message || 'Unknown error';
-        stopImport(`Import stopped: ${msg}`);
+      if (!response || response.success !== true) {
+        stopImport(responseMessage(response, 'Unknown server error.'));
         return;
       }
+
+      showMessage(label);
+      try {
+        const done = JSON.parse(localStorage.getItem('one_demo_done') || '{}');
+        if (step === 'import_customizer') done.customizer = true;
+        if (step === 'import_menus') done.menus = true;
+        if (step === 'import_forums') done.forums = true;
+        if (step === 'configure_buddypress') done.buddypress = true;
+        localStorage.setItem('one_demo_done', JSON.stringify(done));
+      } catch (error) {
+        // Browser storage is optional and must not block the importer.
+      }
+
       updateProgress();
       currentStep++;
-      setTimeout(runNextStep, 800); // smoother transition
+      setTimeout(runNextStep, 450);
     })
     .fail(function (xhr, status, error) {
-      console.error('AJAX failed:', error, xhr.responseText);
-      const jsonMessage = xhr.responseJSON?.data?.message;
-      const fallback = error || status || 'Request failed';
-      stopImport(`Import stopped: ${jsonMessage || fallback}`);
+      console.error('Demo import AJAX failed:', {
+        status,
+        error,
+        httpStatus: xhr ? xhr.status : 0,
+        response: xhr ? xhr.responseText : '',
+      });
+      stopImport(`${step}: ${ajaxFailureMessage(xhr, status, error)}`);
     });
   }
 
@@ -125,17 +153,22 @@ jQuery(document).ready(function ($) {
 
   startBtn.on('click', function () {
     loader.show();
-    startBtn.hide();
-    // keep cancel visible during import as a close button only
+    startBtn.hide().prop('disabled', true);
     cancelled = false;
     currentStep = 0;
     progressEl.show();
-    logEl.text('');
+    logEl.text('').removeClass('is-error');
     barEl.css('width', '0');
-    // Pick up selected steps from UI
+
     if (Array.isArray(window.ONE_DEMO_SELECTED_STEPS)) {
       steps = window.ONE_DEMO_SELECTED_STEPS;
     }
+
+    if (!Array.isArray(steps) || steps.length === 0) {
+      stopImport('No import steps are available. Reload this page and try again.');
+      return;
+    }
+
     runNextStep();
   });
 
@@ -143,9 +176,9 @@ jQuery(document).ready(function ($) {
     cancelled = true;
     modal.fadeOut();
     loader.hide();
-    startBtn.show();
+    startBtn.show().prop('disabled', false);
     $('#bp-cancel-import').show();
-    logEl.text('');
+    logEl.text('').removeClass('is-error');
     progressEl.hide();
     barEl.css('width', '0');
   });

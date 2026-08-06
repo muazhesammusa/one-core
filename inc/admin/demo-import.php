@@ -6,6 +6,73 @@ if (!function_exists('is_plugin_active')) {
   require_once ABSPATH . 'wp-admin/includes/plugin.php';
 }
 
+/**
+ * Whether the current request is a One demo-import AJAX step.
+ */
+function one_demo_is_import_ajax_request()
+{
+  if (!wp_doing_ajax()) {
+    return false;
+  }
+
+  $action = isset($_REQUEST['action']) ? sanitize_key(wp_unslash($_REQUEST['action'])) : '';
+  return 'bp_demo_import_step' === $action;
+}
+
+/**
+ * Remove every BuddyPress post-activation redirect path for importer AJAX.
+ *
+ * BuddyPress can register its redirect before One Core, and the callback may leave a
+ * Location header on the AJAX response even when execution continues. Suppress the
+ * transient, detach the callback, and clear any already-created redirect header.
+ */
+function one_demo_suppress_buddypress_activation_redirect()
+{
+  if (!one_demo_is_import_ajax_request()) {
+    return;
+  }
+
+  delete_transient('_bp_activation_redirect');
+  delete_site_transient('_bp_activation_redirect');
+
+  remove_action('bp_admin_init', 'bp_do_activation_redirect', 1);
+  remove_action('admin_init', 'bp_do_activation_redirect', 1);
+
+  if (function_exists('header_remove') && !headers_sent()) {
+    header_remove('Location');
+  }
+}
+
+// Make BuddyPress believe no activation redirect exists during importer requests.
+add_filter('pre_transient__bp_activation_redirect', function ($pre) {
+  return one_demo_is_import_ajax_request() ? false : $pre;
+}, PHP_INT_MIN);
+
+add_filter('pre_site_transient__bp_activation_redirect', function ($pre) {
+  return one_demo_is_import_ajax_request() ? false : $pre;
+}, PHP_INT_MIN);
+
+// Detach BuddyPress' redirect callback after every plugin has registered its hooks.
+add_action('plugins_loaded', 'one_demo_suppress_buddypress_activation_redirect', PHP_INT_MAX);
+add_action('admin_init', 'one_demo_suppress_buddypress_activation_redirect', PHP_INT_MIN);
+add_action('bp_admin_init', 'one_demo_suppress_buddypress_activation_redirect', PHP_INT_MIN);
+
+// Block only BuddyPress onboarding/component redirects during importer AJAX.
+add_filter('wp_redirect', function ($location) {
+  if (!one_demo_is_import_ajax_request()) {
+    return $location;
+  }
+
+  $candidate = html_entity_decode((string) $location, ENT_QUOTES, 'UTF-8');
+  foreach (['page=bp-components', 'page=bp-about', 'page=bp-hello'] as $marker) {
+    if (false !== strpos($candidate, $marker)) {
+      return false;
+    }
+  }
+
+  return $location;
+}, PHP_INT_MIN);
+
 // 1. Enqueue JS + Modal Styles + Localize Steps
 add_action('admin_enqueue_scripts', function () {
   $page = isset($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : '';
@@ -15,8 +82,15 @@ add_action('admin_enqueue_scripts', function () {
   }
 
   $version = defined('WP_MF_CORE_VERSION') ? WP_MF_CORE_VERSION : null;
-  wp_enqueue_script('bp-demo-import', plugin_dir_url(__FILE__) . '/demo-import.js', ['jquery'], $version, true);
-  wp_enqueue_script('bp-demo-import-ui', plugin_dir_url(__FILE__) . '/demo-import-ui.js', ['wp-element', 'jquery'], $version, true);
+  $worker_path = __DIR__ . '/demo-import.js';
+  $ui_path = __DIR__ . '/demo-import-ui.js';
+  $style_path = __DIR__ . '/demo-import.css';
+  $worker_version = file_exists($worker_path) ? (string) filemtime($worker_path) : $version;
+  $ui_version = file_exists($ui_path) ? (string) filemtime($ui_path) : $version;
+  $style_version = file_exists($style_path) ? (string) filemtime($style_path) : $version;
+
+  wp_enqueue_script('bp-demo-import', plugin_dir_url(__FILE__) . '/demo-import.js', ['jquery'], $worker_version, true);
+  wp_enqueue_script('bp-demo-import-ui', plugin_dir_url(__FILE__) . '/demo-import-ui.js', ['wp-element', 'jquery'], $ui_version, true);
   // Check if this is a fresh install - more comprehensive check
   $posts_count = wp_count_posts('post')->publish + wp_count_posts('page')->publish;
   $users_count = count_users()['total_users'];
@@ -43,7 +117,7 @@ add_action('admin_enqueue_scripts', function () {
     ]
   ]);
 
-  wp_enqueue_style('bp-demo-import-style', plugin_dir_url(__FILE__) . '/demo-import.css', [], $version);
+  wp_enqueue_style('bp-demo-import-style', plugin_dir_url(__FILE__) . '/demo-import.css', [], $style_version);
 });
 
 // 2. Add Admin Page with Import Button + Modal Container
@@ -66,7 +140,6 @@ function bp_demo_import_page()
   echo '<div id="bp-demo-modal" class="bp-demo-modal" style="display:none;">
         <div class="bp-demo-modal-content">
             <button id="bp-close-import" type="button" class="bp-demo-modal-close" aria-label="' . esc_attr__('Close importer', 'one') . '">✕</button>
-            <script src="https://cdn.tailwindcss.com"></script>
             <div class="bp-demo-modal-heading">
               <span>' . esc_html__('Demo setup', 'one') . '</span>
               <h2>' . esc_html__('Choose what to import', 'one') . '</h2>
@@ -103,6 +176,8 @@ function bp_demo_import_page()
 
 // 3. AJAX Endpoints
 add_action('wp_ajax_bp_demo_import_step', function () {
+  one_demo_suppress_buddypress_activation_redirect();
+
   if ( ! current_user_can( 'manage_options' ) ) {
     wp_send_json_error( [ 'message' => 'Unauthorized' ], 403 );
   }
@@ -133,7 +208,7 @@ add_action('wp_ajax_bp_demo_import_step', function () {
         bp_demo_setup_activity_home();
         break;
       case 'import_pages':
-        bp_demo_import_pages();
+        $response = bp_demo_import_pages();
         break;
       case 'import_users':
         bp_demo_import_users();
@@ -143,9 +218,6 @@ add_action('wp_ajax_bp_demo_import_step', function () {
         break;
       case 'import_groups':
         bp_demo_import_groups();
-        break;
-      case 'import_activities':
-        bp_demo_import_activities();
         break;
       case 'import_widgets':
         bp_demo_import_widgets_from_wie();
@@ -160,11 +232,15 @@ add_action('wp_ajax_bp_demo_import_step', function () {
         bp_demo_import_blog_posts();
         break;
       case 'import_forums':
-        bp_demo_import_forums();
+        $response = bp_demo_import_forums();
         break;
 
       default:
         throw new Exception('Invalid step.');
+    }
+
+    if (is_array($response) && array_key_exists('success', $response) && false === $response['success']) {
+      throw new RuntimeException((string)($response['message'] ?? 'The import step failed.'));
     }
 
     $extra_output = '';
@@ -179,6 +255,7 @@ add_action('wp_ajax_bp_demo_import_step', function () {
       $response = ['message' => ucfirst(str_replace('_', ' ', $step)) . ' complete.'];
     }
 
+    one_demo_suppress_buddypress_activation_redirect();
     wp_send_json_success($response);
   } catch (Throwable $e) {
     $extra_output = '';
@@ -190,16 +267,14 @@ add_action('wp_ajax_bp_demo_import_step', function () {
     }
 
     error_log(sprintf(
-      'bp_demo_import_step failed [%s]: %s in %s:%d',
-      $step,
-      $e->getMessage(),
-      $e->getFile(),
-      $e->getLine()
+      'bp_demo_import_step failed: step=%s error=%s',
+      $step !== '' ? $step : 'unknown',
+      $e->getMessage()
     ));
 
+    one_demo_suppress_buddypress_activation_redirect();
     wp_send_json_error([
       'message' => $e->getMessage(),
-      'code' => 'one_demo_import_step_failed',
       'step' => $step,
     ], 500);
   }
@@ -644,7 +719,18 @@ function bp_demo_install_plugins($slugs = [])
   }
 
   if (!empty($to_activate)) {
-    activate_plugins($to_activate);
+    $activation_result = activate_plugins($to_activate);
+    if (is_wp_error($activation_result)) {
+      throw new RuntimeException($activation_result->get_error_message());
+    }
+  }
+
+  // BuddyPress schedules an admin redirect after activation. Programmatic imports
+  // must stay on admin-ajax.php, so consume the redirect before the next step.
+  if (in_array('buddypress', $slugs, true)) {
+    delete_transient('_bp_activation_redirect');
+    delete_site_transient('_bp_activation_redirect');
+    one_demo_suppress_buddypress_activation_redirect();
   }
 }
 
@@ -1079,9 +1165,22 @@ function bp_demo_import_blog_posts()
 
   // echo '<div class="notice notice-success"><p>Demo blog posts (with featured images) imported successfully!</p></div>';
 }
+function one_demo_database_table_exists($table_name)
+{
+  global $wpdb;
+
+  if (!$wpdb || !is_string($table_name) || '' === $table_name) {
+    return false;
+  }
+
+  return $table_name === $wpdb->get_var(
+    $wpdb->prepare('SHOW TABLES LIKE %s', $wpdb->esc_like($table_name))
+  );
+}
+
 function bp_demo_configure_buddypress()
 {
-  if (!function_exists('buddypress') || !function_exists('bp_get_option') || !function_exists('bp_update_option')) {
+  if (!function_exists('buddypress')) {
     throw new RuntimeException('BuddyPress is not available.');
   }
 
@@ -1095,32 +1194,87 @@ function bp_demo_configure_buddypress()
     $active_components = [];
   }
 
-  foreach (['groups', 'friends', 'messages'] as $component) {
+  $required_components = ['groups', 'friends', 'messages'];
+  foreach ($required_components as $component) {
     $active_components[$component] = 1;
   }
 
-  // Keep all existing components active for this request and persist only the
-  // requested additions. This avoids depending on BuddyPress admin-screen
-  // helpers that are not loaded during admin-ajax.php requests.
+  // Persist the component selection before installing only the tables that are
+  // actually missing. Running bp_core_install() here re-runs every BuddyPress
+  // schema, including invitations, and is unsafe inside a demo-import request.
   $bp->active_components = $active_components;
-
-  if (!function_exists('dbDelta')) {
-    require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-  }
-
-  $schema_file = trailingslashit($bp->plugin_dir) . 'bp-core/admin/bp-core-admin-schema.php';
-  if (!is_readable($schema_file)) {
-    throw new RuntimeException('BuddyPress database schema is not available.');
-  }
-  require_once $schema_file;
-
-  if (!function_exists('bp_core_install') || !function_exists('bp_core_add_page_mappings')) {
-    throw new RuntimeException('BuddyPress component setup functions are not available.');
-  }
-
-  bp_core_install($active_components);
-  bp_core_add_page_mappings($active_components);
   bp_update_option('bp-active-components', $active_components);
+
+  require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+  require_once trailingslashit($bp->plugin_dir) . 'bp-core/admin/bp-core-admin-schema.php';
+
+  global $wpdb;
+  $prefix = function_exists('bp_core_get_table_prefix')
+    ? bp_core_get_table_prefix()
+    : $wpdb->prefix;
+
+  $component_schemas = [
+    'groups' => [
+      'installer' => 'bp_core_install_groups',
+      'tables' => [
+        $prefix . 'bp_groups',
+        $prefix . 'bp_groups_members',
+        $prefix . 'bp_groups_groupmeta',
+      ],
+    ],
+    'friends' => [
+      'installer' => 'bp_core_install_friends',
+      'tables' => [$prefix . 'bp_friends'],
+    ],
+    'messages' => [
+      'installer' => 'bp_core_install_private_messaging',
+      'tables' => [
+        $prefix . 'bp_messages_messages',
+        $prefix . 'bp_messages_recipients',
+        $prefix . 'bp_messages_notices',
+        $prefix . 'bp_messages_meta',
+      ],
+    ],
+  ];
+
+  $installed_components = [];
+  foreach ($component_schemas as $component => $schema) {
+    $missing_table = false;
+    foreach ($schema['tables'] as $table_name) {
+      if (!one_demo_database_table_exists($table_name)) {
+        $missing_table = true;
+        break;
+      }
+    }
+
+    if (!$missing_table) {
+      continue;
+    }
+
+    if (!is_callable($schema['installer'])) {
+      throw new RuntimeException(sprintf(
+        'BuddyPress could not install the %s component tables.',
+        $component
+      ));
+    }
+
+    call_user_func($schema['installer']);
+
+    foreach ($schema['tables'] as $table_name) {
+      if (!one_demo_database_table_exists($table_name)) {
+        throw new RuntimeException(sprintf(
+          'BuddyPress did not create the required %s table.',
+          $component
+        ));
+      }
+    }
+
+    $installed_components[] = $component;
+  }
+
+  if (function_exists('bp_core_add_page_mappings')) {
+    bp_core_add_page_mappings($active_components);
+  }
 
   bp_update_option('bp-enable-members-invitations', 1);
   bp_update_option('bp-enable-membership-requests', 1);
@@ -1132,7 +1286,8 @@ function bp_demo_configure_buddypress()
 
   return [
     'message' => 'BuddyPress community settings configured.',
-    'components' => ['groups', 'friends', 'messages'],
+    'components' => $required_components,
+    'installed_component_schemas' => $installed_components,
     'options' => [
       'bp-enable-members-invitations',
       'bp-enable-membership-requests',
@@ -1269,9 +1424,17 @@ function bp_demo_import_customizer()
   }
 
   unset($mods['nav_menu_locations']);
-  foreach ($mods as $mod => $val) {
-    set_theme_mod($mod, $val);
+
+  $current_mods = get_theme_mods();
+  if (!is_array($current_mods)) {
+    $current_mods = [];
   }
+
+  // Theme mods live in one option. Writing hundreds of mods one-by-one forces
+  // WordPress to read, merge, serialize, and update the entire option hundreds
+  // of times and can exhaust memory on normal 256 MB hosting limits.
+  $merged_mods = array_replace($current_mods, $mods);
+  update_option('theme_mods_' . get_option('stylesheet'), $merged_mods);
 
   require_once ABSPATH . 'wp-admin/includes/file.php';
   require_once ABSPATH . 'wp-admin/includes/media.php';
@@ -1704,20 +1867,35 @@ function create_custom_css_post()
   }
   CSS;
 
-  $post_data = [
-    'post_title'    => 'Imported Custom CSS',
-    'post_content'  => $css_content,
-    'post_status'   => 'publish',
-    'post_type'     => 'custom_css',
-    'post_author'   => 1,
-  ];
+  if (function_exists('wp_update_custom_css_post')) {
+    $post = wp_update_custom_css_post($css_content, [
+      'stylesheet' => get_stylesheet(),
+    ]);
 
-  $post_id = wp_insert_post($post_data);
+    if (is_wp_error($post)) {
+      throw new RuntimeException('Failed to save Custom CSS: ' . $post->get_error_message());
+    }
 
-  if (!is_wp_error($post_id)) {
-    echo "Custom CSS post created with ID: {$post_id}";
-    set_theme_mod('custom_css_post_id', $post_id);
-  } else {
-    error_log('Failed to create custom_css post: ' . $post_id->get_error_message());
+    $post_id = $post instanceof WP_Post ? (int)$post->ID : 0;
+    if ($post_id > 0) {
+      set_theme_mod('custom_css_post_id', $post_id);
+    }
+
+    return $post_id;
   }
+
+  $post_id = wp_insert_post([
+    'post_title'   => 'Imported Custom CSS',
+    'post_content' => $css_content,
+    'post_status'  => 'publish',
+    'post_type'    => 'custom_css',
+    'post_author'  => get_current_user_id(),
+  ], true);
+
+  if (is_wp_error($post_id)) {
+    throw new RuntimeException('Failed to create Custom CSS: ' . $post_id->get_error_message());
+  }
+
+  set_theme_mod('custom_css_post_id', (int)$post_id);
+  return (int)$post_id;
 }
