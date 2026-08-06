@@ -79,22 +79,6 @@ jQuery(document).ready(function ($) {
           if (step === 'import_menus') done.menus = true;
           if (step === 'import_forums') done.forums = true;
           if (step === 'enable_groups_component' || step === 'import_activities') done.buddypress = true;
-          if (step === 'import_exported_demo') {
-            const sel = JSON.parse(localStorage.getItem('one_demo_selected') || '{}');
-            if (sel.courses) done.courses = true;
-            if (sel.directory) done.directory = true;
-            if (sel.events) done.events = true;
-            if (sel.woocommerce) done.woocommerce = true;
-            if (sel.job_manager) done.job_manager = true;
-          }
-          if (step === 'import_extension_demos') {
-            const sel = JSON.parse(localStorage.getItem('one_demo_selected') || '{}');
-            if (sel.courses) done.courses = true;
-            if (sel.directory) done.directory = true;
-            if (sel.events) done.events = true;
-            if (sel.woocommerce) done.woocommerce = true;
-            if (sel.job_manager) done.job_manager = true;
-          }
           localStorage.setItem('one_demo_done', JSON.stringify(done));
         } catch(e){}
       } else {

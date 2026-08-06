@@ -34,25 +34,12 @@ add_action('admin_enqueue_scripts', function () {
       'buddypress' => 'buddypress',
       'bbpress' => 'bbpress',
       'elementor' => 'elementor',
-      'events' => 'the-events-manager',
-      'woocommerce' => 'woocommerce',
-      'directory' => 'directorist',
-      'job_manager' => 'wp-job-manager',
-      'tutor' => 'tutor',
-      'pmp' => 'paid-memberships-pro',
     ],
     'defaults' => [
       'customizer' => true,
       'menus' => true,
       'buddypress' => true,
-      'courses' => false,
-      'directory' => false,
-      'events' => false,
-      'woocommerce' => false,
-      'job_manager' => false,
       'forums' => false,
-      'pmp' => false,
-      'media_pages' => false,
     ]
   ]);
 
@@ -83,7 +70,7 @@ function bp_demo_import_page()
             <div class="bp-demo-modal-heading">
               <span>' . esc_html__('Demo setup', 'one') . '</span>
               <h2>' . esc_html__('Choose what to import', 'one') . '</h2>
-              <p>' . esc_html__('Select the content and integrations you want. Existing imported items stay protected.', 'one') . '</p>
+              <p>' . esc_html__('Import the core community setup. BuddyPress is required and bbPress forums are optional.', 'one') . '</p>
             </div>
             <div id="one-demo-react-root"></div>
             <div id="bp-demo-log">
@@ -107,7 +94,7 @@ function bp_demo_import_page()
       </div>
       <div class="one-core-demo-banner__copy">
         <h3 class="one-core-demo-banner__title">' . esc_html__('One starter content', 'one') . '</h3>
-        <p class="one-core-demo-banner__meta">' . esc_html__('Import the core structure, menus, widgets, and only the integrations you select.', 'one') . '</p>
+        <p class="one-core-demo-banner__meta">' . esc_html__('Import the core structure, BuddyPress community content, menus, widgets, and optional bbPress forums.', 'one') . '</p>
       </div>
       <button id="start-demo-import" class="button button-primary">' . esc_html__('Choose content', 'one') . '</button>
     </section>';
@@ -142,39 +129,6 @@ add_action('wp_ajax_bp_demo_import_step', function () {
       case 'install_plugins':
         bp_demo_install_plugins($payload_slugs);
         break;
-      case 'import_exported_demo':
-        // Import exported demo JSON based on a provided path and section keys
-        $path = isset($_POST['path']) ? sanitize_text_field($_POST['path']) : '';
-        $sections = isset($_POST['sections']) && is_array($_POST['sections']) ? array_map('sanitize_key', $_POST['sections']) : [];
-        if (empty($path)) throw new Exception('Missing demo file path');
-        require_once __DIR__ . '/one-extension-export.php';
-        $map = [];
-        foreach ($sections as $k) { $map[$k] = true; }
-        $count = One_Extension_Export::import_from_file($path, $map);
-        $response = ['message' => 'Demo data imported (' . intval($count) . ' items).'];
-        break;
-      case 'import_extension_demos':
-        // Import demo content for Tutor LMS, Directorist, WP Events, WooCommerce, and WP Job Manager
-        require_once __DIR__ . '/one-extension-export.php';
-        $results = [];
-        $results['tutor_lms'] = One_Extension_Export::import_tutor_demo_content();
-        $results['directorist'] = One_Extension_Export::import_directorist_demo_content();
-        $results['events'] = One_Extension_Export::import_events_demo_content();
-        $results['woocommerce'] = One_Extension_Export::import_woocommerce_demo_content();
-        $results['wp_job_manager'] = One_Extension_Export::import_wp_job_manager_demo_content();
-        
-        $total_created = 0;
-        foreach ($results as $plugin => $count) {
-          if (is_numeric($count)) {
-            $total_created += $count;
-          }
-        }
-        
-        $response = [
-          'message' => 'Extension demo content imported successfully (' . $total_created . ' items created).',
-          'results' => $results
-        ];
-        break;
       case 'setup_homepage':
         bp_demo_setup_activity_home();
         break;
@@ -208,11 +162,6 @@ add_action('wp_ajax_bp_demo_import_step', function () {
       case 'import_forums':
         bp_demo_import_forums();
         break;
-
-      case 'create_media_pages':
-        bp_demo_create_media_pages();
-        break;
-
 
       default:
         throw new Exception('Invalid step.');
@@ -1726,78 +1675,4 @@ function create_custom_css_post()
   } else {
     error_log('Failed to create custom_css post: ' . $post_id->get_error_message());
   }
-}
-
-/**
- * Create media pages (Photos, Videos, Documents) with specific templates
- */
-function bp_demo_create_media_pages() {
-  $media_pages = [
-    [
-      'title' => 'Photos',
-      'slug' => 'photos',
-      'template' => 'page-images.php',
-      'content' => 'This is the Photos page where users can view and manage their photo galleries.'
-    ],
-    [
-      'title' => 'Videos',
-      'slug' => 'videos',
-      'template' => 'page-videos.php',
-      'content' => 'This is the Videos page where users can view and manage their video collections.'
-    ],
-    [
-      'title' => 'Documents',
-      'slug' => 'documents',
-      'template' => 'page-documents.php',
-      'content' => 'This is the Documents page where users can view and manage their document files.'
-    ]
-  ];
-
-  $created_pages = [];
-  
-  foreach ($media_pages as $page_data) {
-    // Check if page already exists
-    $existing_page = get_page_by_path($page_data['slug']);
-    
-    if ($existing_page) {
-      $created_pages[] = [
-        'title' => $page_data['title'],
-        'id' => $existing_page->ID,
-        'status' => 'already_exists'
-      ];
-      continue;
-    }
-
-    // Create the page
-    $page_id = wp_insert_post([
-      'post_title' => $page_data['title'],
-      'post_name' => $page_data['slug'],
-      'post_content' => $page_data['content'],
-      'post_status' => 'publish',
-      'post_type' => 'page',
-      'post_author' => 1,
-      'comment_status' => 'closed',
-      'ping_status' => 'closed'
-    ]);
-
-    if (!is_wp_error($page_id)) {
-      // Set the page template
-      update_post_meta($page_id, '_wp_page_template', $page_data['template']);
-      
-      $created_pages[] = [
-        'title' => $page_data['title'],
-        'id' => $page_id,
-        'status' => 'created',
-        'url' => get_permalink($page_id)
-      ];
-    } else {
-      $created_pages[] = [
-        'title' => $page_data['title'],
-        'status' => 'failed',
-        'error' => $page_id->get_error_message()
-      ];
-    }
-  }
-
-  return $created_pages;
 }

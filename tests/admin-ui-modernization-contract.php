@@ -19,14 +19,17 @@ $assertions = [
     'required import options default on' => str_contains($importPhp, "'customizer' => true")
         && str_contains($importPhp, "'menus' => true")
         && str_contains($importPhp, "'buddypress' => true"),
-    'optional import options default off' => str_contains($importPhp, "'courses' => false")
-        && str_contains($importPhp, "'directory' => false")
-        && str_contains($importPhp, "'events' => false")
-        && str_contains($importPhp, "'woocommerce' => false")
-        && str_contains($importPhp, "'job_manager' => false")
-        && str_contains($importPhp, "'forums' => false")
-        && str_contains($importPhp, "'pmp' => false")
-        && str_contains($importPhp, "'media_pages' => false"),
+    'bbPress remains optional and defaults off' => str_contains($importPhp, "'forums' => false"),
+    'unsupported integrations removed from importer config' => !str_contains($importPhp, "'events' =>")
+        && !str_contains($importPhp, "'woocommerce' =>")
+        && !str_contains($importPhp, "'directory' =>")
+        && !str_contains($importPhp, "'job_manager' =>")
+        && !str_contains($importPhp, "'courses' =>")
+        && !str_contains($importPhp, "'pmp' =>")
+        && !str_contains($importPhp, "'media_pages' =>"),
+    'extension demo routes removed' => !str_contains($importPhp, "case 'import_exported_demo':")
+        && !str_contains($importPhp, "case 'import_extension_demos':")
+        && !str_contains($importPhp, "case 'create_media_pages':"),
     'modal css has modern overlay' => str_contains($importCss, 'backdrop-filter: blur(6px)') && str_contains($importCss, 'box-shadow: 0 36px 100px'),
     'demo card css is responsive' => str_contains($importCss, '@media (max-width: 782px)') && str_contains($importCss, '.one-core-demo-banner'),
     'test command includes contract' => isset($package['scripts']['test']) && str_contains($package['scripts']['test'], 'admin-ui-modernization-contract.php'),
