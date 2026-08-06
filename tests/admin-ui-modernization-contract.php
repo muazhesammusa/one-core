@@ -16,6 +16,17 @@ $assertions = [
     'demo modal close has no positional inline style' => str_contains($importPhp, 'class="bp-demo-modal-close"') && !str_contains($importPhp, 'style="position:absolute;right:12px;top:12px;"'),
     'license-required state uses shared action primitive' => str_contains($importPhp, 'one-admin-button one-admin-button--primary'),
     'canonical One admin URL used' => str_contains($importPhp, "themes.php?page=one&tab=license") && str_contains($importPhp, "themes.php?page=one&tab=importer"),
+    'required import options default on' => str_contains($importPhp, "'customizer' => true")
+        && str_contains($importPhp, "'menus' => true")
+        && str_contains($importPhp, "'buddypress' => true"),
+    'optional import options default off' => str_contains($importPhp, "'courses' => false")
+        && str_contains($importPhp, "'directory' => false")
+        && str_contains($importPhp, "'events' => false")
+        && str_contains($importPhp, "'woocommerce' => false")
+        && str_contains($importPhp, "'job_manager' => false")
+        && str_contains($importPhp, "'forums' => false")
+        && str_contains($importPhp, "'pmp' => false")
+        && str_contains($importPhp, "'media_pages' => false"),
     'modal css has modern overlay' => str_contains($importCss, 'backdrop-filter: blur(6px)') && str_contains($importCss, 'box-shadow: 0 36px 100px'),
     'demo card css is responsive' => str_contains($importCss, '@media (max-width: 782px)') && str_contains($importCss, '.one-core-demo-banner'),
     'test command includes contract' => isset($package['scripts']['test']) && str_contains($package['scripts']['test'], 'admin-ui-modernization-contract.php'),

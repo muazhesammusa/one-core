@@ -45,13 +45,14 @@ add_action('admin_enqueue_scripts', function () {
       'customizer' => true,
       'menus' => true,
       'buddypress' => true,
-      'courses' => !is_plugin_active('tutor/tutor.php'),
-      'directory' => !is_plugin_active('directorist/directorist.php'),
-      'events' => !is_plugin_active('the-events-manager/the-events-manager.php'),
-      'woocommerce' => !is_plugin_active('woocommerce/woocommerce.php'),
-      'job_manager' => !is_plugin_active('wp-job-manager/wp-job-manager.php'),
-      'forums' => !is_plugin_active('bbpress/bbpress.php'),
-      'pmp' => !is_plugin_active('paid-memberships-pro/paid-memberships-pro.php')
+      'courses' => false,
+      'directory' => false,
+      'events' => false,
+      'woocommerce' => false,
+      'job_manager' => false,
+      'forums' => false,
+      'pmp' => false,
+      'media_pages' => false,
     ]
   ]);
 
