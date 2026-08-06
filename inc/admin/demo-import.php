@@ -180,7 +180,7 @@ add_action('wp_ajax_bp_demo_import_step', function () {
     }
 
     wp_send_json_success($response);
-  } catch (Exception $e) {
+  } catch (Throwable $e) {
     $extra_output = '';
     while (ob_get_level() > $ob_level) {
       $extra_output .= (string) ob_get_clean();
@@ -189,7 +189,19 @@ add_action('wp_ajax_bp_demo_import_step', function () {
       error_log('bp_demo_import_step unexpected output (error): ' . wp_strip_all_tags($extra_output));
     }
 
-    wp_send_json_error(['message' => $e->getMessage()]);
+    error_log(sprintf(
+      'bp_demo_import_step failed [%s]: %s in %s:%d',
+      $step,
+      $e->getMessage(),
+      $e->getFile(),
+      $e->getLine()
+    ));
+
+    wp_send_json_error([
+      'message' => $e->getMessage(),
+      'code' => 'one_demo_import_step_failed',
+      'step' => $step,
+    ], 500);
   }
 });
 
@@ -1069,29 +1081,42 @@ function bp_demo_import_blog_posts()
 }
 function bp_demo_configure_buddypress()
 {
-  if (!function_exists('buddypress')) {
-    throw new Exception('BuddyPress is not available.');
+  if (!function_exists('buddypress') || !function_exists('bp_get_option') || !function_exists('bp_update_option')) {
+    throw new RuntimeException('BuddyPress is not available.');
   }
 
   $bp = buddypress();
   if (empty($bp->plugin_dir)) {
-    throw new Exception('BuddyPress could not be initialized.');
+    throw new RuntimeException('BuddyPress could not be initialized.');
   }
 
-  require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-  require_once $bp->plugin_dir . '/bp-core/admin/bp-core-admin-schema.php';
-
-  $submitted = bp_get_option('bp-active-components', []);
-  if (!is_array($submitted)) {
-    $submitted = [];
+  $active_components = bp_get_option('bp-active-components', []);
+  if (!is_array($active_components)) {
+    $active_components = [];
   }
 
   foreach (['groups', 'friends', 'messages'] as $component) {
-    $submitted[$component] = 1;
+    $active_components[$component] = 1;
   }
 
-  $active_components = bp_core_admin_get_active_components_from_submitted_settings($submitted);
+  // Keep all existing components active for this request and persist only the
+  // requested additions. This avoids depending on BuddyPress admin-screen
+  // helpers that are not loaded during admin-ajax.php requests.
   $bp->active_components = $active_components;
+
+  if (!function_exists('dbDelta')) {
+    require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+  }
+
+  $schema_file = trailingslashit($bp->plugin_dir) . 'bp-core/admin/bp-core-admin-schema.php';
+  if (!is_readable($schema_file)) {
+    throw new RuntimeException('BuddyPress database schema is not available.');
+  }
+  require_once $schema_file;
+
+  if (!function_exists('bp_core_install') || !function_exists('bp_core_add_page_mappings')) {
+    throw new RuntimeException('BuddyPress component setup functions are not available.');
+  }
 
   bp_core_install($active_components);
   bp_core_add_page_mappings($active_components);
@@ -1101,7 +1126,7 @@ function bp_demo_configure_buddypress()
   bp_update_option('bp-enable-membership-requests', 1);
   bp_update_option('one_enable_user_profile_invitation', 1);
 
-  if (array_intersect_key($active_components, bp_core_get_directory_page_ids('active'))) {
+  if (function_exists('bp_delete_rewrite_rules')) {
     bp_delete_rewrite_rules();
   }
 

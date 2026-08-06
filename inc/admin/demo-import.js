@@ -39,6 +39,15 @@ jQuery(document).ready(function ($) {
     barEl.css('width', percent + '%');
   }
 
+  function stopImport(message) {
+    showMessage(message, true);
+    loader.hide();
+    startBtn.show();
+    $('#bp-cancel-import').show();
+    finalBtns.hide();
+    cancelled = true;
+  }
+
   function runNextStep() {
     if (cancelled) {
       showMessage('');
@@ -83,18 +92,18 @@ jQuery(document).ready(function ($) {
         } catch(e){}
       } else {
         const msg = response.data?.message || 'Unknown error';
-        showMessage(`Failed: ${msg}`, true);
+        stopImport(`Import stopped: ${msg}`);
+        return;
       }
       updateProgress();
       currentStep++;
       setTimeout(runNextStep, 800); // smoother transition
     })
     .fail(function (xhr, status, error) {
-      console.error('AJAX failed:', error);
-      showMessage(`AJAX error: ${error}`, true);
-      updateProgress();
-      currentStep++;
-      setTimeout(runNextStep, 800);
+      console.error('AJAX failed:', error, xhr.responseText);
+      const jsonMessage = xhr.responseJSON?.data?.message;
+      const fallback = error || status || 'Request failed';
+      stopImport(`Import stopped: ${jsonMessage || fallback}`);
     });
   }
 

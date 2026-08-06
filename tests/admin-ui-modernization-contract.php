@@ -5,6 +5,7 @@ declare(strict_types=1);
 $root = dirname(__DIR__);
 $importPhp = file_get_contents($root . '/inc/admin/demo-import.php');
 $importCss = file_get_contents($root . '/inc/admin/demo-import.css');
+$importJs = file_get_contents($root . '/inc/admin/demo-import.js');
 $package = json_decode((string) file_get_contents($root . '/package.json'), true);
 
 $assertions = [
@@ -23,6 +24,16 @@ $assertions = [
     'BuddyPress setup runs before community content import' => str_contains($importPhp, "case 'configure_buddypress':")
         && str_contains($importPhp, 'bp_demo_configure_buddypress()'),
     'BuddyPress community components are activated' => str_contains($importPhp, "['groups', 'friends', 'messages']"),
+    'BuddyPress AJAX setup avoids admin-screen-only helper' => !str_contains($importPhp, 'bp_core_admin_get_active_components_from_submitted_settings')
+        && str_contains($importPhp, "bp_get_option('bp-active-components', [])")
+        && str_contains($importPhp, '$active_components[$component] = 1'),
+    'demo AJAX handler returns JSON for runtime errors' => str_contains($importPhp, 'catch (Throwable $e)')
+        && str_contains($importPhp, "'one_demo_import_step_failed'")
+        && str_contains($importPhp, '], 500);'),
+    'import pipeline stops after failed step' => is_string($importJs)
+        && str_contains($importJs, 'function stopImport(message)')
+        && str_contains($importJs, 'stopImport(`Import stopped: ${msg}`)')
+        && !str_contains($importJs, 'showMessage(`AJAX error: ${error}`, true)'),
     'BuddyPress community options are activated' => str_contains($importPhp, "bp_update_option('bp-enable-members-invitations', 1)")
         && str_contains($importPhp, "bp_update_option('bp-enable-membership-requests', 1)")
         && str_contains($importPhp, "bp_update_option('one_enable_user_profile_invitation', 1)"),
