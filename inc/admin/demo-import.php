@@ -100,7 +100,7 @@ add_action('admin_enqueue_scripts', function () {
     'ajax_url' => admin_url('admin-ajax.php'),
     'nonce' => wp_create_nonce('bp_demo_import_step'),
     'license_active' => \ONECORE\EntitlementBridge::has('demo_import'),
-    'license_url' => admin_url('themes.php?page=one&tab=license'),
+    'license_url' => admin_url('admin.php?page=one&tab=license'),
     // steps will be built dynamically by UI selections
     'default_steps' => [],
     'is_fresh_install' => $is_fresh_install,
@@ -131,13 +131,13 @@ function bp_demo_import_page()
     echo '<section class="one-core-license-required">';
     echo '<h2>' . esc_html__('Activate One to import demo content', 'one') . '</h2>';
     echo '<p>' . esc_html__('Demo imports are available when this website has a valid One theme license or a signed grace entitlement.', 'one') . '</p>';
-    echo '<p><a class="one-admin-button one-admin-button--primary" href="' . esc_url(admin_url('themes.php?page=one&tab=license')) . '">' . esc_html__('Open License', 'one') . '</a></p>';
+    echo '<p><a class="one-admin-button one-admin-button--primary" href="' . esc_url(admin_url('admin.php?page=one&tab=license')) . '">' . esc_html__('Open License', 'one') . '</a></p>';
     echo '</section>';
     return;
   }
 
   $home_url  = esc_url(home_url('/'));
-  $admin_url = esc_url(admin_url('themes.php?page=one&tab=importer'));
+  $admin_url = esc_url(admin_url('admin.php?page=one&tab=importer'));
 
   echo '<div id="bp-demo-modal" class="bp-demo-modal" style="display:none;">
         <div class="bp-demo-modal-content">

@@ -25,7 +25,6 @@ class OneCoreCustomizer {
 	function init() {
 		$this->load();
 		$this->init_admin();
-		add_filter( 'tophive/is_pro_activated', '__return_true' );
 		add_filter( 'tophive_is_builder_row_display', array( $this, 'check_footer_top_row' ), PHP_INT_MAX, 4 );
 	}
 
@@ -378,7 +377,17 @@ function OneCoreCustomizer() {
 /**
  * Run plugin
  */
+function OneCoreCustomizer_Is_Pro_Activated( $activated = false ) {
+	return \ONECORE\EntitlementBridge::has( 'one_core' );
+}
+
+add_filter( 'tophive/is_pro_activated', 'OneCoreCustomizer_Is_Pro_Activated' );
+
 function OneCoreCustomizer_Init() {
+	if ( ! \ONECORE\EntitlementBridge::has( 'one_core' ) ) {
+		return;
+	}
+
 	$c = OneCoreCustomizer::get_instance();
 	$c->init();
 }

@@ -19,7 +19,7 @@ $assertions = [
     'demo modal has structured heading' => str_contains($importPhp, 'bp-demo-modal-heading'),
     'demo modal close has no positional inline style' => str_contains($importPhp, 'class="bp-demo-modal-close"') && !str_contains($importPhp, 'style="position:absolute;right:12px;top:12px;"'),
     'license-required state uses shared action primitive' => str_contains($importPhp, 'one-admin-button one-admin-button--primary'),
-    'canonical One admin URL used' => str_contains($importPhp, "themes.php?page=one&tab=license") && str_contains($importPhp, "themes.php?page=one&tab=importer"),
+    'canonical One admin URL used' => str_contains($importPhp, "admin.php?page=one&tab=license") && str_contains($importPhp, "admin.php?page=one&tab=importer"),
     'required import options default on' => str_contains($importPhp, "'customizer' => true")
         && str_contains($importPhp, "'menus' => true")
         && str_contains($importPhp, "'buddypress' => true"),

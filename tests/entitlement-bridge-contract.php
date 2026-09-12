@@ -28,7 +28,7 @@ if (strpos($bootstrap, "require_once('inc/class-entitlement-bridge.php')") === f
 }
 
 $demo = file_get_contents($root . '/inc/admin/demo-import.php') ?: '';
-foreach (["EntitlementBridge::has('demo_import')", "check_ajax_referer( 'bp_demo_import_step', '_wpnonce' )", 'one_license_required', 'themes.php?page=one&tab=license'] as $required) {
+foreach (["EntitlementBridge::has('demo_import')", "check_ajax_referer( 'bp_demo_import_step', '_wpnonce' )", 'one_license_required', 'admin.php?page=one&tab=license'] as $required) {
     if (strpos($demo, $required) === false) {
         $failures[] = "Protected demo importer contract is missing: {$required}";
     }

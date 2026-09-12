@@ -68,8 +68,17 @@ class OneCore
   public static function init()
   {
     self::constants();
+    add_action('after_setup_theme', array(self::getInstance(), 'init_entitled_runtime'), 21);
+  }
+
+  public function init_entitled_runtime()
+  {
+    if (!EntitlementBridge::has('one_core')) {
+      return;
+    }
+
     add_action('wp_enqueue_scripts', array(self::getInstance(), 'frontendassets'));
-    \add_action('after_setup_theme', array(self::getInstance(), 'fix_theme_directorist_compat_fatal'), 20);
+    self::getInstance()->fix_theme_directorist_compat_fatal();
     add_filter('user_contactmethods', array(self::getInstance(), 'tophiveCutsomContacts'));
     add_action('show_user_profile', array(self::getInstance(), 'tophive_profile_designation'));
     add_action('edit_user_profile', array(self::getInstance(), 'tophive_profile_designation'));
