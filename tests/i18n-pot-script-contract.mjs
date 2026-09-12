@@ -5,7 +5,7 @@ const expected = 'wp i18n make-pot . languages/one-core.pot --domain=ONE_CORE_SL
 if (pkg.scripts?.['i18n:pot'] !== expected) {
   throw new Error('One Core i18n:pot script must preserve the current canonical ONE_CORE_SLUG domain.');
 }
-if (pkg.scripts?.prebuild !== 'npm run i18n:pot') {
-  throw new Error('One Core prebuild must refresh the POT before release builds.');
+if (Object.prototype.hasOwnProperty.call(pkg.scripts ?? {}, 'prebuild')) {
+  throw new Error('One Core build must not auto-generate the POT; run npm run i18n:pot manually.');
 }
 console.log('One Core i18n POT script contract: PASS');

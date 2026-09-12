@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "scripts": {
     "i18n:pot": "wp i18n make-pot . languages/one-core.pot --domain=ONE_CORE_SLUG --exclude=node_modules,release,vendor",
-    "prebuild": "npm run i18n:pot",
     "build": "node ./scripts/release.mjs",
     "test": "php tests/legacy-license-cleanup-contract.php && php tests/license-boundary-contract.php && php tests/shared-sdk-boundary-contract.php && php tests/entitlement-bridge-contract.php && php tests/license-production-golive-contract.php && php tests/admin-ui-modernization-contract.php && php tests/about-demo-page-contract.php && php tests/demo-page-library-contract.php && php tests/runtime-entitlement-enforcement-contract.php && php tests/runtime-entitlement-behavior.php && node tests/source-zip-contract.mjs && node tests/i18n-pot-script-contract.mjs",
     "build:zip": "node scripts/build-source-zip.mjs"
