@@ -73,10 +73,6 @@ class OneCore
 
   public function init_entitled_runtime()
   {
-    if (!EntitlementBridge::has('one_core')) {
-      return;
-    }
-
     add_action('wp_enqueue_scripts', array(self::getInstance(), 'frontendassets'));
     self::getInstance()->fix_theme_directorist_compat_fatal();
     add_filter('user_contactmethods', array(self::getInstance(), 'tophiveCutsomContacts'));
