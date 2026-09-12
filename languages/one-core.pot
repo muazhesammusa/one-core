@@ -1,15 +1,15 @@
-# Copyright (C) 2025 Tophive
+# Copyright (C) 2026 Tophive
 # This file is distributed under the Envato.
 msgid ""
 msgstr ""
-"Project-Id-Version: One Core | By Tophive 1.3\n"
+"Project-Id-Version: One Core | By Tophive 2.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/one-core\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-03T14:44:05+00:00\n"
+"POT-Creation-Date: 2026-09-12T20:18:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: ONE_CORE_SLUG\n"
@@ -39,101 +39,82 @@ msgstr ""
 msgid "https://themeforest.net/user/tophive"
 msgstr ""
 
-#: inc/admin/one-extension-export.php:21
-#: inc/admin/one-extension-export.php:22
-#: inc/admin/one-extension-export.php:37
+#: inc/admin/one-extension-export.php:26
+#: inc/admin/one-extension-export.php:27
+#: inc/admin/one-extension-export.php:42
 msgid "One Extension Export"
 msgstr ""
 
-#: inc/admin/one-extension-export.php:39
+#: inc/admin/one-extension-export.php:74
 msgid "Export"
 msgstr ""
 
-#: inc/admin/one-extension-export.php:40
+#: inc/admin/one-extension-export.php:75
 msgid "Exports up to 5 items from Tutor LMS, Directorist, WP Events, WooCommerce, and WP Job Manager into a single JSON file."
 msgstr ""
 
-#: inc/admin/one-extension-export.php:42
+#: inc/admin/one-extension-export.php:77
 msgid "Download Export (JSON)"
 msgstr ""
 
-#: inc/admin/one-extension-export.php:46
+#: inc/admin/one-extension-export.php:82
 msgid "Menu Export"
 msgstr ""
 
-#: inc/admin/one-extension-export.php:47
+#: inc/admin/one-extension-export.php:83
 msgid "Exports all menus with items and item meta (including icon/icon SVG) as JSON."
 msgstr ""
 
-#: inc/admin/one-extension-export.php:49
+#: inc/admin/one-extension-export.php:85
 msgid "Download Menus (JSON)"
 msgstr ""
 
-#: inc/admin/one-extension-export.php:52
-#: inc/admin/one-extension-export.php:57
+#: inc/admin/one-extension-export.php:86
+msgid "Download Menus (Demo JSON)"
+msgstr ""
+
+#: inc/admin/one-extension-export.php:89
+#: inc/admin/one-extension-export.php:94
 msgid "Install Required Plugins"
 msgstr ""
 
-#: inc/admin/one-extension-export.php:53
-msgid "Click to install and activate Tutor LMS, Directorist, WP Event Manager, and WP Job Manager."
+#: inc/admin/one-extension-export.php:90
+msgid "Click to install and activate Tutor LMS, Directorist, WP Event Manager, WP Job Manager, and Elementor."
 msgstr ""
 
-#: inc/admin/one-extension-export.php:62
+#: inc/admin/one-extension-export.php:114
 msgid "Import"
 msgstr ""
 
-#: inc/admin/one-extension-export.php:70
+#: inc/admin/one-extension-export.php:122
 msgid "Import JSON"
 msgstr ""
 
-#: inc/admin/one-extension-export.php:80
-#: inc/admin/one-extension-export.php:211
-#: inc/admin/one-extension-export.php:354
+#: inc/admin/one-extension-export.php:132
+#: inc/admin/one-extension-export.php:203
+#: inc/admin/one-extension-export.php:332
+#: inc/admin/one-extension-export.php:476
 msgid "Unauthorized"
 msgstr ""
 
-#: inc/admin/one-extension-export.php:268
+#: inc/admin/one-extension-export.php:389
 msgid "You do not have permission to install plugins."
 msgstr ""
 
-#: inc/admin/one-extension-export.php:359
+#: inc/admin/one-extension-export.php:481
 msgid "No file uploaded"
 msgstr ""
 
-#: inc/admin/one-extension-export.php:364
+#: inc/admin/one-extension-export.php:486
 msgid "Failed to read file"
 msgstr ""
 
-#: inc/admin/one-extension-export.php:369
+#: inc/admin/one-extension-export.php:491
 msgid "Invalid JSON file"
 msgstr ""
 
-#: one-core.php:188
+#: one-core.php:194
 msgid "One Widgets"
-msgstr ""
-
-#: updater/theme-updater.php:19
-msgid "Update Fundocean"
-msgstr ""
-
-#: updater/theme-updater.php:20
-msgid "Updating..."
-msgstr ""
-
-#: updater/theme-updater.php:21
-msgid "Theme Update Failed.Please try again after few moments"
-msgstr ""
-
-#: updater/theme-updater.php:22
-msgid "Theme Updated Successfully"
-msgstr ""
-
-#: updater/theme-updater.php:102
-msgid "A new version of one is available"
-msgstr ""
-
-#: updater/theme-updater.php:103
-msgid "Update One"
 msgstr ""
 
 #: widgets/elementor/OneElementorActivity.php:942
@@ -694,8 +675,6 @@ msgstr ""
 #: widgets/elementor/OneElementorCoursesGrid.php:740
 #: widgets/elementor/OneElementorCoursesGrid.php:752
 #: widgets/elementor/OneElementorCoursesGrid.php:1895
-#: widgets/elementor/OneElementorForumTabs.php:46
-#: widgets/elementor/OneElementorForumTabs.php:57
 #: widgets/elementor/OneElementorImageCarousel.php:152
 #: widgets/elementor/OneElementorTeam.php:252
 #: widgets/elementor/OneElementorTeamCarousel.php:111
@@ -772,8 +751,6 @@ msgstr ""
 #: widgets/elementor/OneElementorCoursesGrid.php:741
 #: widgets/elementor/OneElementorCoursesGrid.php:753
 #: widgets/elementor/OneElementorCoursesGrid.php:1896
-#: widgets/elementor/OneElementorForumTabs.php:47
-#: widgets/elementor/OneElementorForumTabs.php:58
 #: widgets/elementor/OneElementorImageCarousel.php:151
 #: widgets/elementor/OneElementorTeam.php:253
 #: widgets/elementor/OneElementorTeamCarousel.php:112
@@ -1196,37 +1173,48 @@ msgstr ""
 msgid "No Posts have been Found"
 msgstr ""
 
-#: widgets/elementor/OneElementorBase.php:685
-msgid "Nothing found for "
+#: widgets/elementor/OneElementorBase.php:690
+#, php-format
+msgid "Nothing found for %s"
 msgstr ""
 
-#: widgets/elementor/OneElementorBase.php:725
-#: widgets/elementor/OneElementorBase.php:731
+#: widgets/elementor/OneElementorBase.php:717
+#: widgets/elementor/OneElementorBase.php:720
 #: widgets/elementor/OneElementorBase.php:737
+#: widgets/elementor/OneElementorBase.php:743
+#: widgets/elementor/OneElementorBase.php:749
 msgid "failed"
 msgstr ""
 
-#: widgets/elementor/OneElementorBase.php:726
-msgid "Title is empty"
+#: widgets/elementor/OneElementorBase.php:717
+msgid "Authentication required"
 msgstr ""
 
-#: widgets/elementor/OneElementorBase.php:732
-msgid "Topic content is empty"
+#: widgets/elementor/OneElementorBase.php:720
+msgid "Insufficient permissions"
 msgstr ""
 
 #: widgets/elementor/OneElementorBase.php:738
+msgid "Title is empty"
+msgstr ""
+
+#: widgets/elementor/OneElementorBase.php:744
+msgid "Topic content is empty"
+msgstr ""
+
+#: widgets/elementor/OneElementorBase.php:750
 msgid "You need to select a forum"
 msgstr ""
 
-#: widgets/elementor/OneElementorBase.php:746
+#: widgets/elementor/OneElementorBase.php:758
 msgid " started a new topic in forum "
 msgstr ""
 
-#: widgets/elementor/OneElementorBase.php:772
+#: widgets/elementor/OneElementorBase.php:784
 msgid "success"
 msgstr ""
 
-#: widgets/elementor/OneElementorBase.php:773
+#: widgets/elementor/OneElementorBase.php:785
 msgid "Topic Created Successfully"
 msgstr ""
 
@@ -2569,38 +2557,75 @@ msgstr ""
 msgid "Load More Button position"
 msgstr ""
 
-#: widgets/elementor/OneElementorForumTabs.php:19
+#: widgets/elementor/OneElementorForumTabs.php:25
 msgid "BBPress Forum"
 msgstr ""
 
-#: widgets/elementor/OneElementorForumTabs.php:37
+#: widgets/elementor/OneElementorForumTabs.php:49
 msgid "Activity Tab"
 msgstr ""
 
-#: widgets/elementor/OneElementorForumTabs.php:44
-msgid "Show Latest Activities"
+#: widgets/elementor/OneElementorForumTabs.php:66
+msgid "Select Tags"
 msgstr ""
 
-#: widgets/elementor/OneElementorForumTabs.php:55
-msgid "Show Forums"
-msgstr ""
-
-#: widgets/elementor/OneElementorForumTabs.php:89
+#: widgets/elementor/OneElementorForumTabs.php:81
+#: widgets/elementor/OneElementorForumTabs.php:495
 msgid "Recent Activity"
 msgstr ""
 
-#: widgets/elementor/OneElementorForumTabs.php:90
-msgid "Forums"
+#: widgets/elementor/OneElementorForumTabs.php:82
+msgid "Forum"
 msgstr ""
 
-#: widgets/elementor/OneElementorForumTabs.php:243
-#: widgets/elementor/OneElementorForumTabs.php:308
+#: widgets/elementor/OneElementorForumTabs.php:83
+msgid "Tag"
+msgstr ""
+
+#: widgets/elementor/OneElementorForumTabs.php:84
+#: widgets/elementor/OneElementorForumTabs.php:512
+msgid "My Topic"
+msgstr ""
+
+#: widgets/elementor/OneElementorForumTabs.php:85
+#: widgets/elementor/OneElementorForumTabs.php:518
+msgid "Favourite"
+msgstr ""
+
+#: widgets/elementor/OneElementorForumTabs.php:86
+#: widgets/elementor/OneElementorForumTabs.php:524
+msgid "Subscription"
+msgstr ""
+
+#: widgets/elementor/OneElementorForumTabs.php:87
+#: widgets/elementor/OneElementorForumTabs.php:530
+msgid "Engagement"
+msgstr ""
+
+#: widgets/elementor/OneElementorForumTabs.php:88
+msgid "Search"
+msgstr ""
+
+#: widgets/elementor/OneElementorForumTabs.php:97
+msgid "Tabs"
+msgstr ""
+
+#: widgets/elementor/OneElementorForumTabs.php:169
+#: widgets/elementor/OneElementorForumTabs.php:241
 msgid " Topics"
 msgstr ""
 
-#: widgets/elementor/OneElementorForumTabs.php:250
-#: widgets/elementor/OneElementorForumTabs.php:315
+#: widgets/elementor/OneElementorForumTabs.php:176
+#: widgets/elementor/OneElementorForumTabs.php:248
 msgid " Replies"
+msgstr ""
+
+#: widgets/elementor/OneElementorForumTabs.php:277
+msgid "No Content"
+msgstr ""
+
+#: widgets/elementor/OneElementorForumTabs.php:499
+msgid "Forums"
 msgstr ""
 
 #: widgets/elementor/OneElementorImageCarousel.php:22
@@ -3330,9 +3355,9 @@ msgstr ""
 msgid "BuddyPress - One Profile Media"
 msgstr ""
 
-#: widgets/onewidgets/OneBPProfileMedia.php:52
-#: widgets/onewidgets/OneBPProfileMedia.php:69
-msgid "No photos uploaded"
+#: widgets/onewidgets/OneBPProfileMedia.php:54
+#: widgets/onewidgets/OneBPProfileMedia.php:71
+msgid "No photos"
 msgstr ""
 
 #: widgets/onewidgets/OneCopyrightWidget.php:8
