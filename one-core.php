@@ -68,10 +68,10 @@ class OneCore
   public static function init()
   {
     self::constants();
-    add_action('after_setup_theme', array(self::getInstance(), 'init_entitled_runtime'), 21);
+    add_action('after_setup_theme', array(self::getInstance(), 'init_runtime'), 21);
   }
 
-  public function init_entitled_runtime()
+  public function init_runtime()
   {
     add_action('wp_enqueue_scripts', array(self::getInstance(), 'frontendassets'));
     self::getInstance()->fix_theme_directorist_compat_fatal();
@@ -341,7 +341,6 @@ spl_autoload_register(__NAMESPACE__ . '\\autoload');
 
 add_action('plugins_loaded', array(OneCore::getInstance(), 'init'));
 
-require_once('inc/class-entitlement-bridge.php');
 require_once('MailChimp.php');
 require_once('t/class-tophive-modules.php');
 require_once('inc/admin/demo-import.php');

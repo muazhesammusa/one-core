@@ -375,13 +375,8 @@ function OneCoreCustomizer() {
 }
 
 /**
- * Run plugin
+ * Run plugin.
  */
-function OneCoreCustomizer_Is_Pro_Activated( $activated = false ) {
-	return \ONECORE\EntitlementBridge::has( 'one_core' );
-}
-
-add_filter( 'tophive/is_pro_activated', 'OneCoreCustomizer_Is_Pro_Activated' );
 
 function OneCoreCustomizer_Init() {
 	$c = OneCoreCustomizer::get_instance();

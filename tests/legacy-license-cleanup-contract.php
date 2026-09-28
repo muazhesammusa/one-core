@@ -10,6 +10,7 @@ $deletedPaths = [
     'updater/assets/js/script.js',
     'inc/admin/One_Imports_Controllers.php',
     'CAPTCHA_HANDLING.md',
+    'inc/class-entitlement-bridge.php',
 ];
 
 foreach ($deletedPaths as $relativePath) {
@@ -36,6 +37,10 @@ $forbidden = [
     'tophive_core_dynamic_update',
     'type=theme_data',
     'wp-json/v1/license',
+    'EntitlementBridge',
+    'tophive_one_has_entitlement',
+    'tophive_one_license_status',
+    'one_license_required',
 ];
 
 $iterator = new RecursiveIteratorIterator(
