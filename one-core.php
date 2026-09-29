@@ -343,6 +343,7 @@ add_action('plugins_loaded', array(OneCore::getInstance(), 'init'));
 
 require_once('MailChimp.php');
 require_once('t/class-tophive-modules.php');
+require_once('inc/admin/class-demo-license-gate.php');
 require_once('inc/admin/demo-import.php');
 require_once('inc/admin/one-extension-export.php');
 

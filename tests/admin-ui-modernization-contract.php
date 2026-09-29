@@ -18,7 +18,10 @@ $assertions = [
     'demo card uses modern shell' => str_contains($importPhp, 'one-core-demo-banner__icon') && str_contains($importPhp, 'one-core-demo-banner__copy'),
     'demo modal has structured heading' => str_contains($importPhp, 'bp-demo-modal-heading'),
     'demo modal close has no positional inline style' => str_contains($importPhp, 'class="bp-demo-modal-close"') && !str_contains($importPhp, 'style="position:absolute;right:12px;top:12px;"'),
-    'demo importer is not blocked by the removed license runtime' => !str_contains($importPhp, 'one-core-license-required') && !str_contains($importPhp, 'EntitlementBridge'),
+    'demo importer does not restore the removed legacy license runtime' => !str_contains($importPhp, 'one-core-license-required') && !str_contains($importPhp, 'EntitlementBridge'),
+    'demo importer exposes a clean locked state backed by AnyLicense authorization' => str_contains($importPhp, 'One_Core_Demo_License_Gate::allows()')
+        && str_contains($importPhp, 'one-core-demo-banner--locked')
+        && str_contains($importPhp, 'Activate license'),
     'canonical One importer URL used' => str_contains($importPhp, "admin.php?page=one&tab=importer"),
     'required import options default on' => str_contains($importPhp, "'customizer' => true")
         && str_contains($importPhp, "'menus' => true")

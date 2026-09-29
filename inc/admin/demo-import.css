@@ -240,6 +240,16 @@
   color: #fff;
 }
 
+.one-core-demo-banner--locked {
+  border-color: #e5e7eb;
+  box-shadow: none;
+}
+
+.one-core-demo-banner--locked .one-core-demo-banner__icon {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
 
 .demo-import-warning {
   margin: 14px 0 16px;

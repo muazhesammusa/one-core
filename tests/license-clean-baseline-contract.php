@@ -16,7 +16,9 @@ foreach ([
 
 $bootstrap = file_get_contents($root . '/one-core.php') ?: '';
 $modules = file_get_contents($root . '/t/class-tophive-modules.php') ?: '';
+$gate = file_get_contents($root . '/inc/admin/class-demo-license-gate.php') ?: '';
 $importer = file_get_contents($root . '/inc/admin/demo-import.php') ?: '';
+$extensionImporter = file_get_contents($root . '/inc/admin/one-extension-export.php') ?: '';
 $package = json_decode((string) file_get_contents($root . '/package.json'), true);
 
 foreach ([
@@ -36,12 +38,22 @@ foreach ([
 foreach ([
     "check_ajax_referer( 'bp_demo_import_step', '_wpnonce' )",
     "current_user_can( 'manage_options' )",
+    "One_Core_Demo_License_Gate::allows()",
+    "'code' => 'license_required'",
     "case 'install_plugins':",
     "case 'import_pages':",
 ] as $required) {
     if (!str_contains($importer, $required)) {
         $failures[] = "Demo importer lost a required non-license safety/runtime contract: {$required}";
     }
+}
+
+
+if (!str_contains($gate, '$GLOBALS[\'anylicense_license_managers\']') || !str_contains($gate, 'runtimeEnforcer()') || !str_contains($gate, 'allowsBoundary(self::BOUNDARY)')) {
+    $failures[] = 'Demo import gate does not consume the canonical AnyLicense runtime authorization surface.';
+}
+if (!str_contains($extensionImporter, 'One_Core_Demo_License_Gate::allows()') || !str_contains($extensionImporter, "['response' => 403]")) {
+    $failures[] = 'Secondary demo import path is not protected by the shared AnyLicense gate.';
 }
 
 if (!str_contains($bootstrap, "add_action('after_setup_theme', array(self::getInstance(), 'init_runtime'), 21);")) {

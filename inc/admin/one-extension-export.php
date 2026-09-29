@@ -103,11 +103,19 @@ class One_Extension_Export {
         </div>
       <?php endif; ?>
       
-      <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-        <?php wp_nonce_field('one_ext_import_demos', '_one_ext_import_demos_nonce'); ?>
-        <input type="hidden" name="action" value="one_ext_import_demos" />
-        <button type="submit" class="button button-secondary"><?php echo esc_html__('Import Demo Content', 'one-core'); ?></button>
-      </form>
+      <?php if (One_Core_Demo_License_Gate::allows()): ?>
+        <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+          <?php wp_nonce_field('one_ext_import_demos', '_one_ext_import_demos_nonce'); ?>
+          <input type="hidden" name="action" value="one_ext_import_demos" />
+          <button type="submit" class="button button-secondary"><?php echo esc_html__('Import Demo Content', 'one-core'); ?></button>
+        </form>
+      <?php else: ?>
+        <p>
+          <a class="button button-primary" href="<?php echo esc_url(admin_url('admin.php?page=one&tab=license')); ?>">
+            <?php echo esc_html__('Activate license to import', 'one-core'); ?>
+          </a>
+        </p>
+      <?php endif; ?>
 
       <hr />
 
@@ -834,6 +842,14 @@ class One_Extension_Export {
       wp_die(__('Unauthorized', 'one-core'));
     }
     check_admin_referer('one_ext_import_demos', '_one_ext_import_demos_nonce');
+
+    if (!One_Core_Demo_License_Gate::allows()) {
+      wp_die(
+        esc_html__('Activate a valid One license to import demo content.', 'one-core'),
+        esc_html__('License required', 'one-core'),
+        ['response' => 403]
+      );
+    }
 
     $results = [];
     

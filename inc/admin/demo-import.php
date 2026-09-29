@@ -89,6 +89,12 @@ add_action('admin_enqueue_scripts', function () {
   $ui_version = file_exists($ui_path) ? (string) filemtime($ui_path) : $version;
   $style_version = file_exists($style_path) ? (string) filemtime($style_path) : $version;
 
+  wp_enqueue_style('bp-demo-import-style', plugin_dir_url(__FILE__) . '/demo-import.css', [], $style_version);
+
+  if (!One_Core_Demo_License_Gate::allows()) {
+    return;
+  }
+
   wp_enqueue_script('bp-demo-import', plugin_dir_url(__FILE__) . '/demo-import.js', ['jquery'], $worker_version, true);
   wp_enqueue_script('bp-demo-import-ui', plugin_dir_url(__FILE__) . '/demo-import-ui.js', ['wp-element', 'jquery'], $ui_version, true);
   // Check if this is a fresh install - more comprehensive check
@@ -117,7 +123,6 @@ add_action('admin_enqueue_scripts', function () {
     'pages' => one_demo_page_library(),
   ]);
 
-  wp_enqueue_style('bp-demo-import-style', plugin_dir_url(__FILE__) . '/demo-import.css', [], $style_version);
 });
 
 // 2. Add Admin Page with Import Button + Modal Container
@@ -125,6 +130,21 @@ add_action('tophive/admin/demo-content-container', 'bp_demo_import_page');
 
 function bp_demo_import_page()
 {
+  $license_url = esc_url(admin_url('admin.php?page=one&tab=license'));
+
+  if (!One_Core_Demo_License_Gate::allows()) {
+    echo '<section class="one-core-demo-banner one-core-demo-banner--locked">
+      <div class="one-core-demo-banner__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+      </div>
+      <div class="one-core-demo-banner__copy">
+        <h3 class="one-core-demo-banner__title">' . esc_html__('One starter content', 'one') . '</h3>
+        <p class="one-core-demo-banner__meta">' . esc_html__('Activate your One license to import starter content and community setup.', 'one') . '</p>
+      </div>
+      <a class="button button-primary" href="' . $license_url . '">' . esc_html__('Activate license', 'one') . '</a>
+    </section>';
+    return;
+  }
 
   $home_url  = esc_url(home_url('/'));
   $admin_url = esc_url(admin_url('admin.php?page=one&tab=importer'));
@@ -174,6 +194,14 @@ add_action('wp_ajax_bp_demo_import_step', function () {
     wp_send_json_error( [ 'message' => 'Unauthorized' ], 403 );
   }
   check_ajax_referer( 'bp_demo_import_step', '_wpnonce' );
+
+  if (!One_Core_Demo_License_Gate::allows()) {
+    wp_send_json_error([
+      'code' => 'license_required',
+      'message' => __('Activate a valid One license to import starter content.', 'one'),
+    ], 403);
+  }
+
   $step = sanitize_text_field($_POST['step'] ?? '');
   $payload_slugs = isset($_POST['slugs']) && is_array($_POST['slugs']) ? array_map('sanitize_text_field', $_POST['slugs']) : [];
   $payload_pages = isset($_POST['pages']) && is_array($_POST['pages']) ? array_map('sanitize_key', $_POST['pages']) : [];
